@@ -10,6 +10,7 @@
 |andres|alto|activo|
 |jeferson|alto|activo|
 |cristian|alto|activo|
+|pedro|alto|activo|
 
 
 
