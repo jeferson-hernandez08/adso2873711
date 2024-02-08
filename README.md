@@ -2,13 +2,17 @@
 
 ## Tecnólogo en Análisis y Desarrollo de Software
 
-![God of war](https://media.gq.com.mx/photos/5f6ce732bc946e88f6c96320/16:9/w_2560%2Cc_limit/goky%2520ultra%2520instinto.jpg)
+![God of war](https://yamaha-mundoyamaha.com/wp-content/uploads/2022/12/MT09_motos_header_v2.png)
 
 |nombre|clase|estado|
 |----|----|----|
 |Homero|alta|activo|
 |andres|alto|activo|
-|jeferson|alto|activo
+|jeferson|alto|activo|
+|cristian|alto|activo|
+
+
+
 
 
 
