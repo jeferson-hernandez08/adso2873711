@@ -2,7 +2,7 @@
 
 ## Tecnólogo en Análisis y Desarrollo de Software
 
-![God of war](https://yamaha-mundoyamaha.com/wp-content/uploads/2022/12/MT09_motos_header_v2.png)
+![God of war](https://cdn.atomix.vg/wp-content/uploads/2023/09/goku.jpg)
 
 |nombre|clase|estado|
 |----|----|----|
