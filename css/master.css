@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+
+body {
+    background-color: #f29e03;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='46' height='46' fill-opacity='0.6' fill='%23ffa61d'/%3E%3C/svg%3E");
+    font-family: Poppins, sans-serif;
+}
+
+main {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    min-height: 100vh;
+
+            header {
+                h1, h2 {
+                    color: #000a;
+                    text-align: center;
+                }
+                h1 {
+                font-size: 4rem;
+                font-weight: 400;
+                }
+                h2 {
+                    font-size: 1.4rem;
+                    font-weight: 300;
+                }
+            }
+
+            menu {
+                display: flex;
+                flex-direction: column;
+                padding: 0px;
+                gap: 1rem;
+
+                a:is(:link, :visited){
+                     background-color: #0009;
+                     border-radius: 50px;
+                     display: flex;
+                     color: #fffd;
+                     gap: 1rem;
+                     align-items: center;
+                     padding: 1rem;
+                     text-decoration: none;
+                     transition: all 0.5s ease-in;
+                     width: 280px;
+
+                     i {
+                        background-color: blueviolet;
+                        border-radius: 20px;
+                        color: #000c;
+                        font-style: normal;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        transition: all 0.5s ease-in;
+                        height: 34px;
+                        width:  34px;
+                     }
+                }
+
+                a:is(:hover) {
+                    transform: translate(-10px);
+                    background-color: #000c;
+                }
+
+                a:is(:hover) i {
+                    transform: scale(1.4);
+                }
+            }
+}
