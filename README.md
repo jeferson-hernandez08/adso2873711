@@ -4,13 +4,11 @@
 
 ![God of war](https://cdn.atomix.vg/wp-content/uploads/2023/09/goku.jpg)
 
-|nombre|clase|estado|
+|01- Emmet|Flujo de trabajo|
+|01- HTML|Lenguaje de etiquetas|
+|01- CSS|Hoja de estilos en cascada|
+|01- JavasScript|Lenguaje de programacion|
 |----|----|----|
-|Homero|alta|activo|
-|andres|alto|activo|
-|jeferson|alto|activo|
-|cristian|alto|activo|
-|pedro|alto|activo|
 
 
 
