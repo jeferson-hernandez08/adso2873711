@@ -53,3 +53,17 @@ main {
         }
     }
 }
+
+@media (max-width: 500px) {
+    main {
+        header {
+            flex-direction: column;
+            gap: 0.5rem;
+            a:is(:link, :visited) {
+                display: flex;
+                justify-content: center;
+                width: 98% !important;
+            }
+        }
+    } 
+ }
