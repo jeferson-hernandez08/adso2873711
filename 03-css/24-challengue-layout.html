@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challegue</title>
+    <!-- <link rel="stylesheet" href="css/challengue.css"> -->
+    <style>
+        body {
+            background-color: #17A053;
+        }
+        /*************************************************/
+        div.sprite {
+           background: url(images/spriteweb.png);
+           border: 2px red solid;
+           height: 190px;
+           width: 190px;
+           margin: 1rem auto;
+           background-position: -10px -400px;
+        }
+        /************************************************/
+        nav {
+        border: 2px red solid;
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+        width: 100%;
+        
+        a:is(:link, :visited) {
+            background-color: #ccc;
+            color: #333;
+            font-size: 1.2rem;
+            padding: 20px;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.4s ease-in;
+            width: 10%;
+        }
+        a:is(:hover) {
+          background-color: #333;
+          color: #ccc;
+        }
+       }
+        /************************************************/
+        section.sections-sprites {
+            border: 2px red solid;
+            display: flex;
+            justify-content: center;
+            width: 50%;
+            background-color: #3339;
+            margin: 20px auto;  
+        }
+        div.box {
+            border: 2px red solid;
+            display: flex;
+            border-radius: 8px;
+            height: 300px;
+            margin: 20px auto;   
+            width: 300px;
+        }
+        div.sprite-1 {
+            /* background: url(images/spriteweb.png);
+            border: 2px red solid;
+            height: 190px;
+            width: 190px;
+            margin: 1rem auto;
+            background-position: -10px -400px; */
+
+
+
+        }
+        div.sprite-2 {
+
+
+            
+        }
+        div.sprite-3 {
+
+
+                
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="sprite"></div>
+    </header>
+    <nav>
+        <a href="">INICIO</a>
+        <a href="">NOSOTROS</a>
+        <a href="">PORTAFOLIO</a>
+        <a href="">SERVICIOS</a>
+        <a href="">CONTACTO</a>   
+    </nav>
+    <main>
+        <section class="sections-sprites">
+            <div class="box sprite-1"></div>    
+            <div class="box sprite-2"></div>
+            <div class="box sprite-3"></div>
+        </section>  
+    </main>  
+</body>
+</html>
