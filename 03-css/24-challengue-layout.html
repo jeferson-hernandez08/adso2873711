@@ -9,22 +9,23 @@
         body {
             background-color: #17A053;
         }
-        /*************************************************/
+        /*****************imagen sprite header******************/
         div.sprite {
            background: url(images/spriteweb.png);
            border: 2px red solid;
            height: 190px;
            width: 190px;
-           margin: 1rem auto;
-           background-position: -10px -400px;
+           margin: 1rem auto;                  /*Establece el margen para los cuatro lados, y el auto hace que un elemento con un ancho definido tenga márgenes automático (esto incluye derecha e izquierda) lo cual produce que el bloque o el contenedor se centre. */
+           background-position: -10px -400px; /*Primer valor es eje X y segundo valor es  eje Y */
         }
-        /************************************************/
+        /***************seccion nav*********************/
         nav {
         border: 2px red solid;
-        display: flex;
-        gap: 2rem;
-        justify-content: center;
-        width: 100%;
+        display: flex; 
+        justify-content: center;  /* Esta propiedad es para mover los items o las letras o el contenido, con valor center es para centrar los items, No funciona sin display flex: ; */
+        margin: 20px auto;        /*margen para los cuatro lados, y auto para centrar el contenedor */
+        width: 950px;
+        gap: 2rem; 
         
         a:is(:link, :visited) {
             background-color: #ccc;
@@ -34,29 +35,29 @@
             text-decoration: none;
             text-align: center;
             transition: all 0.4s ease-in;
-            width: 10%;
+            width: 20%;
         }
         a:is(:hover) {
           background-color: #333;
           color: #ccc;
         }
        }
-        /************************************************/
+        /****************seccion sprites***********************/
+        main {
+            border: 2px red solid;
+        }
         section.sections-sprites {
             border: 2px red solid;
-            display: flex;
-            justify-content: center;
-            width: 50%;
+            width: 950px;
+            margin: 10px auto;  
             background-color: #3339;
-            margin: 20px auto;  
         }
         div.box {
             border: 2px red solid;
-            display: flex;
             border-radius: 8px;
             height: 300px;
+            width: 600px;
             margin: 20px auto;   
-            width: 300px;
         }
         div.sprite-1 {
             /* background: url(images/spriteweb.png);
@@ -80,7 +81,56 @@
                 
         }
 
+        /****************seccion sprites textos************************/
+        section.sections-sprites-text {
+            border: 2px red solid ;
+            width: 950px;
+            margin: 50px auto;
+            background-color: #3339;   
+        }
+        div.box {
+            border: 2px red solid ;
+            width: 940px;
+            margin: 10px auto;
+        }
 
+        /****************footer************************/
+        footer {
+            border: 2px red solid;
+            /* display: flex;
+            justify-content: center; */
+        }
+        div.sprite-footer {
+            border: 2px red solid;
+            background-color: #ccc;
+            height: 200px;
+            width: 950px;
+            margin: 0px auto;
+        }
+        div.enlaces-footer {
+            border: 2px red solid;
+            background-color: #ccc;
+            display: flex;            /* Centramos contenidos display: flex; y justify-content: center; */
+            justify-content: center;
+            width: 950px;        
+            margin: 0px auto;        /* Centramos contenedor */
+            gap: 2rem;
+
+            a:is(:link, :visited) {
+            background-color: #ccc;
+            color: #333;
+            font-size: 1.2rem;
+            padding: 20px;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.4s ease-in;
+            width: 20%;
+            }
+            a:is(:hover) {
+            background-color: #333;
+            color: #ccc;
+            }
+        }
     </style>
 </head>
 <body>
@@ -100,6 +150,25 @@
             <div class="box sprite-2"></div>
             <div class="box sprite-3"></div>
         </section>  
-    </main>  
+        <section class="sections-sprites-text">
+            <div class="box text-1"></div>
+            <div class="box text-2"></div>
+            <div class="box text-3"></div>
+        </section>
+    </main> 
+    <footer>
+        <div class="sprite-footer">
+            
+        </div>
+        <div class="enlaces-footer">
+            <a href="">INICIO</a>
+            <a href="">NOSOTROS</a> 
+            <a href="">PORTAFOLIO</a>
+            <a href="">SERVICIOS</a>
+            <a href="">CONTACTO</a>  
+        </div>
+        
+
+    </footer> 
 </body>
 </html>
