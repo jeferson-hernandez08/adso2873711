@@ -28,8 +28,9 @@
         gap: 2rem; 
         
         a:is(:link, :visited) {
-            background-color: #ccc;
-            color: #333;
+            background-color: #0008;
+            border-bottom: 5px white solid;
+            color: #fff;
             font-size: 1.2rem;
             padding: 20px;
             text-decoration: none;
@@ -38,50 +39,46 @@
             width: 20%;
         }
         a:is(:hover) {
-          background-color: #333;
+          background-color: #000;
           color: #ccc;
+          border-bottom: 5px yellow solid;
         }
        }
-        /****************seccion sprites***********************/
+        /****************Seccion sprites***********************/
         main {
             border: 2px red solid;
         }
         section.sections-sprites {
             border: 2px red solid;
+            display: flex;
+            flex-wrap: wrap;     /* especifica si los elementos "hijos" son obligados a permanecer en una misma línea, no funciona sin el display flex */
             width: 950px;
             margin: 10px auto;  
             background-color: #3339;
         }
-        div.box {
-            border: 2px red solid;
+        div.box1 {
+            border: 2px #fff9 solid;
+            text-align: center;
+            font-size: large;
             border-radius: 8px;
-            height: 300px;
-            width: 600px;
-            margin: 20px auto;   
-        }
-        div.sprite-1 {
-            /* background: url(images/spriteweb.png);
-            border: 2px red solid;
             height: 190px;
-            width: 190px;
-            margin: 1rem auto;
-            background-position: -10px -400px; */
-
-
-
+            width: 300px;
+            margin: 10px auto; 
+        }
+        div.sprite-1 {             /* Se independiza con diferentes clases por si se quiere poner diferentes imagenes */
+            background: url(images/spriteweb.png);
+            background-position: -480px -10px;
         }
         div.sprite-2 {
-
-
-            
+            background: url(images/spriteweb.png);
+            background-position: -480px -10px;  
         }
         div.sprite-3 {
-
-
-                
+            background: url(images/spriteweb.png);
+            background-position: -480px -10px;      
         }
 
-        /****************seccion sprites textos************************/
+        /****************Seccion sprites textos*********Quedamos aqui***************/
         section.sections-sprites-text {
             border: 2px red solid ;
             width: 950px;
@@ -90,6 +87,8 @@
         }
         div.box {
             border: 2px red solid ;
+            border-radius: 8px;
+            height: 300px;
             width: 940px;
             margin: 10px auto;
         }
@@ -146,9 +145,9 @@
     </nav>
     <main>
         <section class="sections-sprites">
-            <div class="box sprite-1"></div>    
-            <div class="box sprite-2"></div>
-            <div class="box sprite-3"></div>
+            <div class="box1 sprite-1">Sprite 01</div>    
+            <div class="box1 sprite-2">Sprite 02</div>
+            <div class="box1 sprite-3">Sprite 03</div>
         </section>  
         <section class="sections-sprites-text">
             <div class="box text-1"></div>
