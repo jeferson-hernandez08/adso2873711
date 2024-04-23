@@ -8,6 +8,8 @@
     <style>
         body {
             background-color: #17A053;
+            border: 5px #fff solid;
+            margin: 1px;
         }
         /*****************imagen sprite header******************/
         div.sprite {
@@ -136,6 +138,16 @@
                     left: 20px;
                     height: 200px; 
                     width: 500px;            /* TERMINE AQUI PSEUDO CLASES PARA LA LETRA CAMBIE A VERDE */
+
+                    p {
+                        /* border: 2px red solid;  */
+                        position: relative;
+                        bottom: 15px;
+                        left: 10px;
+                    }
+                    p:is(:hover) {
+                        color: green;
+                    }
                 }
                 div.box-logo-sprite3 {
                     /* border: 2px red solid;    11. comentar y descomentar border para observar contenedores o bloques */
@@ -220,17 +232,23 @@
         <section class="sections-sprites-text">
             <div class="box2 text-1">
                 <div class="box-logo-sprite1"></div>
-                <div class="box-text-sprite2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda eum cum nam tempore optio modi quibusdam dolorem perferendis in eligendi est ipsam, dignissimos dicta quasi error hic suscipit facilis laborum reiciendis. Sed delectus asperiores, ullam, hic esse, blanditiis nostrum expedita consequuntur eaque beatae natus recusandae cumque. Ullam quia minima ipsa consectetur, ex, natus libero similique iusto repellat est quibusdam quos!</div>
+                <div class="box-text-sprite2">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda eum cum nam tempore optio modi quibusdam dolorem perferendis in eligendi est ipsam, dignissimos dicta quasi error hic suscipit facilis laborum reiciendis. Sed delectus asperiores, ullam, hic esse, blanditiis nostrum expedita consequuntur eaque beatae natus recusandae cumque. Ullam quia minima ipsa consectetur, ex, natus libero similique iusto repellat est quibusdam quos!</p>
+                </div>
                 <div class="box-logo-sprite3"></div>
             </div>
             <div class="box2 text-2">
                 <div class="box-logo-sprite1"></div>
-                <div class="box-text-sprite2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda eum cum nam tempore optio modi quibusdam dolorem perferendis in eligendi est ipsam, dignissimos dicta quasi error hic suscipit facilis laborum reiciendis. Sed delectus asperiores, ullam, hic esse, blanditiis nostrum expedita consequuntur eaque beatae natus recusandae cumque. Ullam quia minima ipsa consectetur, ex, natus libero similique iusto repellat est quibusdam quos!</div>
+                <div class="box-text-sprite2">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda eum cum nam tempore optio modi quibusdam dolorem perferendis in eligendi est ipsam, dignissimos dicta quasi error hic suscipit facilis laborum reiciendis. Sed delectus asperiores, ullam, hic esse, blanditiis nostrum expedita consequuntur eaque beatae natus recusandae cumque. Ullam quia minima ipsa consectetur, ex, natus libero similique iusto repellat est quibusdam quos!</p>
+                </div>
                 <div class="box-logo-sprite3"></div>
             </div>
             <div class="box2 text-3">
                 <div class="box-logo-sprite1"></div>
-                <div class="box-text-sprite2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda eum cum nam tempore optio modi quibusdam dolorem perferendis in eligendi est ipsam, dignissimos dicta quasi error hic suscipit facilis laborum reiciendis. Sed delectus asperiores, ullam, hic esse, blanditiis nostrum expedita consequuntur eaque beatae natus recusandae cumque. Ullam quia minima ipsa consectetur, ex, natus libero similique iusto repellat est quibusdam quos!</div>
+                <div class="box-text-sprite2">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda eum cum nam tempore optio modi quibusdam dolorem perferendis in eligendi est ipsam, dignissimos dicta quasi error hic suscipit facilis laborum reiciendis. Sed delectus asperiores, ullam, hic esse, blanditiis nostrum expedita consequuntur eaque beatae natus recusandae cumque. Ullam quia minima ipsa consectetur, ex, natus libero similique iusto repellat est quibusdam quos!</p>
+                </div>
                 <div class="box-logo-sprite3"></div>
             </div>
         </section>
