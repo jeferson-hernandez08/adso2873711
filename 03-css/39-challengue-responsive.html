@@ -84,12 +84,13 @@
             /* border: red solid 2px; */
             margin: 10px auto;
             width: 1200px;
-            height: 725px;
+            height: 735px;
             background-color: #0006;
         }
             div.box2-history {          /*Los dos hijos*/
                 /* border: 2px red solid; */
-                margin: 15px;
+                margin: 25px;
+                gap: 2rem;
                 position: relative;
                 top: 15px;
                 display: flex;              /* Centramos los contenidos display: flex; y justify-content: center; Es con el padre*/
@@ -300,28 +301,21 @@
                             color: #fff;
                             background-color: #000e;  
                         } 
-                    }
-
-
-
-
-
-
-
-
-
+            }
+            
         /****************Seccion Personajes y Historia***********************/
         @media (max-width: 1235px) {
             section.sections-goku-vegueta {
-                border: blue solid 2px; 
+                /* border: blue solid 2px;  */
                 margin: 10px auto; 
-                width: 800px;
-                height: 725px;
+                width: 620px;
+                height: 620px;
                 background-color: #0006;
             }
                 div.box2-history {          /*Los dos hijos*/
-                    border: 2px red solid;
-                    margin: 15px;
+                    /* border: 2px red solid; */
+                    margin: 10px;
+                    gap: 0rem;
                     position: relative;
                     top: 15px;
                     display: flex;              /* Centramos los contenidos display: flex; y justify-content: center; Es con el padre*/
@@ -329,26 +323,27 @@
                     background-color: #fff5;
                 }
                     section div.box-goku-dbs {
-                        border: 2px red solid;
+                        /* border: 2px red solid; */
                         margin: 10px;
-                        height: 320px;
-                        width: 320px;
+                        height: 270px;
+                        width: 880px;
                         background: url(images/Dragon_Ball_GokuHistory.jpg) no-repeat center;
-                        background-size: 320px 320px;
+                        background-size: 270px 270px;
                     }
                     section div.box-vegueta-dbs {
                         /* border: 2px red solid; */
                         margin: 10px;
-                        height: 320px;
-                        width: 320px;
+                        height: 270px;
+                        width: 880px;
                         background: url(images/Dragon_Ball_VeguetaHistory.jpg) no-repeat center;
-                        background-size: 320px 320px;
+                        background-size: 270px 270px;
                     }
                     section div.box-text-dbs {
                         /* border: 2px red solid; */
+                        overflow: scroll;
                         margin: 10px;
-                        width: 600px;
-                        height: 320px;
+                        width: 900px;
+                        height: 270px;
                     }
                         h4 {
                             /* border: red solid 2px; */
@@ -368,10 +363,10 @@
                             /* color: #fff; */
                         }
                     section div.box-no-logo {
-                        /* border: red solid 2px;      */
+                        border: red solid 2px;     
                         margin: 10px;
                         width: 200px;
-                        height: 320px;                       /* Terminamos pagina , falta los media quieries */
+                        height: 320px;                       
                     }
         }
 
@@ -415,7 +410,7 @@
                         Originalmente enviado a la Tierra como un infante volador con la misión de conquistarla. Sin embargo, el caer por un barranco le proporcionó un brutal golpe que si bien casi lo mata, este alteró su memoria y anuló todos los instintos violentos de su especie, lo que lo hizo crecer con un corazón puro y bondadoso, pero conservando todos los poderes de su raza.
                     </p>
                 </div>
-                <div class="box-no-logo"></div>
+                <!-- <div class="box-no-logo"></div> -->
             </div>
             <div class="box2-history">
                 <div class="box-vegueta-dbs"></div>
@@ -427,7 +422,7 @@
                         A pesar de que a inicios de Dragon Ball Z, Vegeta cumple un papel antagónico, poco después decide rebelarse ante el Imperio de Freeza, volviéndose un aliado clave para los Guerreros Z.
                     </p>
                 </div>
-                <div class="box-no-logo"></div>
+                <!-- <div class="box-no-logo"></div> -->
             </div>
         </section>
     </main>
