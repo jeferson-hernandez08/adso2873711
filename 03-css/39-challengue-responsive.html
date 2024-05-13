@@ -32,7 +32,7 @@
         section.characters-dbs {
             /* border: 2px solid red; */
             margin: 30px auto;
-            width: 1200px;
+            width: 1200px;  
             display: flex;                       /* Centramos los contenidos display: flex; y justify-content: center; Es con el padre*/
             justify-content: center;             /* Este es importantisimo se centra con el padre los hijos enlaces */
             background-color: #0006;
@@ -91,8 +91,8 @@
                 /* border: 2px red solid; */
                 margin: 25px;
                 gap: 2rem;
-                position: relative;
-                top: 15px;
+                position: relative;         /*Para terminarle de darle margen a la caja y top 15px*/    
+                top: 15px;             
                 display: flex;              /* Centramos los contenidos display: flex; y justify-content: center; Es con el padre*/
                 justify-content: center;   /* Este es importantisimo se centra con el padre los hijos enlaces */
                 background-color: #fff5;
@@ -146,9 +146,9 @@
         /****************MEDIA QUERIES***********************/
         /*--------------------------------------------------*/
         /****************Titulo logo Dragon Ball*************/
-        @media (max-width: 1025px) {               /* Terminamos Aqui, Titolo media queries OK */
+        @media (max-width: 1025px) {               
             header div.title-dragonball {
-                border: red solid 2px;
+                /* border: red solid 2px; */
                 margin: 20px auto;
                 background: url(images/Dragon_Ball_Super-Logo.png) no-repeat center;
                 height: 250px;
@@ -158,7 +158,7 @@
         }
             @media (max-width: 830px) {
                 header div.title-dragonball {
-                    border: red solid 2px;
+                    /* border: red solid 2px; */
                     margin: 20px auto;
                     background: url(images/Dragon_Ball_Super-Logo.png) no-repeat center;
                     height: 200px;
@@ -168,7 +168,7 @@
             }
                 @media (max-width: 680px) {
                     header div.title-dragonball {
-                    border: red solid 2px;
+                    /* border: red solid 2px; */
                     margin: 20px auto;
                     background: url(images/Dragon_ball_Media_Queries.png) no-repeat center;
                     height: 250px;
@@ -308,7 +308,7 @@
             section.sections-goku-vegueta {
                 /* border: blue solid 2px;  */
                 margin: 10px auto; 
-                width: 620px;
+                width: 620px;                  /* Si es menos de 1235px agamelo mas pequeño, un ejemplo de como funciona.*/
                 height: 620px;
                 background-color: #0006;
             }
@@ -325,7 +325,7 @@
                     section div.box-goku-dbs {
                         /* border: 2px red solid; */
                         margin: 10px;
-                        height: 270px;
+                        height: 270px;  
                         width: 880px;
                         background: url(images/Dragon_Ball_GokuHistory.jpg) no-repeat center;
                         background-size: 270px 270px;
@@ -340,7 +340,7 @@
                     }
                     section div.box-text-dbs {
                         /* border: 2px red solid; */
-                        overflow: scroll;
+                        overflow: scroll;             /* Propiedad para encerrar el texto en la caja y quede organizado en modo scroll */
                         margin: 10px;
                         width: 900px;
                         height: 270px;
@@ -369,6 +369,76 @@
                         height: 320px;                       
                     }
         }
+            @media (max-width: 660px) {
+                section.sections-goku-vegueta {
+                    /* border: blue solid 2px;  */
+                    margin: 10px auto; 
+                    width: 410px;                  /* Si es menor a 660px agamelo mas pequeño, un ejemplo de como funciona.*/
+                    height: 1440px;
+                    background-color: #0006;
+                }
+                    div.box2-history {          /*Los dos hijos*/
+                        /* border: 2px rgb(25, 0, 255) solid; */
+                        margin: 10px;
+                        gap: 0rem;
+                        position: relative;
+                        top: 15px;
+                        display: flex;              /* Centramos los contenidos display: flex; y justify-content: center; Es con el padre*/
+                        justify-content: center;   /* Este es importantisimo se centra con el padre los hijos enlaces */
+                        background-color: #fff5;
+                        position: relative;                 /*Relative para que tome de referencia a este  padre para organizar los textos de historia de goku y vegueta y queden en una sola columna con el adsolute*/
+                        height: 700px;
+                    }
+                        section div.box-goku-dbs {
+                            /* border: 2px red solid; */
+                            margin: 10px;
+                            height: 280px;  
+                            width: 280px;
+                            background: url(images/Dragon_Ball_GokuHistory.jpg) no-repeat center;
+                            background-size: 280px 280px;
+                        }
+                        section div.box-vegueta-dbs {
+                            /* border: 2px red solid; */
+                            margin: 10px;
+                            height: 280px;
+                            width: 280px;
+                            background: url(images/Dragon_Ball_VeguetaHistory.jpg) no-repeat center;
+                            background-size: 280px 280px;
+                        }
+                        section div.box-text-dbs {
+                            /* border: 2px red solid; */
+                            overflow: scroll;             /* Propiedad para encerrar el texto en la caja y quede organizado en modo scroll */
+                            margin: 10px;
+                            width: 285px;
+                            height: 370px;
+                            position: absolute;
+                            top: 300px;
+                            left: 40px;
+                        }
+                            h4 {
+                                /* border: red solid 2px; */
+                                margin: 5px;
+                                font-size: 1.6rem;
+                                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                                font-weight: 900;
+                                /* background-color: #0005; */
+                                /* color: #fff; */
+
+                            }
+                            section div p.history-character {
+                                /* border: red solid 2px; */
+                                margin: 5px;
+                                font-size: 15px;
+                                font-family: cursive;
+                                /* color: #fff; */
+                            }
+                        section div.box-no-logo {
+                            border: red solid 2px;     
+                            margin: 10px;
+                            width: 200px;
+                            height: 320px;                       
+                        }
+            }
 
 
                 
