@@ -25,8 +25,11 @@ nav.controls {
         transition: all 0.4s ease-in;  
     }
     a:is(:hover) {
-    opacity: 1;
-    transform: scale(1);
+        opacity: 1;
+        transform: scale(1);
+    }
+    svg {
+        width: 40px;
     }
 }
 
@@ -39,17 +42,27 @@ main {
     min-height: 100vh;
 
             header {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
                 h1, h2 {
-                    color: #000a;
+                    color: #000;
                     text-align: center;
+                    margin: 0;
                 }
                 h1 {
-                font-size: 4rem;
-                font-weight: 400;
+                    font-size: 4rem;
+                    font-weight: 400;
                 }
                 h2 {
                     font-size: 1.4rem;
                     font-weight: 300;
+                }
+                img {
+                    border-radius: 50%;
+                    background-color: #fff3;
+                    width: 160px;
+                    border: 10px solid #fff9;
                 }
             }
 
@@ -92,6 +105,12 @@ main {
 
                 a:is(:hover) i {
                     transform: scale(1.4);
+                }
+
+                h3 {
+                    align-self: center;
+                    font-size: 2.4rem;
+                    color: #fff9;
                 }
             }
 

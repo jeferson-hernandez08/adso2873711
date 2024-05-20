@@ -22,6 +22,7 @@ main {
                 h1, h2 {
                     color: #000a;
                     text-align: center;
+                    margin: 0;
                 }
                 h1 {
                 font-size: 4rem;
@@ -41,8 +42,9 @@ main {
                 }
                 img {
                     border-radius: 50%;
+                    background-color: #fff3;
                     width: 160px;
-                    border: 10px solid #0009;
+                    border: 10px solid #fff9;
                 }
             }
 
@@ -85,6 +87,12 @@ main {
 
                 a:is(:hover) i {
                     transform: scale(1.4);
+                }
+
+                h3 {
+                    align-self: center;
+                    font-size: 2.4rem;
+                    color: #fff9;
                 }
             }
 }
