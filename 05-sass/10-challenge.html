@@ -1,40 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>10- Challenge (SCSS)</title>
-    <link rel="stylesheet" href="css/master.css">
-    <link rel="stylesheet" href="css/10-challengue.css">
-    <style> 
-     
- 
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10 - Challenge (SCSS)</title>
+  <link rel="stylesheet" href="css/10-challengue.css">
 </head>
 <body>
-    <div class="nav__bar">
-        <input type="checkbox" id="toggle" aria-hidden="true" />
-        <label for="toggle" class="nav__icon" aria-hidden="true">
-          Expand the menu
-          <span class="nav__icon-line"></span>
-          <span class="nav__icon-line"></span>
-          <span class="nav__icon-line"></span>
-        </label>
-        <nav role="navigation" class="nav">
-          <ul class="nav__items">
-            <li class="nav__item"><a href="#">Item 1</a></li>
-            <li class="nav__item"><a href="#">Item 2</a></li>
-            <li class="nav__item"><a href="#">Item 3</a></li>
-          </ul>
-        </nav>
-      </div>
-      
-      <h1>Pure CSS hamburger menu (accessible)</h1>
-      <p>
-        Resize the browser to see the hamburger menu. This approach uses the checkbox hack to allow CSS to handle the hamburger toggle. The menu items will be accessible to screenreaders even when hidden.
-      </p>
-      <p>
-        Inspired by <a href="https://codepen.io/bloom-dan/pen/vKdoar">https://codepen.io/bloom-dan/pen/vKdoar</a>
-      </p> 
+  <header>
+    <h2>
+      <a>[ Menu Burguer ]</a>
+    </h2>
+    <nav>
+      <input type="checkbox" id="toggle-menu" class="toggle-menu">
+      <label for="toggle-menu" class="toggle-menu-label">&#9776;</label>
+      <ul class="menu">
+        <li class="small_box">
+          <a class="active">> Home</a>
+        </li>
+        <li class="small_box">
+          <a class="active">> About</a>
+        </li>
+        <li class="small_box">
+          <a class="active">> Potfolio</a>
+        </li>
+        <li class="small_box">
+          <a class="active">> Services</a>
+        </li>
+        <li class="small_box">
+          <a class="active">> Contact</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
 </body>
 </html>
