@@ -94,6 +94,11 @@ main {
                     transform: scale(1.4);
                 }
 
+                a.disabled {
+                    opacity: 0.4;
+                    cursor: not-allowed;
+                }
+
                 h3 {
                     align-self: center;
                     font-size: 2.4rem;
