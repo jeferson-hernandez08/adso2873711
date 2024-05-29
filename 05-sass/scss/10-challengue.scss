@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap');
 
 header {
+  //border: 2px solid red;
   align-items: center;
   border-bottom: 2px solid #333;
   display: flex;
@@ -11,6 +12,7 @@ header {
 }
 
 header ul {
+  //border: 2px solid red;
   display: flex;
   list-style: none;
   padding: 0;
