@@ -17,8 +17,8 @@
             margin: 5px auto;        /*Dar margen en todos los lados y Este margin auto es para centrar pero solo se centra cuando usamos  background: url NO funciona con img como en la siguiente seccion abajo*/  
             background: url(../images/Seccion_1.png) no-repeat center;
             height: 650px;
-            width: 1500px;
-            background-size: 1500px 650px;
+            width: 1320px;
+            background-size: 1320px 650px;
             
                 img.img-logo-nombre {
                     height: 30px;
@@ -59,8 +59,8 @@
         /**********************Seccion#2*************************/
         section div.container-abilitys {
             position: relative;       /*Usamos Position Relative y left 80px para centrar todo la caja, ya que NO lo hicimoa con el background: url y margin auto*/
-            left: 80px;
-            width: 1500px;
+            left: 0px;               /* Ya no usamos en este caso left se deja por explicacion*/
+            width: 1320px;
             height: 700px;
             
                 h1.title-about {
@@ -80,44 +80,43 @@
                     position: relative;
                     left: 730px;
                     bottom: 580px;  
-                    width: 600px;
+                    width: 550px;
                 }
                 img.img-abilitys {
                     position: relative;
                     left: 730px;
                     bottom: 550px;
+                    height: 250px;
                 }
         }
 
         /**********************Seccion#3*************************/
         section div.container-services {
             position: relative;       /*Usamos Position Relative y left 80px para centrar todo la caja, ya que NO lo hicimoa con el background: url y margin auto*/
-            left: 80px;
-            width: 1500px;
+            left: 0px;                /* Ya no usamos en este caso left se deja por explicacion*/
+            width: 1320px;
             height: 700px;
-            
+
                 h1.title-services {
                     position: relative;
                     color: #48A48F;
-                    left: 700px;
+                    left: 600px;
                 }
                 h1.title-service-provide {
                     position: relative;
                     color: #000;
-                    left: 615px;
+                    left: 515px;
                 }
-                div.box-text2 {
-                    /* border: solid red 1px;   Para ver border en bootstrap le ponemos: border border-danger */
-                    position: relative;
-                    left: 730px;
-                    bottom: 580px;  
-                    width: 600px;
+                img.img-mini-seccion {
+                    height: 214px;
                 }
-                img.img-abilitys {
-                    position: relative;
-                    left: 730px;
-                    bottom: 550px;
-                }
+        }
+        /**********************Seccion#4*************************/
+        section div.container-portfolio {
+            width: 1320px;
+            height: 700px;
+
+
         }
 
     </style>
@@ -125,7 +124,7 @@
 <body class="m-1 border border-danger">
     <main>
         <header class="m-1 border border-danger">     <!-- Para ver border en bootstrap le ponemos: border border-danger -->
-            <div class="image-substract border border-dark">     <!-- Para ver border en bootstrap le ponemos: border border-dark -->
+            <div class="image-substract m-1 border border-dark">     <!-- Para ver border en bootstrap le ponemos: border border-dark -->
                 <img class="img-logo-nombre" src="../images/Logo_Jeferson.png" alt="">   <!-- Para ver border en bootstrap le ponemos: border border-danger -->
                 <h6 class="title-hello m-5 fs-4">Hello I am</h6>    <!-- Para ver border en bootstrap le ponemos: border border-danger -->
                 <p class="title-nombre m-5 fs-2 fw-bolder">Jeferson Hernandez Ladino</p>
@@ -142,7 +141,7 @@
                 <h1 class="title-about fs-5 fw-bold">About:</h1> 
                 <h2 class="title-why fw-bold">Why You Hire Me? </h2>
                 <div class="box-text2">      <!-- Para ver border en bootstrap le ponemos: border border-danger -->
-                    <p class="text-secondary fw-medium">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem pariatur aspernatur, iusto est, veniam, maiores quae dignissimos officiis debitis magnam nesciunt nobis. Officiis, tempora quas! In, sunt. Ad, repudiandae! Quisquam neque eum unde perspiciatis reprehenderit vel minus accusantium animi reiciendis?</p>
+                    <p class="text-secondary fw-medium">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae iusto maiores possimus laboriosam quas debitis tempore itaque veritatis, delectus est rerum et, consequatur sunt laudantium dolor a iure, voluptates magnam dolores ut corporis fuga quos!</p>
                 </div>
                 <img class="img-abilitys" src="../images/Habilidades.png" alt="">
             </div>
@@ -151,8 +150,52 @@
             <div class="container-services m-1 border border-dark">  <!-- Ponemos toda esta caja para poder centrar toda. Para ver border en bootstrap le ponemos: m-1 border border-dark -->
                 <h1 class="title-services m-3 fs-5 fw-bold">Services</h1> 
                 <h1 class="title-service-provide m-3 fs-2 fw-bold">Service | Provide</h1>
-                
+                <div class="container text-center">
+                    <div class="row row-cols-2 row-cols-lg-3 g-2 g-lg-3 my-5">    <!-- Para ver border en bootstrap le ponemos: border border-dark -->
+                      <div class="col">
+                        <div class="p-3 border p-2 bg-dark-subtle text-light bg-opacity-75">
+                            <img class="img-mini-seccion" src="../images/Mini secciones 1.png" alt="">
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="p-3 border p-2 bg-dark-subtle text-light bg-opacity-75">
+                            <img class="img-mini-seccion" src="../images/Mini secciones 2.png" alt="">
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="p-3 border p-2 bg-dark-subtle text-light bg-opacity-75">
+                            <img class="img-mini-seccion" src="../images/Mini secciones 3.png" alt="">
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="p-3 border p-2 bg-dark-subtle text-light bg-opacity-75">
+                            <img class="img-mini-seccion" src="../images/Mini secciones 4.png" alt="">
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="p-3 border p-2 bg-dark-subtle text-light bg-opacity-75">
+                            <img class="img-mini-seccion" src="../images/Mini secciones 5.png" alt="">
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="p-3 border p-2 bg-dark-subtle text-light bg-opacity-75">
+                            <img class="img-mini-seccion" src="../images/Mini secciones 6.png" alt="">
+                        </div>
+                      </div>
+                    </div>
+                </div>  
             </div>
+        </section>
+        <section class="m-1 border border-black">
+            <div class="container-portfolio m-1 border border-dark">
+
+
+            </div>
+
+
+
+
+
         </section>
     </main> 
 
