@@ -14,11 +14,11 @@
         /**********************Header Seccion#1*************************/
         header div.image-substract {
             /* border: solid red 2px;     Para ver border en bootstrap le ponemos: border border-danger*/
-            margin:5px auto;
+            margin: 5px auto;        /*Dar margen en todos los lados y Este margin auto es para centrar pero solo se centra cuando usamos  background: url NO funciona con img como en la siguiente seccion abajo*/  
             background: url(../images/Seccion_1.png) no-repeat center;
-            height: 600px;
-            width: 1280px;
-            background-size: 1280px 600px;
+            height: 650px;
+            width: 1500px;
+            background-size: 1500px 650px;
             
                 img.img-logo-nombre {
                     height: 30px;
@@ -57,38 +57,75 @@
         }
 
         /**********************Seccion#2*************************/
-        section h1.title-about {
-            position: relative;
-            color: #48A48F;
-            left: 800px;
-            bottom: 600px;
-
+        section div.container-abilitys {
+            position: relative;       /*Usamos Position Relative y left 80px para centrar todo la caja, ya que NO lo hicimoa con el background: url y margin auto*/
+            left: 80px;
+            width: 1500px;
+            height: 700px;
+            
+                h1.title-about {
+                    position: relative;
+                    color: #48A48F;
+                    left: 730px;
+                    bottom: 600px;
+                }
+                h2.title-why {
+                    position: relative;
+                    color: #000;
+                    left: 730px;
+                    bottom: 590px;
+                }
+                div.box-text2 {
+                    /* border: solid red 1px;   Para ver border en bootstrap le ponemos: border border-danger */
+                    position: relative;
+                    left: 730px;
+                    bottom: 580px;  
+                    width: 600px;
+                }
+                img.img-abilitys {
+                    position: relative;
+                    left: 730px;
+                    bottom: 550px;
+                }
         }
-        section h2.title-why {
-            position: relative;
-            color: #000;
-            left: 800px;
-            bottom: 600px;
-        }
-        div.box-text2 {
-            /* border: solid red 1px;   Para ver border en bootstrap le ponemos: border border-danger */
-            position: relative;
-            width: 625px;
-            top: 20px;  
 
-                /* p.text-descripcion {  Letra aplicada con css   Quede aquiiiiiiiiiiiiiiiiiiii
-                    color:#000b;
-                    font-weight: 600;     
-                } */
+        /**********************Seccion#3*************************/
+        section div.container-services {
+            position: relative;       /*Usamos Position Relative y left 80px para centrar todo la caja, ya que NO lo hicimoa con el background: url y margin auto*/
+            left: 80px;
+            width: 1500px;
+            height: 700px;
+            
+                h1.title-services {
+                    position: relative;
+                    color: #48A48F;
+                    left: 700px;
+                }
+                h1.title-service-provide {
+                    position: relative;
+                    color: #000;
+                    left: 615px;
+                }
+                div.box-text2 {
+                    /* border: solid red 1px;   Para ver border en bootstrap le ponemos: border border-danger */
+                    position: relative;
+                    left: 730px;
+                    bottom: 580px;  
+                    width: 600px;
+                }
+                img.img-abilitys {
+                    position: relative;
+                    left: 730px;
+                    bottom: 550px;
+                }
         }
-
 
     </style>
 </head>
-<body>
+<body class="m-1 border border-danger">
     <main>
         <header class="m-1 border border-danger">     <!-- Para ver border en bootstrap le ponemos: border border-danger -->
-            <div class="image-substract">
+            <div class="image-substract border border-dark">     <!-- Para ver border en bootstrap le ponemos: border border-dark -->
                 <img class="img-logo-nombre" src="../images/Logo_Jeferson.png" alt="">   <!-- Para ver border en bootstrap le ponemos: border border-danger -->
                 <h6 class="title-hello m-5 fs-4">Hello I am</h6>    <!-- Para ver border en bootstrap le ponemos: border border-danger -->
                 <p class="title-nombre m-5 fs-2 fw-bolder">Jeferson Hernandez Ladino</p>
@@ -100,49 +137,23 @@
             </div>
         </header>
         <section class="m-1 border border-danger">
-            <img class="img-foto-marco m-5" src="../images/Foto y Marco.png" alt="">
-            <h1 class="title-about fs-5 fw-bold">About:</h1>
-            <h2 class="title-why fw-bold">¿Why You Hire Me? </h2>
-            <div class="box-text2 m-5"> <!-- Para ver border en bootstrap le ponemos: border border-danger -->
-                <p class="text-descripcion text-secondary fw-medium">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit ducimus minima dolorem tempora nobis debitis mollitia illum cumque dignissimos quisquam.</p>
+            <div class="container-abilitys m-1 border border-dark">  <!-- Ponemos toda esta caja para poder centrar toda. Para ver border en bootstrap le ponemos: m-1 border border-dark -->
+                <img class="img-foto-marco m-5" src="../images/Foto y Marco.png" alt="">
+                <h1 class="title-about fs-5 fw-bold">About:</h1> 
+                <h2 class="title-why fw-bold">Why You Hire Me? </h2>
+                <div class="box-text2">      <!-- Para ver border en bootstrap le ponemos: border border-danger -->
+                    <p class="text-secondary fw-medium">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem pariatur aspernatur, iusto est, veniam, maiores quae dignissimos officiis debitis magnam nesciunt nobis. Officiis, tempora quas! In, sunt. Ad, repudiandae! Quisquam neque eum unde perspiciatis reprehenderit vel minus accusantium animi reiciendis?</p>
+                </div>
+                <img class="img-abilitys" src="../images/Habilidades.png" alt="">
             </div>
-            
-            
-
-
-            <!-- <h1 class="my-4">About:</h1>
-            
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam accusamus nesciunt fugiat sunt error cum alias perferendis voluptate. Esse similique provident illo, unde soluta magni ut excepturi hic commodi veritatis error officiis omnis voluptate placeat voluptates illum eius laboriosam molestias ducimus eum voluptatum praesentium cumque. Laboriosam laudantium perferendis quia dolores?
-            </p>
-            <h6>UI/UX Desig</h6>
-            <h6>Web Desig</h6>
-            <h6>HTML/CSS</h6>
-            <h6>Sketch</h6>
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select> -->
         </section>  
         <section class="m-1 border border-danger">
-            <h1 class="my-4">About:</h1>
-            <h1 class="my-4">¿Why You Hire Me? </h1>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam accusamus nesciunt fugiat sunt error cum alias perferendis voluptate. Esse similique provident illo, unde soluta magni ut excepturi hic commodi veritatis error officiis omnis voluptate placeat voluptates illum eius laboriosam molestias ducimus eum voluptatum praesentium cumque. Laboriosam laudantium perferendis quia dolores?
-            </p>
-            <h6>UI/UX Desig</h6>
-            <h6>Web Desig</h6>
-            <h6>HTML/CSS</h6>
-            <h6>Sketch</h6>
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
-        </section> 
+            <div class="container-services m-1 border border-dark">  <!-- Ponemos toda esta caja para poder centrar toda. Para ver border en bootstrap le ponemos: m-1 border border-dark -->
+                <h1 class="title-services m-3 fs-5 fw-bold">Services</h1> 
+                <h1 class="title-service-provide m-3 fs-2 fw-bold">Service | Provide</h1>
+                
+            </div>
+        </section>
     </main> 
 
     
