@@ -10,7 +10,6 @@
         body {
             background-color: #fff;
         }
-
         /**********************Header Seccion#1*************************/
         header div.image-substract {
             /* border: solid red 2px;     Para ver border en bootstrap le ponemos: border border-danger*/
@@ -19,8 +18,33 @@
             height: 650px;
             width: 1320px;
             background-size: 1320px 650px;
-            
+
+                nav.nav-seccion1 {
+                    position: relative;
+                    left: 750px;
+                    width: 500px;
+
+                        a:is(:link, :visited) {
+                            background-color: #0008;
+                            /* border-bottom: 5px white solid; */
+                            color: #fff;
+                            /* font-size: 1.2rem; */
+                            /* padding: 20px; */
+                            text-decoration: none;
+                            text-align: center; 
+                            transition: all 0.4s ease-in;
+                            width: 20%;
+                        }
+
+                        a:is(:hover) {
+                            background-color: #000;
+                            color: #ccc;
+                            /* border-bottom: 5px green solid; */
+                        }
+                }
                 img.img-logo-nombre {
+                    position:relative;
+                    bottom: 65px;
                     height: 30px;
                 }
                 h6.title-hello {
@@ -55,7 +79,6 @@
                     bottom: 40px;
                 }
         }
-
         /**********************Seccion#2*************************/
         section div.container-abilitys {
             position: relative;       /*Usamos Position Relative y left 80px para centrar todo la caja, ya que NO lo hicimoa con el background: url y margin auto*/
@@ -89,7 +112,6 @@
                     height: 250px;
                 }
         }
-
         /**********************Seccion#3*************************/
         section div.container-services {
             position: relative;       /*Usamos Position Relative y left 80px para centrar todo la caja, ya que NO lo hicimoa con el background: url y margin auto*/
@@ -111,7 +133,6 @@
                     height: 214px;
                 }
         }
-
         /**********************Seccion#4*************************/
         section div.container-portfolio {
             width: 1320px;
@@ -133,8 +154,10 @@
                     width: 280px;
                 }
         }
-
         /**********************Footer*************************/
+        /* footer {           Aqui un ejemplo de lo que hacemos con bootstrap: bg-black bg-opacity-10, lo cual es lo mismo
+            background-color: #0005;
+        } */
         footer div.container-footer {
             width: 1320px;
             height: 450px;
@@ -155,6 +178,29 @@
                     left: 425px;
                    
                 }
+                nav.nav-footer {
+                    position:relative;
+                    left: 250px;
+                    width: 800px;
+
+                        a:is(:link, :visited) {
+                            /* background-color: #0008; */
+                            /* border-bottom: 5px white solid; */
+                            color: #000;
+                            /* font-size: 1.2rem; */
+                            /* padding: 20px; */
+                            text-decoration: none;
+                            text-align: center; 
+                            transition: all 0.4s ease-in;
+                            width: 20%;
+                        }
+
+                        a:is(:hover) {
+                            background-color: #000;
+                            color: #fff;
+                            /* border-bottom: 5px green solid; */
+                        }
+                }
                 img.img-logo-copyright {
                     position: relative;
                     left: 555px;
@@ -162,14 +208,19 @@
                     top: 70px;
                 }
         }
-
     </style>
 </head>
 <body class="m-1 border border-danger">
     <main>
         <header class="m-1 border border-danger">     <!-- Para ver border en bootstrap le ponemos: m-1 border border-danger -->
             <div class="image-substract m-1 border border-dark">     <!-- Para ver border en bootstrap le ponemos: m-1 border border-dark -->
-                <img class="img-logo-nombre" src="../images/Logo_Jeferson.png" alt="">   <!-- Para ver border en bootstrap le ponemos: border border-danger -->
+                <nav class="nav-seccion1 nav m-3 justify-content-end gap-2">    <!-- Para ver border en bootstrap le ponemos: border border-danger -->
+                    <a class="nav-link text-light fw-bold" href="#">Home</a>
+                    <a class="nav-link text-light fw-bold" href="#">About</a>
+                    <a class="nav-link text-light fw-bold" href="#">Services</a>
+                    <a class="nav-link text-light fw-bold" href="#">Portfolio</a>
+                </nav>
+                <img class="img-logo-nombre m-2" src="../images/Logo_Jeferson.png" alt="">   <!-- Para ver border en bootstrap le ponemos: border border-danger -->
                 <h6 class="title-hello m-5 fs-4">Hello I am</h6>    <!-- Para ver border en bootstrap le ponemos: border border-danger -->
                 <p class="title-nombre m-5 fs-2 fw-bolder">Jeferson Hernandez Ladino</p>
                 <p class="title-profesional m-5 fw-bold">Professional Frelance Web Designer</p>
@@ -255,11 +306,17 @@
                 </div>  
             </div>
         </section>
-        <footer class="m-1 border border-black">      <!-- Para ver border en bootstrap le ponemos: m-1 border border-black -->
+        <footer class="bg-black bg-opacity-10 m-1 border border-black">      <!-- Para ver border en bootstrap le ponemos: m-1 border border-black -->
             <div class="container-footer m-1 border border-dark">         <!-- Para ver border en bootstrap le ponemos: m-1 border border-dark -->
                 <img class="img-logo-nombre my-4" src="../images/Logo_Jeferson.png" alt="">
                 <img class="img-logo-redes " src="../images/Logos-Redes.png" alt="">
                 <h1 class="img-title-email m-5 fs-3 fw-bold">jefer.hernandez1@gmail.com</h1>
+                <nav class="nav-footer nav m-3 justify-content-center gap-4">    <!-- Para ver border en bootstrap le ponemos: border border-danger -->
+                    <a class="nav-link fw-bold" href="#">Home</a>
+                    <a class="nav-link fw-bold" href="#">About</a>
+                    <a class="nav-link fw-bold" href="#">Services</a>
+                    <a class="nav-link fw-bold" href="#">Portfolio</a>
+                </nav>
                 <img class="img-logo-copyright " src="../images/©_All_rights_reserved.png" alt="">
             </div>
         </footer>
