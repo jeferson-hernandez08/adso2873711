@@ -208,17 +208,93 @@
                     top: 70px;
                 }
         }
+
+        /****************MEDIA QUERIES-RESPONSIVE***********************/
+        /*--------------------------------------------------------------*/
+        /**********************Header Seccion#1*************************/
+        @media (max-width: 910px) {
+            header div.image-substract {
+            /* border: solid red 2px;     Para ver border en bootstrap le ponemos: border border-danger*/
+            margin: 5px auto;        /*Dar margen en todos los lados y Este margin auto es para centrar pero solo se centra cuando usamos  background: url NO funciona con img como en la siguiente seccion abajo*/  
+            background: url(../images/Seccion_1.png) no-repeat center;
+            height: 400px;
+            width: 800px;
+            background-size: 800px 400px;
+
+                nav.nav-seccion1 {
+                    position: relative;
+                    left: 750px;
+                    width: 500px;
+
+                        a:is(:link, :visited) {
+                            background-color: #0008;
+                            /* border-bottom: 5px white solid; */
+                            color: #fff;
+                            /* font-size: 1.2rem; */
+                            /* padding: 20px; */
+                            text-decoration: none;
+                            text-align: center; 
+                            transition: all 0.4s ease-in;
+                            width: 20%;
+                        }
+
+                        a:is(:hover) {
+                            background-color: #000;
+                            color: #ccc;
+                            /* border-bottom: 5px green solid; */
+                        }
+                }
+                img.img-logo-nombre {
+                    position:relative;
+                    bottom: 65px;
+                    height: 30px;
+                }
+                h6.title-hello {
+                    position: relative;     /*Position relative nos permite mover las letras */
+                    top: 120px;
+                    color: #48A48F;
+                }
+                p.title-nombre {
+                    position: relative;
+                    color: #000b;
+                    top: 80px;
+                    font-family: Verdana, Geneva, Tahoma, sans-serif;
+                }
+                p.title-profesional {
+                    position: relative;
+                    color: #000;
+                    top: 45px;
+                }
+                div.box-text {
+                    /* border: solid red 1px;   Para ver border en bootstrap le ponemos: border border-danger */
+                    position: relative;
+                    width: 625px;
+                    top: 20px;  
+
+                        /* p.text-descripcion {  Letra aplicada con css
+                            color:#000b;
+                            font-weight: 600;
+                        } */
+                }
+                button.button-hireme {
+                    position: relative;    /*Position relative nos permite mover el button*/
+                    bottom: 40px;
+                }
+            }
+        }
+
+
     </style>
 </head>
-<body class="m-1 border border-danger">
+<body class="m-1">    <!-- Para ver border en bootstrap le ponemos: m-1 border border-danger -->
     <main>
-        <header class="m-1 border border-danger">     <!-- Para ver border en bootstrap le ponemos: m-1 border border-danger -->
-            <div class="image-substract m-1 border border-dark">     <!-- Para ver border en bootstrap le ponemos: m-1 border border-dark -->
+        <header class="m-1">     <!-- Para ver border en bootstrap le ponemos: m-1 border border-danger -->
+            <div class="image-substract m-1">     <!-- Para ver border en bootstrap le ponemos: m-1 border border-dark -->
                 <nav class="nav-seccion1 nav m-3 justify-content-end gap-2">    <!-- Para ver border en bootstrap le ponemos: border border-danger -->
-                    <a class="nav-link text-light fw-bold" href="#">Home</a>
-                    <a class="nav-link text-light fw-bold" href="#">About</a>
-                    <a class="nav-link text-light fw-bold" href="#">Services</a>
-                    <a class="nav-link text-light fw-bold" href="#">Portfolio</a>
+                    <a class="nav-link text-light fw-bold my-3" href="#">Home</a>
+                    <a class="nav-link text-light fw-bold my-3" href="#">About</a>
+                    <a class="nav-link text-light fw-bold my-3" href="#">Services</a>
+                    <a class="nav-link text-light fw-bold my-3" href="#">Portfolio</a>
                 </nav>
                 <img class="img-logo-nombre m-2" src="../images/Logo_Jeferson.png" alt="">   <!-- Para ver border en bootstrap le ponemos: border border-danger -->
                 <h6 class="title-hello m-5 fs-4">Hello I am</h6>    <!-- Para ver border en bootstrap le ponemos: border border-danger -->
@@ -230,8 +306,8 @@
                 <button type="button" class="button-hireme btn btn-success btn-lg m-5">Hire Me</button>
             </div>
         </header>
-        <section class="m-1 border border-danger">  <!-- Para ver border en bootstrap le ponemos: m-1 border border-danger -->
-            <div class="container-abilitys m-1 border border-dark">  <!-- Ponemos toda esta caja para poder centrar toda. Para ver border en bootstrap le ponemos: m-1 border border-dark -->
+        <section class="m-1">  <!-- Para ver border en bootstrap le ponemos: m-1 border border-danger -->
+            <div class="container-abilitys m-1">  <!-- Ponemos toda esta caja para poder centrar toda. Para ver border en bootstrap le ponemos: m-1 border border-dark -->
                 <img class="img-foto-marco m-5" src="../images/Foto y Marco.png" alt="">
                 <h1 class="title-about fs-5 fw-bold">About:</h1> 
                 <h2 class="title-why fw-bold">Why You Hire Me? </h2>
@@ -241,8 +317,8 @@
                 <img class="img-abilitys" src="../images/Habilidades.png" alt="">
             </div>
         </section>  
-        <section class="m-1 border border-danger">    <!-- Para ver border en bootstrap le ponemos: m-1 border border-danger -->
-            <div class="container-services m-1 border border-dark">  <!-- Ponemos toda esta caja para poder centrar toda. Para ver border en bootstrap le ponemos: m-1 border border-dark -->
+        <section class="m-1">    <!-- Para ver border en bootstrap le ponemos: m-1 border border-danger -->
+            <div class="container-services m-1">  <!-- Ponemos toda esta caja para poder centrar toda. Para ver border en bootstrap le ponemos: m-1 border border-dark -->
                 <h1 class="title-services m-3 fs-5 fw-bold">Services</h1> 
                 <h1 class="title-service-provide m-3 fs-2 fw-bold">Service | Provide</h1>
                 <div class="container text-center">
@@ -281,8 +357,8 @@
                 </div>  
             </div>
         </section>
-        <section class="m-1 border border-black">       <!-- Para ver border en bootstrap le ponemos: m-1 border border-dark -->
-            <div class="container-portfolio m-1 border border-dark">     <!-- Para ver border en bootstrap le ponemos: m-1 border border-dark -->
+        <section class="m-1">       <!-- Para ver border en bootstrap le ponemos: m-1 border border-dark -->
+            <div class="container-portfolio m-1">     <!-- Para ver border en bootstrap le ponemos: m-1 border border-dark -->
                 <h1 class="title-portfolio m-5 fs-5 fw-bold">Services</h1> 
                 <h1 class="title-latest-proyects m-5 fs-3 fw-bold">Latest Proyects</h1>
                 <div class="container text-center">
@@ -306,8 +382,8 @@
                 </div>  
             </div>
         </section>
-        <footer class="bg-black bg-opacity-10 m-1 border border-black">      <!-- Para ver border en bootstrap le ponemos: m-1 border border-black -->
-            <div class="container-footer m-1 border border-dark">         <!-- Para ver border en bootstrap le ponemos: m-1 border border-dark -->
+        <footer class="bg-black bg-opacity-10 m-1">      <!-- Para ver border en bootstrap le ponemos: m-1 border border-black -->
+            <div class="container-footer m-1">         <!-- Para ver border en bootstrap le ponemos: m-1 border border-dark -->
                 <img class="img-logo-nombre my-4" src="../images/Logo_Jeferson.png" alt="">
                 <img class="img-logo-redes " src="../images/Logos-Redes.png" alt="">
                 <h1 class="img-title-email m-5 fs-3 fw-bold">jefer.hernandez1@gmail.com</h1>
