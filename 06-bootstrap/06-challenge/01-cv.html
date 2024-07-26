@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">   <!-- Se llama libreria de Bootstrap  -->
     <!-- <link rel="stylesheet" href="../css/master.css"> -->
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         * {
             transition: all 0.3s ease-in;
         }
@@ -429,14 +432,14 @@
 
     </style>
 </head>
-<body class="m-1">    <!-- Para ver border en bootstrap le ponemos: m-1 border border-danger -->
-    <main>
-        <header class="m-1">     <!-- Para ver border en bootstrap le ponemos: m-1 border border-danger -->
+<body>    <!-- Para ver border en bootstrap le ponemos: m-1 border border-danger -->
+    <main class="d-flex flex-column justify-content-center align-items-center">        <!-- Para poder centrar todo la pagina: Profe Master ofac -->
+        <header>     <!-- Para ver border en bootstrap le ponemos: m-1 border border-danger -->
             <div class="image-substract m-1">     <!-- Para ver border en bootstrap le ponemos: m-1 border border-dark -->
                 <nav class="nav-seccion1 nav m-3 justify-content-end gap-2">    <!-- Para ver border en bootstrap le ponemos: border border-danger -->
                     <a class="nav-link text-light fw-bold my-3" href="#">Home</a>
-                    <a class="nav-link text-light fw-bold my-3" href="#">About</a>
-                    <a class="nav-link text-light fw-bold my-3" href="#">Services</a>
+                    <a class="nav-link text-light fw-bold my-3" href="#about">About</a>
+                    <a class="nav-link text-light fw-bold my-3" href="#services">Services</a>
                     <a class="nav-link text-light fw-bold my-3" href="#">Portfolio</a>
                 </nav>
                 <img class="img-logo-nombre m-2" src="../images/Logo_Jeferson.png" alt="">   <!-- Para ver border en bootstrap le ponemos: border border-danger -->
@@ -450,6 +453,7 @@
             </div>
         </header>
         <section class="m-1">  <!-- Para ver border en bootstrap le ponemos: m-1 border border-danger -->
+            <a name="about"></a>
             <div class="container-abilitys m-1">  <!-- Ponemos toda esta caja para poder centrar toda. Para ver border en bootstrap le ponemos: m-1 border border-dark -->
                 <img class="img-foto-marco m-5" src="../images/Foto y Marco.png" alt="">
                 <h1 class="title-about fs-5 fw-bold">About:</h1> 
@@ -461,6 +465,7 @@
             </div>
         </section>  
         <section class="m-1">    <!-- Para ver border en bootstrap le ponemos: m-1 border border-danger -->
+            <a name="services"></a>
             <div class="container-services m-1">  <!-- Ponemos toda esta caja para poder centrar toda. Para ver border en bootstrap le ponemos: m-1 border border-dark -->
                 <h1 class="title-services m-3 fs-5 fw-bold">Services</h1> 
                 <h1 class="title-service-provide m-3 fs-2 fw-bold">Service | Provide</h1>
