@@ -218,18 +218,18 @@
         /****************MEDIA QUERIES-RESPONSIVE***********************/
         /*--------------------------------------------------------------*/   /*---El rsponsive se va repitiendo y modificamos la que que se toca primero para volver pequeño o correr---*/
         /**********************Header Seccion#1*************************/
-        @media (max-width: 1305px) {             /* --------Puedo hacer el responsive con tres medias para tirame menos codigo ------ Pendiente ------*/
+        @media (max-width: 1350px) {             /* --------Puedo hacer el responsive con tres medias para tirame menos codigo ------ Pendiente ------*/
             header div.image-substract {
                 /* border: solid red 2px;     Para ver border en bootstrap le ponemos: border border-danger*/
                 margin: 5px auto;        /*Dar margen en todos los lados y Este margin auto es para centrar pero solo se centra cuando usamos  background: url NO funciona con img como en la siguiente seccion abajo*/  
                 background: url(../images/Seccion_1.png) no-repeat center;
-                height: 650px;
-                width: 1320px;
-                background-size: 1320px 650px;
+                height: 450px;     /*---Se modifica esta---*/
+                width: 1000px;     /*---Se modifica esta---*/
+                background-size: 1000px 450px;      /*---Se modifica esta---*/
 
                     nav.nav-seccion1 {
                         position: relative;
-                        left: 550px;         /*---Se modifica esta---*/
+                        left: 450px;         /*---Se modifica esta---*/
                         width: 500px;
 
                             a:is(:link, :visited) {
@@ -252,7 +252,7 @@
                     }
                     img.img-logo-nombre {
                         position:relative;
-                        bottom: 65px;
+                        bottom: 70px;       /*---Se modifica esta---*/
                         height: 30px;
                     }
                     h6.title-hello {
@@ -288,146 +288,10 @@
                     }
             }
         }
-            @media (max-width: 1130px) {
-                header div.image-substract {
-                /* border: solid red 2px;     Para ver border en bootstrap le ponemos: border border-danger*/
-                margin: 5px auto;        /*Dar margen en todos los lados y Este margin auto es para centrar pero solo se centra cuando usamos  background: url NO funciona con img como en la siguiente seccion abajo*/  
-                background: url(../images/Seccion_1.png) no-repeat center;
-                height: 500px;     /*---Se modifica esta---*/
-                width: 1000px;     /*---Se modifica esta---*/
-                background-size: 1000px 500px;      /*---Se modifica esta---*/
-        
-                    nav.nav-seccion1 {
-                        position: relative;
-                        left: 390px;              /*---Se modifica esta---*/
-                        width: 500px;
-
-                            a:is(:link, :visited) {
-                                background-color: #0008;
-                                /* border-bottom: 5px white solid; */
-                                color: #fff;
-                                /* font-size: 1.2rem; */
-                                /* padding: 20px; */
-                                text-decoration: none;
-                                text-align: center; 
-                                transition: all 0.4s ease-in;
-                                width: 20%;
-                            }
-
-                            a:is(:hover) {
-                                background-color: #000;
-                                color: #ccc;
-                                /* border-bottom: 5px green solid; */
-                            }
-                    }
-                    img.img-logo-nombre {
-                        position:relative;
-                        bottom: 65px;
-                        height: 30px;
-                    }
-                    h6.title-hello {
-                        position: relative;     /*Position relative nos permite mover las letras */
-                        top: 120px;
-                        color: #48A48F;
-                    }
-                    p.title-nombre {
-                        position: relative;
-                        color: #000b;
-                        top: 80px;
-                        font-family: Verdana, Geneva, Tahoma, sans-serif;
-                    }
-                    p.title-profesional {
-                        position: relative;
-                        color: #000;
-                        top: 45px;
-                    }
-                    div.box-text {
-                        /* border: solid red 1px;   Para ver border en bootstrap le ponemos: border border-danger */
-                        position: relative;
-                        width: 520px;        /*---Se modifica esta---*/
-                        top: 20px;  
-
-                            /* p.text-descripcion {  Letra aplicada con css
-                                color:#000b;
-                                font-weight: 600;
-                            } */
-                    }
-                    button.button-hireme {
-                        position: relative;    /*Position relative nos permite mover el button*/
-                        bottom: 40px;
-                    }
-                }
-            }
-                @media (max-width: 900px) {          /*Numero # 3 quede aqui*/
-                    header div.image-substract {
-                    /* border: solid red 2px;     Para ver border en bootstrap le ponemos: border border-danger*/
-                    margin: 5px auto;        /*Dar margen en todos los lados y Este margin auto es para centrar pero solo se centra cuando usamos  background: url NO funciona con img como en la siguiente seccion abajo*/  
-                    background: url(../images/Seccion_1.png) no-repeat center;
-                    height: 500px;     
-                    width: 1000px;     
-                    background-size: 1000px 500px;      
             
-                        nav.nav-seccion1 {
-                            position: relative;
-                            left: 390px;              
-                            width: 300px;    /*---Se modifica esta  300px ---*/
-
-                                a:is(:link, :visited) {
-                                    background-color: #0008;
-                                    /* border-bottom: 5px white solid; */
-                                    color: #fff;
-                                    /* font-size: 1.2rem; */
-                                    /* padding: 20px; */
-                                    text-decoration: none;
-                                    text-align: center; 
-                                    transition: all 0.4s ease-in;
-                                    width: 20%;
-                                }
-
-                                a:is(:hover) {
-                                    background-color: #000;
-                                    color: #ccc;
-                                    /* border-bottom: 5px green solid; */
-                                }
-                        }
-                        img.img-logo-nombre {
-                            position:relative;
-                            bottom: 65px;
-                            height: 30px;
-                        }
-                        h6.title-hello {
-                            position: relative;     /*Position relative nos permite mover las letras */
-                            top: 120px;
-                            color: #48A48F;
-                        }
-                        p.title-nombre {
-                            position: relative;
-                            color: #000b;
-                            top: 80px;
-                            font-family: Verdana, Geneva, Tahoma, sans-serif;
-                        }
-                        p.title-profesional {
-                            position: relative;
-                            color: #000;
-                            top: 45px;
-                        }
-                        div.box-text {
-                            /* border: solid red 1px;   Para ver border en bootstrap le ponemos: border border-danger */
-                            position: relative;
-                            width: 520px;        
-                            top: 20px;  
-
-                                /* p.text-descripcion {  Letra aplicada con css
-                                    color:#000b;
-                                    font-weight: 600;
-                                } */
-                        }
-                        button.button-hireme {
-                            position: relative;    /*Position relative nos permite mover el button*/
-                            bottom: 40px;
-                        }
-                    }
-                }
+                
+                          
+                    
 
 
 
@@ -438,8 +302,44 @@
         <header>     <!-- Para ver border en bootstrap le ponemos: m-1 border border-danger -->
             <a name="home"></a>
             <div class="image-substract m-1">     <!-- Para ver border en bootstrap le ponemos: m-1 border border-dark -->
+                <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">    BOOTSTRAP NAVBAR MENU HAMBURGUESA
+                    <div class="container-fluid">
+                        <img class=" m-2" src="../images/Logo_Jeferson.png" alt="">
+                      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                          <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                          </li>
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Dropdown
+                            </a>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">Action</a></li>
+                              <li><a class="dropdown-item" href="#">Another action</a></li>
+                              <li><hr class="dropdown-divider"></li>
+                              <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                          </li>
+                        </ul>
+                        <form class="d-flex" role="search">
+                          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                          <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                      </div>
+                    </div>
+                </nav> -->
                 <nav class="nav-seccion1 nav m-3 justify-content-end gap-2">    <!-- Para ver border en bootstrap le ponemos: border border-danger -->
-                    <a class="nav-link text-light fw-bold my-3" href="#home">Home</a>
+                    <a class="nav-link text-light fw-bold my-3" href="#home">Home</a>      <!-- Realizar menu hamburguesa con bootstrap doc navbar para responsive -->
                     <a class="nav-link text-light fw-bold my-3" href="#about">About</a>
                     <a class="nav-link text-light fw-bold my-3" href="#services">Services</a>
                     <a class="nav-link text-light fw-bold my-3" href="#portfolio">Portfolio</a>
@@ -548,5 +448,6 @@
             </div>
         </footer>
     </main> 
+    <script src="../js/bootstrap.min.js"></script>     <!-- BOOTSTRAP Se importa paraque pueda funcionar varias funcionabilidades como el navbar -->
 </body>
 </html>
