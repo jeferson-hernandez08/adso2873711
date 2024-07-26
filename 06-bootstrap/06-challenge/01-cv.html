@@ -218,7 +218,7 @@
         /****************MEDIA QUERIES-RESPONSIVE***********************/
         /*--------------------------------------------------------------*/   /*---El rsponsive se va repitiendo y modificamos la que que se toca primero para volver pequeño o correr---*/
         /**********************Header Seccion#1*************************/
-        @media (max-width: 1305px) {
+        @media (max-width: 1305px) {             /* --------Puedo hacer el responsive con tres medias para tirame menos codigo ------ Pendiente ------*/
             header div.image-substract {
                 /* border: solid red 2px;     Para ver border en bootstrap le ponemos: border border-danger*/
                 margin: 5px auto;        /*Dar margen en todos los lados y Este margin auto es para centrar pero solo se centra cuando usamos  background: url NO funciona con img como en la siguiente seccion abajo*/  
@@ -370,7 +370,7 @@
                         nav.nav-seccion1 {
                             position: relative;
                             left: 390px;              
-                            width: 300px;    /*---Se modifica esta---*/
+                            width: 300px;    /*---Se modifica esta  300px ---*/
 
                                 a:is(:link, :visited) {
                                     background-color: #0008;
@@ -430,17 +430,19 @@
                 }
 
 
+
     </style>
 </head>
-<body>    <!-- Para ver border en bootstrap le ponemos: m-1 border border-danger -->
-    <main class="d-flex flex-column justify-content-center align-items-center">        <!-- Para poder centrar todo la pagina: Profe Master ofac -->
+<body class="">    <!-- Para ver border en bootstrap le ponemos: m-1 border border-danger -->
+    <main class="d-flex flex-column justify-content-center align-items-center">        <!-- Para poder centrar todo la pagina: Profe Masater Ofac -->
         <header>     <!-- Para ver border en bootstrap le ponemos: m-1 border border-danger -->
+            <a name="home"></a>
             <div class="image-substract m-1">     <!-- Para ver border en bootstrap le ponemos: m-1 border border-dark -->
                 <nav class="nav-seccion1 nav m-3 justify-content-end gap-2">    <!-- Para ver border en bootstrap le ponemos: border border-danger -->
-                    <a class="nav-link text-light fw-bold my-3" href="#">Home</a>
+                    <a class="nav-link text-light fw-bold my-3" href="#home">Home</a>
                     <a class="nav-link text-light fw-bold my-3" href="#about">About</a>
                     <a class="nav-link text-light fw-bold my-3" href="#services">Services</a>
-                    <a class="nav-link text-light fw-bold my-3" href="#">Portfolio</a>
+                    <a class="nav-link text-light fw-bold my-3" href="#portfolio">Portfolio</a>
                 </nav>
                 <img class="img-logo-nombre m-2" src="../images/Logo_Jeferson.png" alt="">   <!-- Para ver border en bootstrap le ponemos: border border-danger -->
                 <h6 class="title-hello m-5 fs-4">Hello I am</h6>    <!-- Para ver border en bootstrap le ponemos: border border-danger -->
@@ -506,6 +508,7 @@
             </div>
         </section>
         <section class="m-1">       <!-- Para ver border en bootstrap le ponemos: m-1 border border-dark -->
+            <a name="portfolio"></a>
             <div class="container-portfolio m-1">     <!-- Para ver border en bootstrap le ponemos: m-1 border border-dark -->
                 <h1 class="title-portfolio m-5 fs-5 fw-bold">Services</h1> 
                 <h1 class="title-latest-proyects m-5 fs-3 fw-bold">Latest Proyects</h1>
@@ -536,10 +539,10 @@
                 <img class="img-logo-redes " src="../images/Logos-Redes.png" alt="">
                 <h1 class="img-title-email m-5 fs-3 fw-bold">jefer.hernandez1@gmail.com</h1>
                 <nav class="nav-footer nav m-3 justify-content-center gap-4">    <!-- Para ver border en bootstrap le ponemos: border border-danger -->
-                    <a class="nav-link fw-bold" href="#">Home</a>
-                    <a class="nav-link fw-bold" href="#">About</a>
-                    <a class="nav-link fw-bold" href="#">Services</a>
-                    <a class="nav-link fw-bold" href="#">Portfolio</a>
+                    <a class="nav-link fw-bold" href="#home">Home</a>
+                    <a class="nav-link fw-bold" href="#about">About</a>
+                    <a class="nav-link fw-bold" href="#services">Services</a>
+                    <a class="nav-link fw-bold" href="#portfolio">Portfolio</a>
                 </nav>
                 <img class="img-logo-copyright " src="../images/©_All_rights_reserved.png" alt="">
             </div>
