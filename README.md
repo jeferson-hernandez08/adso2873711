@@ -11,7 +11,7 @@
 |01- CSS|Hoja de estilos en cascada|
 |01- JavasScript|Lenguaje de programacion|
 
-https://drive.google.com/drive/folders/1cUEOsM44rpspMfyWvY_YlnXlIm9uffej
+http://tinyurl.com/wnkk334u
 
 
 
