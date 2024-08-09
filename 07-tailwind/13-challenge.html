@@ -6,11 +6,26 @@
     <title>Challengue Tailwind</title>
     <!-- <link rel="stylesheet" href="css/master.css"> -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* #content {
+            display: flex;
+            flex-direction: column;
+        } */
+        .page-target {
+            display: none;
+        }
+
+        .page-target:target {
+            display: block;
+        }
+    </style>
     
 </head>
-<body class="bg-amber-600">
-    <main class="">
-        <div class="container 
+<body class="bg-red-600
+            ">
+    <main id="content" class="flex flex-col">
+        <div id="page1-Home" class="page-target 
+                        container 
                         m-auto
                         h-screen   
                         w-96
@@ -25,15 +40,19 @@
                         md:bg-green-600
                         lg:bg-blue-600
                         lg:text-8xl
-                        xl:bg-red-600
-                        flex
-                        flex-col
+                        xl:bg-stone-800
+                        
+                       
                         ">
                         <div class="rounded-3xl h-72 w-96 relative bottom-10 right-10 ">
                             <img src="images/God Of War_1.jpg" class="rounded-t-3xl object-cover h-72 w-96">
                         </div>
+                        <div class="rounded-full h-14 w-14 relative bottom-8 left-28 ">
+                            <img src="images/Logo_GodOfWar.png" class="rounded-t-3xl object-cover h-14 w-14">
+                        </div>
                         <p class="uppercase
-                                  mt-5
+                                  relative
+                                  bottom-8
                                   tracking-widest 
                                   text-4xl
                                   font-serif
@@ -44,16 +63,34 @@
                             God Of War  
                         </p>
                         <p class="lowercase
-                                  my-5
+                                  relative
+                                  bottom-6
+                                  font-serif hover:font-black
                                   text-lg 
                                   text-center
+                                  
                                   ">
                             Kratos es un guerrero de crecia nacido en la ciudad de sparta, convirtiendose en esclavo de ares, buscando su venganza a el y a los dioses del olimpo.
                         </p>
-                        <button class=" px-4 py-2 font-normal text-sm bg-black text-white rounded-md shadow-sm opacity-100">Get started</button>
-                        <a href="#apple" class="text-xs">Appple</a>
+                        <a href="#page2-chronology" class="p-4 
+                                                           relative 
+                                                           bottom-16 
+                                                           left-20 
+                                                         bg-black
+                                                         text-white 
+                                                           rounded-xl
+                                                           text-lg 
+                                                           font-semibold 
+                                                           font-serif 
+                                                         hover:bg-slate-200
+                                                         hover:text-black hover:font-semibold
+                                                           transition-all
+                                                           ">
+                            Chronology
+                        </a>             
         </div>
-        <div id="apple" class="container
+        <div id="page2-chronology" class="page-target 
+                    container
                     m-auto
                     h-screen   
                     w-96
@@ -68,12 +105,30 @@
                     md:bg-green-600
                     lg:bg-blue-600
                     lg:text-8xl
-                    xl:bg-red-600
-                    flex
-                    flex-col
+                    xl:bg-stone-800
+                    
                     ">
+                    <a href="#page1-Home" class=" border 
+                                                        p-1
+                                                        relative 
+                                                        bottom-24
+                                                        right-7
+                                                        bg-black
+                                                        text-white 
+                                                        rounded-xl
+                                                        text-lg 
+                                                        font-semibold 
+                                                        font-serif 
+                                                        hover:bg-slate-200
+                                                        hover:text-black hover:font-semibold
+                                                        transition-all
+                                                           ">
+                            ⬅
+                    </a>  
                     <p class="uppercase
                                 mb-5
+                                relative
+                                bottom-24
                                 tracking-widest 
                                 text-4xl
                                 font-serif
@@ -81,47 +136,74 @@
                                 text-amber-400
                                 text-center
                                 ">
-                        God Of War  
+                        Chronology
                     </p>
-                    <div class="border-2 relative rounded-xl overflow-auto p-3">
-                        <div class="overflow-visible relative max-w-sm mx-auto bg-white shadow-lg rounded-xl flex items-center gap-6">
-                            <img class="absolute -left-6 w-24 h-24 rounded-full shadow-lg" src="https://via.assets.so/game.jpg?w=250&h=250">
-                            <div class="flex flex-col py-5 pl-24">
-                            <strong class="text-indigo-800 text-sm font-medium">Gaston</strong>
-                            <span class="text-indigo-400 text-sm font-medium">Locale Cat</span>
+                    <div class="mt-8 relative h-96 bottom-24 overflow-auto">
+                        <div class="relative rounded-xl p-4">   <!-- Se quita overflow-auto en cada uno -->
+                            <div class="border-2 overflow-visible relative max-w-sm mx-auto bg-black shadow-lg rounded-xl flex items-center gap-6">
+                                <img class="absolute -left-6 w-28 h-28 rounded-full shadow-lg" src="images/God_Of_War_1_Icon.jpg">
+                                <div class="flex flex-col py-5 pl-24">
+                                <strong class="text-gray-100 text-sm font-medium">God of war I</strong>
+                                <span class="text-indigo-400 text-sm font-medium">Revenge</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative rounded-xl p-4">
+                            <div class="border-2 overflow-visible relative max-w-sm mx-auto bg-black shadow-lg rounded-xl flex items-center gap-6">
+                                <img class="absolute -left-6 w-28 h-28 rounded-full shadow-lg" src="images/God_Of_War_2_Icon.png">
+                                <div class="flex flex-col py-5 pl-24">
+                                <strong class="text-gray-100 text-sm font-medium">God of war II</strong>
+                                <span class="text-indigo-400 text-sm font-medium">Revenge to the gods</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative rounded-xl p-4">
+                            <div class="border-2 overflow-visible relative max-w-sm mx-auto bg-black shadow-lg rounded-xl flex items-center gap-6">
+                                <img class="absolute -left-6 w-28 h-28 rounded-full shadow-lg" src="images/God_Of_War_3_Icon.png">
+                                <div class="flex flex-col py-5 pl-24">
+                                <strong class="text-gray-100 text-sm font-medium">God of war III</strong>
+                                <span class="text-indigo-400 text-sm font-medium">Final revenge</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative rounded-xl p-4">
+                            <div class="border-2 overflow-visible relative max-w-sm mx-auto bg-black shadow-lg rounded-xl flex items-center gap-6">
+                                <img class="absolute -left-6 w-28 h-28 rounded-full shadow-lg" src="images/God_Of_War_4_Icon.png">
+                                <div class="flex flex-col py-5 pl-24">
+                                <strong class="text-gray-100 text-sm font-medium">God of war IV</strong>
+                                <span class="text-indigo-400 text-sm font-medium">Nordic</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative rounded-xl p-4">
+                            <div class="border-2 overflow-visible relative max-w-sm mx-auto bg-black shadow-lg rounded-xl flex items-center gap-6">
+                                <img class="absolute -left-6 w-28 h-28 rounded-full shadow-lg" src="images/God_Of_War_5_Icon.png">
+                                <div class="flex flex-col py-5 pl-24">
+                                <strong class="text-gray-100 text-sm font-medium">God of war V</strong>
+                                <span class="text-indigo-400 text-sm font-medium">Ragnarok</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="border-2 relative rounded-xl overflow-auto p-3">
-                        <div class="overflow-visible relative max-w-sm mx-auto bg-white shadow-lg rounded-xl flex items-center gap-6">
-                            <img class="absolute -left-6 w-24 h-24 rounded-full shadow-lg" src="https://via.assets.so/game.jpg?w=250&h=250">
-                            <div class="flex flex-col py-5 pl-24">
-                            <strong class="text-indigo-800 text-sm font-medium">Gaston</strong>
-                            <span class="text-indigo-400 text-sm font-medium">Locale Cat</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="border-2 relative rounded-xl overflow-auto p-3">
-                        <div class="overflow-visible relative max-w-sm mx-auto bg-white shadow-lg rounded-xl flex items-center gap-6">
-                            <img class="absolute -left-6 w-24 h-24 rounded-full shadow-lg" src="https://via.assets.so/game.jpg?w=250&h=250">
-                            <div class="flex flex-col py-5 pl-24">
-                            <strong class="text-indigo-800 text-sm font-medium">Gaston</strong>
-                            <span class="text-indigo-400 text-sm font-medium">Locale Cat</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="border-2 relative rounded-xl overflow-auto p-3">
-                        <div class="overflow-visible relative max-w-sm mx-auto bg-white shadow-lg rounded-xl flex items-center gap-6">
-                            <img class="absolute -left-6 w-24 h-24 rounded-full shadow-lg" src="https://via.assets.so/game.jpg?w=250&h=250">
-                            <div class="flex flex-col py-5 pl-24">
-                            <strong class="text-indigo-800 text-sm font-medium">Gaston</strong>
-                            <span class="text-indigo-400 text-sm font-medium">Locale Cat</span>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="mt-5 px-4 py-2 font-normal text-sm bg-black text-white rounded-md shadow-sm opacity-100">Get started</button>
+                    <a href="#page3-platforms" class=" p-4 
+                                                       relative 
+                                                       bottom-24
+                                                       left-24
+                                                     bg-black
+                                                     text-white 
+                                                       rounded-xl
+                                                       text-lg 
+                                                       font-semibold 
+                                                       font-serif 
+                                                     hover:bg-slate-200
+                                                     hover:text-black hover:font-semibold
+                                                       transition-all
+                                                     ">
+                            Plataform
+                    </a> 
         </div>
-        <div class="container 
+        <div id="page3-platforms" class="page-target 
+                    container 
                     m-auto
                     h-screen   
                     w-96
@@ -136,12 +218,31 @@
                     md:bg-green-600
                     lg:bg-blue-600
                     lg:text-8xl
-                    xl:bg-red-600
-                    flex
-                    flex-col
+                    xl:bg-stone-800
+                    
+                    
                     ">
+                    <a href="#page2-chronology" class=" border 
+                                                        p-1
+                                                        relative 
+                                                        bottom-24
+                                                        right-7
+                                                        bg-black
+                                                        text-white 
+                                                        rounded-xl
+                                                        text-lg 
+                                                        font-semibold 
+                                                        font-serif 
+                                                        hover:bg-slate-200
+                                                        hover:text-black hover:font-semibold
+                                                        transition-all
+                                                           ">
+                            ⬅
+                    </a>  
                     <p class="uppercase
                                 mb-5
+                                relative
+                                bottom-24
                                 tracking-widest 
                                 text-4xl
                                 font-serif
@@ -149,10 +250,10 @@
                                 text-amber-400
                                 text-center
                                 ">
-                        God Of War  
+                        Platforms  
                     </p>
-                    <div class="relative rounded-xl overflow-auto">
-                        <div class="shadow-sm overflow-hidden my-8">
+                    <div class="relative bottom-24 rounded-xl overflow-auto">
+                        <div class="border-2 h-80 shadow-sm overflow-auto my-4">
                             <table class="border-collapse table-auto w-full text-sm">
                             <thead class="bg-indigo-800">
                                 <tr>
@@ -163,41 +264,59 @@
                             </thead>
                             <tbody class="bg-white/80">
                                 <tr>
-                                <td class="border-b border-indigo-500 p-4 pl-8 text-indigo-800">The Sliding Mr. Bones </td>
-                                <td class="border-b border-indigo-500 p-4 text-indigo-800">Malcolm Lockyer</td>
-                                <td class="border-b border-indigo-500 p-4 pr-8 text-indigo-800">1961</td>
+                                <td class="border-b border-indigo-500 p-4 pl-8 text-indigo-800">God Of War I </td>
+                                <td class="border-b border-indigo-500 p-4 text-indigo-800">PS2 - PC</td>
+                                <td class="border-b border-indigo-500 p-4 pr-8 text-indigo-800">2005</td>
                                 </tr>
                                 <tr>
-                                <td class="border-b border-indigo-500 p-4 pl-8 text-indigo-800">Witchy Woman</td>
-                                <td class="border-b border-indigo-500 p-4 text-indigo-800">The Eagles</td>
-                                <td class="border-b border-indigo-500 p-4 pr-8 text-indigo-800">1972</td>
+                                <td class="border-b border-indigo-500 p-4 pl-8 text-indigo-800">God Of War II</td>
+                                <td class="border-b border-indigo-500 p-4 text-indigo-800">PS2 - PC</td>
+                                <td class="border-b border-indigo-500 p-4 pr-8 text-indigo-800">2007</td>
                                 </tr>
                                 <tr>
-                                <td class="border-b border-indigo-500 p-4 pl-8 text-indigo-800">Shining Star</td>
-                                <td class="border-b border-indigo-500 p-4 text-indigo-800">Earth, Wind, and Fire</td>
-                                <td class="border-b border-indigo-500 p-4 pr-8 text-indigo-800">1975</td>
+                                <td class="border-b border-indigo-500 p-4 pl-8 text-indigo-800">God Of War III</td>
+                                <td class="border-b border-indigo-500 p-4 text-indigo-800">PS3 - PS4 - PC</td>
+                                <td class="border-b border-indigo-500 p-4 pr-8 text-indigo-800">2010</td>
                                 </tr>
                                 <tr>
-                                <td class="border-b border-indigo-500 p-4 pl-8 text-indigo-800">Shining Star</td>
-                                <td class="border-b border-indigo-500 p-4 text-indigo-800">Earth, Wind, and Fire</td>
-                                <td class="border-b border-indigo-500 p-4 pr-8 text-indigo-800">1975</td>
+                                <td class="border-b border-indigo-500 p-4 pl-8 text-indigo-800">God Of War IV</td>
+                                <td class="border-b border-indigo-500 p-4 text-indigo-800">PS4 - PS5 - PC</td>
+                                <td class="border-b border-indigo-500 p-4 pr-8 text-indigo-800">2018</td>
                                 </tr>
+                                <tr>
+                                    <td class="border-b border-indigo-500 p-4 pl-8 text-indigo-800">God Of War V</td>
+                                    <td class="border-b border-indigo-500 p-4 text-indigo-800">PS4 - PS5 - PC</td>
+                                    <td class="border-b border-indigo-500 p-4 pr-8 text-indigo-800">2022</td>
+                                </tr>     
                             </tbody>
                             </table>
                         </div>
-                        </div>
-                    <p class="lowercase
+                    </div>
+                    <p class="  relative
+                                bottom-24
                                 my-3
-                                text-xs 
+                                text-sm
                                 text-center
                                 ">
-                        Kratos es un guerrero de crecia nacido en la ciudad de sparta, convirtiendose en esclavo de ares
+                        God of War es un videojuego de acción-aventura hack and slash en tercera persona desarrollado por SCE Santa Monica Studio y publicado por Sony Interactive Entertainment.
                     </p>
-                    <button class="mt-5 px-4 py-2 font-normal text-sm bg-black text-white rounded-md shadow-sm opacity-100">Get started</button>
+                    <a href="#page1-Home" class=" p-4 
+                                                  relative 
+                                                  bottom-36
+                                                  left-28
+                                                bg-black
+                                                text-white 
+                                                  rounded-xl
+                                                  text-lg 
+                                                  font-semibold 
+                                                  font-serif 
+                                                hover:bg-slate-200
+                                                hover:text-black hover:font-semibold
+                                                  transition-all
+                                                        ">
+                            Home
+                    </a>    
         </div>
-        
-        
-         
     </main>  
 </body>
 </html>
