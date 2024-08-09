@@ -9,8 +9,7 @@
     <style>
         /* Busqueda: 
             Como realizar por css y html una pagina que pase de paginaciones sin tener que hacer varias paginas 
-        */
-        
+        */ 
         /* #content {     Es lo mismo usando: class="flex flex-col"
             display: flex;
             flex-direction: column;    Como empezar desde el inicio OFAC
@@ -31,27 +30,18 @@
         <div id="page1-Home" class="page-target
                         container 
                         m-auto
-                        h-screen   
+                        h-auto 
                         w-96
                         rounded-3xl
                         my-3
-                        bg-white
+                        bg-stone-800
                         p-10
-                        text-indigo-900
-                        text-5xl
-                        sm:bg-red-600 
-                        sm:text-white
-                        md:bg-green-600
-                        lg:bg-blue-600
-                        lg:text-8xl
-                        xl:bg-stone-800
-                        
-                       
+                      text-white           
                         ">
                         <div class="rounded-3xl h-72 w-96 relative bottom-10 right-10 ">
                             <img src="images/God Of War_1.jpg" class="rounded-t-3xl object-cover h-72 w-96">
                         </div>
-                        <div class="rounded-full h-14 w-14 relative bottom-8 left-28 ">
+                        <div class="rounded-full h-14 w-14 relative bottom-8 left-[119px] ">
                             <img src="images/Logo_GodOfWar.png" class="rounded-t-3xl object-cover h-14 w-14">
                         </div>
                         <p class="uppercase
@@ -78,7 +68,7 @@
                         </p>
                         <a href="#page2-chronology" class="p-4 
                                                            relative 
-                                                           bottom-16 
+                                                           top-1
                                                            left-20 
                                                          bg-black
                                                          text-white 
@@ -94,45 +84,38 @@
                         </a>             
         </div>
         <div id="page2-chronology" class="page-target 
-                    container
+                    container 
                     m-auto
-                    h-screen   
+                    h-auto  
                     w-96
                     rounded-3xl
                     my-3
-                    bg-white
+                    bg-stone-800
                     p-10
-                    text-indigo-900
-                    text-5xl
-                    sm:bg-red-600 
-                    sm:text-white
-                    md:bg-green-600
-                    lg:bg-blue-600
-                    lg:text-8xl
-                    xl:bg-stone-800
-                    
+                  text-white 
+                                
                     ">
                     <a href="#page1-Home" class=" border 
-                                                        p-1
-                                                        relative 
-                                                        bottom-24
-                                                        right-7
-                                                        bg-black
-                                                        text-white 
-                                                        rounded-xl
-                                                        text-lg 
-                                                        font-semibold 
-                                                        font-serif 
-                                                        hover:bg-slate-200
-                                                        hover:text-black hover:font-semibold
-                                                        transition-all
+                                                    p-1
+                                                    relative 
+                                                    bottom-6
+                                                    right-7
+                                                    bg-black
+                                                    text-white 
+                                                    rounded-xl
+                                                    text-lg 
+                                                    font-semibold 
+                                                    font-serif 
+                                                    hover:bg-slate-200
+                                                    hover:text-black hover:font-semibold
+                                                    transition-all
                                                            ">
                             ⬅
                     </a>  
                     <p class="uppercase
                                 mb-5
                                 relative
-                                bottom-24
+                                bottom-6
                                 tracking-widest 
                                 text-4xl
                                 font-serif
@@ -142,7 +125,7 @@
                                 ">
                         Chronology
                     </p>
-                    <div class="mt-8 relative h-96 bottom-24 overflow-auto">
+                    <div class="mt-8 relative h-96 bottom-7 overflow-auto">
                         <div class="relative rounded-xl p-4">   <!-- Se quita overflow-auto en cada uno -->
                             <div class="border-2 overflow-visible relative max-w-sm mx-auto bg-black shadow-lg rounded-xl flex items-center gap-6">
                                 <img class="absolute -left-6 w-28 h-28 rounded-full shadow-lg" src="images/God_Of_War_1_Icon.jpg">
@@ -191,7 +174,7 @@
                     </div>
                     <a href="#page3-platforms" class=" p-4 
                                                        relative 
-                                                       bottom-24
+                                                       top-1
                                                        left-24
                                                      bg-black
                                                      text-white 
@@ -209,27 +192,20 @@
         <div id="page3-platforms" class="page-target 
                     container 
                     m-auto
-                    h-screen   
+                    h-auto    
                     w-96
                     rounded-3xl
                     my-3
-                    bg-white
+                    bg-stone-800
                     p-10
-                    text-indigo-900
-                    text-5xl
-                    sm:bg-red-600 
-                    sm:text-white
-                    md:bg-green-600
-                    lg:bg-blue-600
-                    lg:text-8xl
-                    xl:bg-stone-800
+                  text-white
                     
                     
                     ">
                     <a href="#page2-chronology" class=" border 
                                                         p-1
                                                         relative 
-                                                        bottom-24
+                                                        bottom-6
                                                         right-7
                                                         bg-black
                                                         text-white 
@@ -246,7 +222,7 @@
                     <p class="uppercase
                                 mb-5
                                 relative
-                                bottom-24
+                                bottom-6
                                 tracking-widest 
                                 text-4xl
                                 font-serif
@@ -256,7 +232,7 @@
                                 ">
                         Platforms  
                     </p>
-                    <div class="relative bottom-24 rounded-xl overflow-auto">
+                    <div class="relative bottom-7 rounded-xl overflow-auto">
                         <div class="border-2 h-80 shadow-sm overflow-auto my-4">
                             <table class="border-collapse table-auto w-full text-sm">
                             <thead class="bg-indigo-800">
@@ -297,7 +273,7 @@
                         </div>
                     </div>
                     <p class="  relative
-                                bottom-24
+                                bottom-8
                                 my-3
                                 text-sm
                                 text-center
@@ -306,7 +282,7 @@
                     </p>
                     <a href="#page1-Home" class=" p-4 
                                                   relative 
-                                                  bottom-36
+                                                  top-1
                                                   left-28
                                                 bg-black
                                                 text-white 
