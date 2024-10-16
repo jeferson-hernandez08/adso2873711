@@ -6,9 +6,8 @@
     <title>07 Vehicle object</title>
     <link rel="stylesheet" href="css/master.css">
     <style>
-        /* section.light {
-            display: none;
-        } */
+
+        /**** Section Inicial ****/
         section.night {
             background-color: rgb(58, 58, 58);
         }
@@ -43,7 +42,7 @@
             }
         }
 
-        /* Section de Atributos */
+        /**** Section de Atributos ****/
         section div.attributes {
             background: url(images/vehicle/Attributes.svg) no-repeat;
             height: 120px;
@@ -71,16 +70,35 @@
             left: 300px;
         }
 
-        /* Section attributes-night */
+        /**** Section attributes-night ****/
         section div.attributes-night {
-            background: url(images/vehicle/Atributes-night.svg) no-repeat;
+            background: url(images/vehicle/Attributes-night.svg) no-repeat;
             height: 120px;
             margin: 1rem auto;
             position: relative;
             width: 380px;
         }
+        section div.attributes-night span {
+            position: absolute;
+        }
+        section div.attributes-night span.brand {
+            top: 85px;
+            left: 4px;
+        }
+        section div.attributes-night span.refer {
+            top: 85px;
+            left: 110px;
+        }
+        section div.attributes-night span.model { 
+            top: 85px;
+            left: 210px;
+        }
+        section div.attributes-night span.color {
+            top: 85px;
+            left: 300px;
+        }
         
-        /* Section de Menu visual */
+        /**** Section de Menu Visual Carretera ****/
         section div.landscape {
             background-color: #fff9;
             border: 3px solid #714eaa;
@@ -105,7 +123,7 @@
             background: url(images/vehicle/btn-derecha.svg) no-repeat;
         }
 
-        /* Section de Metodos */
+        /**** Section de Metodos ****/
         section div.methods {
             background: url(images/vehicle/Metodos.svg) no-repeat;
             width: 380px;
@@ -139,7 +157,7 @@
             background: url(images/vehicle/btn-apagar.svg) no-repeat;
         }
 
-        /* Section de Metodos-night */
+        /**** Section de Metodos-night ****/
         section div.methods-night {
             background: url(images/vehicle/Metodos-night.svg) no-repeat;
             width: 380px;
@@ -172,10 +190,22 @@
         section div.methods-night button.btn-off {
             background: url(images/vehicle/btn-apagar.svg) no-repeat;
         }
-        
 
-        
-
+        /**** Id Target ****/
+        section.night,
+        section.light {
+            display: none;
+        }
+        section.light:target,
+        section.night:target {
+            display: block;
+        }
+        /*tambien lo podemos usar con id*/
+        /* #page-light:target,
+        #page-night:target {
+            display: block;
+        } */
+    
     </style>
 </head>
 <body>
@@ -189,11 +219,14 @@
             <h1>Vehicle object</h1>
             <h2>Este ejercicio es una interface realizada en figma, para aplizar objetos.</h2>
         </header>
-        <section class="light">
+        <a href="#page-light">Vamos a navegar</a>   <!--  Arreglo temporal consultar con Master Ofac  --> 
+        <section class="light" id="page-light">  <!--  se agrega  -->
             <div class="header">
                 <button class="btn-hidden"></button>
                 <img src="images/vehicle/Title Principal.svg" alt="">
-                <button class="btn-light"></button>
+                <a href="#page-night">      <!--  se agrega  -->
+                    <button class="btn-light"></button>
+                </a>
             </div>
             <div class="attributes">
                 <span class="brand">Yamaha</span>
@@ -213,13 +246,15 @@
                 <button class="btn-off"></button>
             </div>
         </section>
-        <section class="night">
+        <section class="night" id="page-night">    <!--  se agrega  -->
             <div class="header">
                 <button class="btn-hidden"></button>
                 <img src="images/vehicle/Title Principal.svg" alt="">
-                <button class="btn-night"></button>
+                <a href="#page-light">     <!--  se agrega  -->
+                    <button class="btn-night"></button>
+                </a>
             </div>
-            <div class="attributes">
+            <div class="attributes-night">
                 <span class="brand">Yamaha</span>
                 <span class="refer">XT660</span>
                 <span class="model">2014</span>
