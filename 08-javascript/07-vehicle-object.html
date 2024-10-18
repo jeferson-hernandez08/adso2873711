@@ -8,8 +8,8 @@
     <style>
 
         /**** Section Inicial ****/
-        section.night {
-            background-color: rgb(58, 58, 58);
+        section {
+            position: relative;
         }
         section div.header {
             align-items: center;
@@ -30,10 +30,13 @@
             background: transparent url(images/vehicle/Btn-mode-dia.svg);
             background-size: contain;
         }
-        section div.header button.btn-night {
-            background: transparent url(images/vehicle/Btn-mode-noche.svg);
-            background-size: contain;
-            width: 49px;
+        section img.image {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 160px;
+            width: 110px;
+            height: 80px;
         }
         section button {
             transition: all 0.2s ease-in;
@@ -69,35 +72,7 @@
             top: 85px;
             left: 300px;
         }
-
-        /**** Section attributes-night ****/
-        section div.attributes-night {
-            background: url(images/vehicle/Attributes-night.svg) no-repeat;
-            height: 120px;
-            margin: 1rem auto;
-            position: relative;
-            width: 380px;
-        }
-        section div.attributes-night span {
-            position: absolute;
-        }
-        section div.attributes-night span.brand {
-            top: 85px;
-            left: 4px;
-        }
-        section div.attributes-night span.refer {
-            top: 85px;
-            left: 110px;
-        }
-        section div.attributes-night span.model { 
-            top: 85px;
-            left: 210px;
-        }
-        section div.attributes-night span.color {
-            top: 85px;
-            left: 300px;
-        }
-        
+ 
         /**** Section de Menu Visual Carretera ****/
         section div.landscape {
             background-color: #fff9;
@@ -157,55 +132,45 @@
             background: url(images/vehicle/btn-apagar.svg) no-repeat;
         }
 
-        /**** Section de Metodos-night ****/
-        section div.methods-night {
-            background: url(images/vehicle/Metodos-night.svg) no-repeat;
-            width: 380px;
-            height: 110px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-            margin: 1rem auto;
-        }
-        section div.methods-night button {
-            border: none;
-            cursor: pointer;
-            margin-top: 2.3rem;
-            height: 50px;
-            width: 60px;
-        }
-        section div.methods-night button.btn-on {
-            background: url(images/vehicle/btn-encender.svg) no-repeat;
-        }
-        section div.methods-night button.btn-fwd {
-            background: url(images/vehicle/btn-arrancar.svg) no-repeat;
-        }
-        section div.methods-night button.btn-stop {
-            background: url(images/vehicle/btn-parar.svg) no-repeat;
-        }
-        section div.methods-night button.btn-bwd {
-            background: url(images/vehicle/btn-reversa.svg) no-repeat;
-        }
-        section div.methods-night button.btn-off {
-            background: url(images/vehicle/btn-apagar.svg) no-repeat;
+              /****| Section Night |***/
+        /**** Section attributes-night ****/
+        section.dark {
+            background-color: rgb(58, 58, 58);
+
+            div.header button.btn-light {
+                background: transparent url(images/vehicle/Btn-mode-noche.svg);
+                background-size: contain;
+                width: 49px;
+            }
+            div.attributes {
+                background: url(images/vehicle/Attributes-night.svg) no-repeat;
+                height: 120px;
+                margin: 1rem auto;
+                position: relative;
+                width: 380px;
+            }
+            div.methods {
+                background: url(images/vehicle/Metodos-night.svg) no-repeat;
+                width: 380px;
+                height: 110px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 1rem;
+                margin: 1rem auto;
+            }
         }
 
-        /**** Id Target ****/
-        section.night,
-        section.light {
-            display: none;
+        /** Methods **/
+        .start {
+            animation: animStart 0.1s ease-in infinite;
         }
-        section.light:target,
-        section.night:target {
-            display: block;
+        @keyframes animStart {
+            100% {
+                bottom: 158px;
+            }
         }
-        /*tambien lo podemos usar con id*/
-        /* #page-light:target,
-        #page-night:target {
-            display: block;
-        } */
-    
+
     </style>
 </head>
 <body>
@@ -219,21 +184,19 @@
             <h1>Vehicle object</h1>
             <h2>Este ejercicio es una interface realizada en figma, para aplizar objetos.</h2>
         </header>
-        <a href="#page-light">Vamos a navegar</a>   <!--  Arreglo temporal consultar con Master Ofac  --> 
-        <section class="light" id="page-light">  <!--  se agrega  -->
+        <section>  <!--  se agrega  -->
             <div class="header">
                 <button class="btn-hidden"></button>
                 <img src="images/vehicle/Title Principal.svg" alt="">
-                <a href="#page-night">      <!--  se agrega  -->
-                    <button class="btn-light"></button>
-                </a>
+                <button class="btn-light"></button>
             </div>
             <div class="attributes">
-                <span class="brand">Yamaha</span>
-                <span class="refer">XT660</span>
-                <span class="model">2014</span>
-                <span class="color">Green</span>
+                <span class="brand"></span>
+                <span class="refer"></span>
+                <span class="model"></span>
+                <span class="color"></span>
             </div>
+            <img src="" class="image">
             <div class="landscape">
                 <button class="btn-prev"></button>
                 <button class="btn-next"></button>
@@ -246,33 +209,101 @@
                 <button class="btn-off"></button>
             </div>
         </section>
-        <section class="night" id="page-night">    <!--  se agrega  -->
-            <div class="header">
-                <button class="btn-hidden"></button>
-                <img src="images/vehicle/Title Principal.svg" alt="">
-                <a href="#page-light">     <!--  se agrega  -->
-                    <button class="btn-night"></button>
-                </a>
-            </div>
-            <div class="attributes-night">
-                <span class="brand">Yamaha</span>
-                <span class="refer">XT660</span>
-                <span class="model">2014</span>
-                <span class="color">Green</span>
-            </div>
-            <div class="landscape">
-                <button class="btn-prev"></button>
-                <button class="btn-next"></button>
-            </div>
-            <div class="methods-night">
-                <button class="btn-on"></button>
-                <button class="btn-fwd"></button>
-                <button class="btn-stop"></button>
-                <button class="btn-bwd"></button>
-                <button class="btn-off"></button>
-            </div>
-        </section>
-
     </main>  
+    <script>
+        // Values
+        var index = 0
+        var engine = false
+        // DarkMode
+        const darkMode = window.matchMedia('(prefers-color-scheme: dark)')
+        // Elements
+        const btnMode = document.querySelector('.btn-light')
+        const section = document.querySelector('section')
+        const btnPrev = document.querySelector('.btn-prev')
+        const btnNext = document.querySelector('.btn-next')
+        const btnOn = document.querySelector('.btn-on')
+        const btnOff = document.querySelector('.btn-off')
+        // Attributes
+        const brand = document.querySelector('.brand')
+        const refer = document.querySelector('.refer')
+        const model = document.querySelector('.model')
+        const color = document.querySelector('.color')
+        const image = document.querySelector('.image')
+        // Btns: Events
+        btnMode.addEventListener('click', function() {
+            vehicle.mode()
+        })
+        btnOn.addEventListener('click', function() {
+            vehicle.start()
+        })
+        btnOff.addEventListener('click', function() {
+            vehicle.off()
+        })
+        
+        const vehicle = {
+            attributes:[
+                { brand: 'Yamaha',  refer: 'XT660',  model:2014, color: 'Verde',    image: 'images/vehicle/moto01.png'},
+                { brand: 'Harley', refer: 'Davison', model:2021, color: 'Negro', image: 'images/vehicle/moto02.png'},
+                { brand: 'Yamaha',  refer: 'Nmax',     model:2019, color: 'Rojo',      image: 'images/vehicle/moto03.png'},
+                { brand: 'Honda',   refer: 'GL1800', model:2023, color: 'Azul',     image: 'images/vehicle/moto04.png'},
+            ],
+            mode: function() {
+                section.classList.toggle('dark') 
+            },
+            showAttributes: function(i) {
+                brand.textContent = this.attributes[i].brand
+                refer.textContent = this.attributes[i].refer
+                model.textContent = this.attributes[i].model
+                color.textContent = this.attributes[i].color
+                image.setAttribute('src', this.attributes[i].image)
+            },
+            start: function() {
+                if(!engine) {
+                    image.classList.add('start')
+                    engine = true
+                }
+            },
+            off: function() {
+                if(engine) {
+                    image.classList.remove('start')
+                    engine = false
+                }
+            }
+        }
+        
+        vehicle.showAttributes(0)
+        darkModeChange(darkMode)
+        btnPrev.style.opacity = '0.2'
+
+        btnNext.addEventListener('click', function() {
+            if (index < (vehicle.attributes.length)-1) {
+                btnPrev.style.opacity = '1'
+                vehicle.showAttributes(++index)
+                if (index == (vehicle.attributes.length)-1) {
+                    this.style.opacity = '0.2'
+                }
+            }
+        }) 
+        btnPrev.addEventListener('click', function() {
+            if (index > 0) {
+                btnNext.style.opacity = '1'
+                vehicle.showAttributes(--index)
+                if (index == 0) {
+                    this.style.opacity = '0.2'
+                }
+            }
+        })
+
+        function darkModeChange(dmq) {
+            const isDarkMode = dmq.matches
+            if (isDarkMode) {
+                section.classList.add('dark')
+            } else {
+                section.classList.remove('dark')
+            }
+        }
+        darkMode.addListener(darkModeChange)
+
+    </script>
 </body>
 </html>
