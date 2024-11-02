@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/master.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        h4 {
+         h4 {
             font-size: 1.4rem;
             margin-block: 0.8rem;
         }
@@ -20,11 +20,7 @@
             gap: 0.6rem;
             margin-block: 0.8rem;
         }
-
-
-
     </style>
-    
 </head>
 <body>
     <nav class="controls">
@@ -40,7 +36,7 @@
         <section>
             <h3>01 - Without params/args</h3>
             <h4 id="greeting"></h4>
-            <h3>02- With params/args</h3>       
+            <h3>02- With params/args</h3>
             <div class="form">
                 <input type="number" id="n1" min="1" max="99999999" placeholder="Number 1">
                 <strong> + </strong>
@@ -58,14 +54,14 @@
         const n1       = document.querySelector('#n1')
         const n2       = document.querySelector('#n2')
         const result   = document.querySelector('#result')
-        const time = document.querySelector('#time')
- 
+        const time     = document.querySelector('#time')
+
         // 01 - Function without parameters/arguments
         function showGreeting() {
             greeting.textContent = "Welcome: Guest! 😀"
         }
         showGreeting() // Call the function
- 
+
         // 02 - Function with parameters/arguments
         function sumValues(n1, n2) {
             if (n1 != '' && n2 != '' ) {
@@ -73,13 +69,14 @@
             }
         }
         // Add Event Listener with array function
-        n1.addEventListener('input', () => {
+        n1.addEventListener('input', () => { 
             sumValues(n1.value, n2.value)
         })
         // Other way
         n2.oninput = () => {
             sumValues(n1.value, n2.value)
         }
+
         // 03- Function return value
         function showTime() {
             let meridiem = (parseInt(date.getHours()) <= 12) ? ' am' : ' pm'
