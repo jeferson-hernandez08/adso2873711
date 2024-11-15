@@ -14,16 +14,16 @@
 
             header.display {
                 position: relative;
-                border: 2px solid red;
-                height: 172px;
+                /* border: 2px solid red; */
+                height: 175px;
                 button.mode {
                     background: url(images/calc/mode.svg);
                     border: none;
                     height: 43px;
                     position: absolute;
                     transform: transform 0.2s ease-in;
-                    top: 8px;
-                    width: 112;
+                    top: 17px;
+                    width: 112px;
                     &:hover {
                         cursor: pointer;
                         transform: scale(1.05);
@@ -69,70 +69,71 @@
                     &:hover {
                         cursor: pointer;
                         transform: scale(1.05);
-                    } 
+                    }
+                    /* <!-- Primera fila --> */ 
                     &.btn-clear {
-                        background: url(images/calc/btn-C.svg);
+                        background: url(images/calc/btn-clear.svg);
                     }
                     &.btn-back {
-                        background: url(images/calc/btn--.svg);
+                        background: url(images/calc/btn-del.svg);
                     }
                     &.btn-pow {
-                        background: url(images/calc/btn-^.svg);
+                        background: url(images/calc/btn-pow.svg);
                     }
                     &.btn-mod {
-                        background: url(images/calc/btn-%.svg);
+                        background: url(images/calc/btn-mod.svg);
                     }
-                    /* <!-- segunda fila --> */
+                    /* <!-- Segunda fila --> */
                     &.btn-1 {
-                        background: url(images/calc/btn-del.svg);
+                        background: url(images/calc/btn-1.svg);
                     }
                     &.btn-2 {
-                        background: url(images/calc/btn-del.svg);
+                        background: url(images/calc/bnt-2.svg);
                     }
                     &.btn-3 {
-                        background: url(images/calc/btn-del.svg);
+                        background: url(images/calc/btn-3.svg);
                     }
                     &.btn-prod {
-                        background: url(images/calc/btn-del.svg);
+                        background: url(images/calc/btn-mult.svg);
                     }
-                    /* <!-- tercera fila --> */
+                    /* <!-- Tercera fila --> */
                     &.btn-4 {
-                        background: url(images/calc/btn-del.svg);
+                        background: url(images/calc/btn-4.svg);
                     }
                     &.btn-5 {
-                        background: url(images/calc/btn-del.svg);
+                        background: url(images/calc/btn-5.svg);
                     }
                     &.btn-6 {
-                        background: url(images/calc/btn-del.svg);
+                        background: url(images/calc/btn-6.svg);
                     }
                     &.btn-subs {
-                        background: url(images/calc/btn-del.svg);
+                        background: url(images/calc/btn-subs.svg);
                     }
-                    /* <!-- cuarta fila --> */
+                    /* <!-- Cuarta fila --> */
                     &.btn-7 {
-                        background: url(images/calc/btn-del.svg);
+                        background: url(images/calc/btn-7.svg);
                     }
                     &.btn-8 {
-                        background: url(images/calc/btn-del.svg);
+                        background: url(images/calc/btn-8.svg);
                     }
                     &.btn-9 {
-                        background: url(images/calc/btn-del.svg);
+                        background: url(images/calc/btn-9.svg);
                     }
                     &.btn-add {
-                        background: url(images/calc/btn-del.svg);
+                        background: url(images/calc/btn-plus.svg);
                     }
-                    /* <!-- quinta fila --> */
+                    /* <!-- Quinta fila --> */
                     &.btn-div {
-                        background: url(images/calc/btn-del.svg);
+                        background: url(images/calc/btn-div.svg);
                     }
                     &.btn-0 {
-                        background: url(images/calc/btn-del.svg);
+                        background: url(images/calc/btn-0.svg);
                     }
                     &.btn-dot {
-                        background: url(images/calc/btn-del.svg);
+                        background: url(images/calc/btn-dot.svg);
                     }
                     &.btn-equal {
-                        background: url(images/calc/btn-del.svg);
+                        background: url(images/calc/btn-equal.svg);
                     }
                 }
             }
@@ -335,8 +336,23 @@
         })
  
         btnEqual.addEventListener('click', () => {
-            result.textContent = '123'
-            // Result (Challenge)
+            //result.textContent = '123'    //Si click boton igual da igual a 123 OFAC
+            // Result (Challenge) Desde aquí realización para la logica de las operaciones y el cálculo del resultado
+            try {
+                // Evaluamos la operación matemática contenida en el input 'operation'
+                let resultValue = eval(operation.value); 
+
+                // Si el resultado es un número, lo mostramos
+                if (!isNaN(resultValue)) {
+                    result.textContent = resultValue;
+                    operation.value = resultValue; // Si lo deseas, puedes también poner el resultado en el campo de operación
+                } else {
+                    result.textContent = 'Error'; // En caso de error en la operación
+                }
+            } catch (error) {
+                // Si algo sale mal (por ejemplo, sintaxis incorrecta), mostramos un mensaje de error
+                result.textContent = 'Error';
+            }
         })
  
         btnBack.addEventListener('click', () => {
