@@ -7,14 +7,36 @@
     <link rel="stylesheet" href="css/master.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        section h4{
+        /* section h4{
             font-size: 4rem;
         }
         section h4{
             font-size: 3rem;
+        } */
+        div.widget-clima {
+            background: url(images/wheather/body.svg) no-repeat center;
+            border: solid 2px red;
+            height: 550px;
+            width: 550px;
+            margin: 1rem auto;
+
+            header.title {
+                div.title-locate {
+                    background: url(images/wheather/title.svg) no-repeat center;
+                    border: solid 2px red;
+                    position: relative;
+                    height: 120px;
+                    width: 530px;
+                    top: 17px;
+                }
+
+
+
+
+            }
+
         }
     </style>
-    
 </head>
 <body>
     <nav class="controls">
@@ -28,9 +50,21 @@
             <h2>Description</h2>
         </header>
         <section>
-            <h4 class="temp"></h4>
-            fecha con tiempo: 2024
-            
+            <!-- <h4 class="temp"></h4>
+            fecha con tiempo: 2024 -->
+            <div class="widget-clima">
+                <header class="title">
+                    <div class="title-locate"></div>
+
+
+
+                </header>
+                <!-- <section>
+
+
+                </section> -->
+
+            </div> 
         </section>
          
     </main>  
