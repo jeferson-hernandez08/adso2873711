@@ -340,28 +340,27 @@
         btnEqual.addEventListener('click', () => {
             //result.textContent = '123'    //Si click boton igual da igual a 123 OFAC
             // Result (Challenge): Desde aquí realización para la logica de las operaciones y el cálculo del resultado
-            //****** Solucion # 1: YO ******//
-            try {
-                // Evaluamos la operación matemática contenida en el input 'operation'
-                let resultValue = eval(operation.value); 
+            //****** Solucion Vahllengue # 1: YO ******//
+            // try {
+            //     // Evaluamos la operación matemática contenida en el input 'operation'
+            //     let resultValue = eval(operation.value); 
 
-                // Si el resultado es un número, lo mostramos
-                if (!isNaN(resultValue)) {
-                    result.textContent = resultValue;
-                    operation.value = resultValue; // Si lo deseas, puedes también poner el resultado en el campo de operación
-                } else {
-                    result.textContent = 'Error'; // En caso de error en la operación
-                }
-            } catch (error) {
-                // Si algo sale mal (por ejemplo, sintaxis incorrecta), mostramos un mensaje de error
-                result.textContent = 'Error';
+            //     // Si el resultado es un número, lo mostramos
+            //     if (!isNaN(resultValue)) {
+            //         result.textContent = resultValue;
+            //         operation.value = resultValue; // Si lo deseas, puedes también poner el resultado en el campo de operación
+            //     } else {
+            //         result.textContent = 'Error'; // En caso de error en la operación
+            //     }
+            // } catch (error) {
+            //     // Si algo sale mal (por ejemplo, sintaxis incorrecta), mostramos un mensaje de error
+            //     result.textContent = 'Error';  
+            // }
+
+            //****** Solucion Challengue # 2: OFAC ******//
+            if (operation.value.length != '') {
+                result.textContent = '=' + eval(operation.value)
             }
-
-            //****** Solucion # 2: OFAC ******//
-
-
-
-
         })
  
         btnBack.addEventListener('click', () => {
@@ -372,9 +371,11 @@
                 isOper = true
             }
         })
-        // Key Events
+        // Key Events: Para realizar la calculadora también por teclado.
         document.addEventListener('keyup', (event) => {
-            //console.log(event.keyCode)
+            //console.log(event.keyCode)   // Acción para capturar los caracteres por consola del 0 al 9 ... y observar su codigo keycode, cada tecla tiene un codigo.
+
+            // Codigos keycode: Estas las sacamos por consola en inspeccionador con console.log(event.keyCode).
             // 0-9       => keyCode: 48,49,50,51,52,53,54,55,56,57
             // Backspace => keyCode: 8
             // Enter     => keyCode: 13
@@ -384,8 +385,8 @@
             // -         => keyCode: 189
             // .         => keyCode: 190
             // /         => keyCode: 16-55
-            // ^         => keyCode: 219
-            // *         => keyCode: 221
+            // ^         => keyCode: 219        // En en mi PC es 17 -18 - 222 ó 16 - 222. Mirar bien aqui teclado diferente en PC.
+            // *         => keyCode: 221        // En en mi PC es 16-187. Mirar bien aqui teclado diferente en PC.
 
             switch (event.keyCode) {
                 // Numbers 0 - 9 ------
@@ -411,7 +412,7 @@
                 break;
                 case 53: 
                     if (event.shiftKey) {
-                        if (isOper) {
+                        if (isOper) {     // isOper para No dejar poner varios % al mismo tiempo
                             addToOperation('%')
                             isOper = false
                         }
@@ -427,8 +428,10 @@
                 break;
                 case 55: 
                     if (event.shiftKey) {
-                        addToOperation('/')
-                        isOper = false
+                        if (isOper) {
+                            addToOperation('/')
+                            isOper = false
+                        }
                     }
                     else {
                         isOper = true
@@ -453,74 +456,73 @@
                     }
                 break;
                 // Enter ------
-                case 13: 
-                    try {
-                        // Evaluamos la operación matemática contenida en el input 'operation'
-                        let resultValue = eval(operation.value); 
-
-                        // Si el resultado es un número, lo mostramos
-                        if (!isNaN(resultValue)) {
-                            result.textContent = resultValue;
-                            operation.value = resultValue; // Si lo deseas, puedes también poner el resultado en el campo de operación
-                        } else {
-                            result.textContent = 'Error'; // En caso de error en la operación
-                        }
-                    } catch (error) {
-                        // Si algo sale mal (por ejemplo, sintaxis incorrecta), mostramos un mensaje de error
-                        result.textContent = 'Error';
-                    } 
+                case 13:
+                    //****** Solucion Challengue # 2: OFAC ******//
+                    if (operation.value.length != '') {
+                        result.textContent = '=' + eval(operation.value)
+                    }
                 break;
                 // Delete ------
                 case 46: 
                     operation.value = ''
                     result.textContent = ''
                 break;
-                // % ------
-                case 53: 
-                    isOper = true
-                    addToOperation(9)
-                break;
+                // // % ------
+                // case 53:     // Solucionado con 5
+                //     isOper = true
+                //     addToOperation(9)
+                // break;
                 // + ------
-                case 187: 
-                    isOper = true
-                    addToOperation(9)
+                case 187:
+                    if (event.shiftKey) {
+                        if (isOper) {
+                            addToOperation('*')
+                            isOper = false
+                        }
+                    }
+                    else {
+                        if (isOper) {
+                            isOper = false 
+                            addToOperation('+')
+                        }
+                    }
                 break;
                 // - ------
                 case 189: 
-                    isOper = true
-                    addToOperation(9)
+                    if (isOper) {
+                        addToOperation('-')
+                        isOper = false
+                    }
                 break;
                 // . ------
                 case 190: 
-                    if(isOper) {
-                        isOper = true
-                        addToOperation(9)
+                    if (isOper) {   // Bug pone muchos puntos en muchas veces.
+                        addToOperation('.')
+                        isOper = false
                     }
                 break;
                 // / ------
-                case 55: 
-                    if(isOper) {
-                        isOper = true
-                        addToOperation(9)
-                    }
-                break;
+                // case 55:   // Solicionado con 7
+                //     if(isOper) {
+                //         isOper = true
+                //         addToOperation(9)
+                //     }
+                // break;
                 // ^ ------
-                case 219: 
-                    if(isOper) {
-                        isOper = true
-                        addToOperation(9)
+                case 222: 
+                    if (isOper) {
+                        addToOperation('**')
+                        isOper = false
                     }
                 break;
                 // * ------
-                case 221: 
-                    if(isOper) {
-                        isOper = true
-                        addToOperation(9)
-                    }
+                // case 187:   // Solucionado con +
+                //     if (isOper) {
+                //         addToOperation('*')
+                //         isOper = false
+                //     }
                 break;
-                
-
-                // Default:
+                // Default:   Ok Terminado.
                 default:
                 break;
             }

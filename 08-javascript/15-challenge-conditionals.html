@@ -6,175 +6,160 @@
     <title>15- Challengue Conditionals</title>
     <link rel="stylesheet" href="css/master.css">
     <style>
-        /* section h4{
-            font-size: 4rem;
-        }
-        section h4{
-            font-size: 3rem;
-        } */
-
         section.container-menu {
-            display: flex;
-            justify-content: center;
             border-radius: 10px;
             background-color: #fff9;
             color: #0009;
             padding: 10px;
-            width: 600px;   /* NOTA: Trabajar todos los challengue NO superior a 400px por section/400px/master.css */    
-
-            div.widget-clima {
-                background: url(images/wheather/body.svg) no-repeat center;
-                border: solid 2px red;
+            width: 600px;   /* NOTA: Trabajar todos los challengue NO superior a 400px por section/400px/master.css */  
+            
+            div.query {
+                margin: 0 auto;
+                width: 260px;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                gap: 0.4rem;
+                input {
+                    background-color: #f0db4f;
+                    border: 2px solid #fff;
+                    outline: none;
+                    padding: 0.4rem;
+                    border-radius: 8px;
+                    transition: background-color 0.4s ease-in;
+                    font-family: 'Poppins';
+                    width: 200px;
+                    &:focus {
+                        background-color: #fff6;
+                    }
+                }
+                h5 {
+                    margin: 0;
+                    font-size: 1rem;
+                }
+                button {
+                    border: none;
+                    border-radius: 8px;
+                    color: #fff;
+                    cursor: pointer;
+                    background-color: #0009;
+                    font-family: 'Poppins';
+                    padding: 0.5rem;
+                    transition: background-color 0.4s ease-in;
+                    width: 216px;
+                    &:hover {
+                        background-color: #000c;
+                    }
+                }
+            }
+            div.widget {
+                border: 1px solid red;
                 height: 550px;
+                margin: 0.8rem auto;
+                position: relative;
                 width: 550px;
-                margin: 3px auto;
-
-                div.title {
-                    border: solid 2px red;
-                    height: 120px;
-                    width: 530px;
-                    margin: 2px auto;
+                &.day {
+                    background: url(images/wheather/bg-day.svg) no-repeat center;
+                }
+                &.night {
+                    background: url(images/wheather/bg-night.svg) no-repeat center;
+                }
+                h4 {
+                    position: absolute;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    margin: 0;
+                    &.country {
+                        font-size: 24px;
+                        font-weight: 400;
+                        top: 8px;
+                        color: #fffc;
+                    }
+                    &.city {
+                        font-size: 32px;
+                        font-weight: 700;
+                        top: 30px;
+                        color: #0007;
+                    }
+                    &.datetime {
+                        font-size: 14px;
+                        font-weight: 300;
+                        top: 79px;
+                        color: #000c;
+                    }
+                    &.condition,
+                    &.humidity,
+                    &.cloud {
+                        font-size: 14px;
+                        font-weight: 300;
+                        color: #fffc;
+                    }
+                    &.condition {
+                        top: 303px;
+                    }
+                    &.humidity {
+                        top: 339px;
+                        left: 80px;
+                    }
+                    &.cloud {
+                        top: 339px;
+                        left: 280px;
+                    }
+                }
+                figure.icon {
+                    border: 1px solid red;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    background-position: center;
+                    position: absolute;
+                    left: 50%;
+                    margin: 0;
                     display: flex;
                     justify-content: center;
-                    gap: 10px;
-                    
-                    
-                    div.logo_locate {
-                        background: url(images/wheather/logo_locate.svg) no-repeat center;
-                        border: solid 2px red;
-                        position: relative;
-                        height: 85px;
-                        width: 85px;
-                        top: 15px;
-                    }
-                    h4.country {
-                        font-size: 40px;
-                        position: relative;
-                        top: 5px;
-                        left: 15px;
-                    }
-                    h4.city {
-                        font-size: 50px;
-                        position: relative;
-                        bottom: 20px;
+                    align-items: center;
+                    transform: translateX(-50%);
+                    top: 120px;
+                    width: 240px;
+                    height: 160px;
+                    figcaption {
+                        font-size: 110px;
+                        color: #0009;
                     }
                 }
-                div.body-clima {
-                    border: solid 2px rgb(0, 0, 0);
-                    height: 265px;
-                    width: 530px;
-                    margin: 1rem auto;
-                    display: flex;
-
-                    div.state-day {
-                        background: url(images/wheather/day.svg) no-repeat center;
-                        border: solid 2px red;
-                        position: relative;
-                        height: 250px;
-                        width: 250px;
-                        top: 12px;
-                        left: 10px;
-                    }
-                    div.date {
-                        background: url(images/wheather/date.svg) no-repeat center;
-                        border: solid 2px rgb(0, 0, 0);
-                        position: relative;
-                        height: 39px;
-                        width: 171px;
-                        top: 12px;
-                        left: 60px;
-                    }
-                    div.hour {
-                        background: url(images/wheather/10_20.svg) no-repeat center;
-                        border: solid 2px rgb(0, 0, 0);
-                        position: relative;
-                        height: 70px;
-                        width: 220px;
-                        top: 25px;
-                        left: 35px;
-                    }
-                    div.line-1 {
-                        background: url(images/wheather/line_2.svg) no-repeat center;
-                        border: solid 1px red;
-                        height: 5px;
-                        width: 265px;
-                        position: relative;
-                        top: 45px;
-                        left: 9px;
-                    }
-                    div.grade {
-                        background: url(images/wheather/30_°.svg) no-repeat center;
-                        border: solid 2px rgb(0, 0, 0);
-                        position: relative;
-                        height: 70px;
-                        width: 220px;
-                        top: 70px;
-                        left: 55px;
-                    } 
-                }
-                footer.clime-data {
-                    border: solid 1px red;
-                    height: 120px;
-                    width: 530px;
-                    margin: auto;
-
-                    div.line-2 {
-                        background: url(images/wheather/line_3.svg) no-repeat center;
-                        border: solid 1px red;
-                        height: 5px;
-                        width: 525px;
-                        position: relative;
-                        top: 0px;
-                        left: 0px;
-                    }
-                    div.condition {
-                        background: url(images/wheather/condition.svg) no-repeat center;
-                        border: solid 2px rgb(0, 0, 0);
-                        position: relative;
-                        height: 45px;
-                        width: 215px;
-                        top: 10px;
-                        margin: auto;
-                    }
-                    div.condition-2 {
-                        display: flex;
-                        gap: 10px;
-
-                        div.humidity {
-                            background: url(images/wheather/humidity.svg) no-repeat center;
-                            border: solid 2px rgb(0, 0, 0);
-                            position: relative;
-                            height: 45px;
-                            width: 215px;
-                            top: 10px;
-                            margin: auto;
-
-                        }
-                        div.cloud {
-                            background: url(images/wheather/cloud.svg) no-repeat center;
-                            border: solid 2px rgb(0, 0, 0);
-                            position: relative;
-                            height: 45px;
-                            width: 215px;
-                            top: 10px;
-                            margin: auto;
-                        }
-                    }
-                    
-                }
-
-
-                /* div div.date {
-                    border: solid 2px rgb(0, 0, 0);
-                    height: 300px;
-                    width: 530px;
-                    margin: 1rem auto;
-
-
-
-                } */
-
             }
+            /* Night */
+            div.widget.night {
+                h4 {
+                    &.country {
+                        color: #000c;
+                    }
+                    &.city {
+                        color: #fff7;
+                    }
+                    &.datetime {
+                        color: #fffc;
+                    }
+                    &.condition,
+                    &.humidity,
+                    &.cloud {
+                        color: #000c;
+                    }
+                }
+                figure.icon {
+                    figcaption {
+                        color: #0009;
+                    }
+                }
+            }
+
+            
+
+
+
+
+
+
+
 
         }
     </style>
@@ -191,66 +176,54 @@
             <h2>Este challengue es del clima API</h2>
         </header>
         <section class="container-menu">
-            <h4 class="temp"></h4>
-            
-            
-            
-            <div class="widget-clima">
-                <div class="title">  
-                    <div class="logo_locate"></div>
-                    <div>
-                        <h4 class="country"></h4>
-                        <h4 class="city"></h4>
-                    </div>                      
-                </div>
-                <div class="body-clima">
-                    <div>
-                        <div class="state-day"></div>
-                    </div>
-                    <div>
-                        <div class="date"></div>
-                        <div class="hour"></div>
-                        <div class="line-1"></div>
-                        <div class="grade"></div>
-                    </div>
-                </div>
-                <footer class="clime-data">
-                    <div class="line-2"></div>
-                    <div class="condition"></div>
-                    <div class="condition-2">
-                        <div class="humidity"></div>
-                        <div class="cloud"></div>
-                    </div>
-                </footer>
+            <div class="query">
+                <h5>Type City:</h5>
+                <input type="text">
+                <button>Show</button>
             </div>
+            <div class="widget">
+                <h4 class="country"></h4>
+                <h4 class="city"></h4>
+                <h4 class="datetime"></h4>
+                <figure class="icon">
+                    <figcaption class="temp"></figcaption>
+                </figure>
+                <h4 class="condition"></h4>
+                <h4 class="humidity"></h4>
+                <h4 class="cloud"></h4>
+            </div>            
         </section>
-
     </main>
     <script>
-        //const url = 'http://api.weatherapi.com/v1/current.json?key=9711613e634d413785c161102241511&q=Manizales';
-        const url = 'http://api.weatherapi.com/v1/current.json?key=1c33861797b947219fa62737242211&q=Manizales';
-        const temp = document.querySelector('.temp')
-        const country = document.querySelector(".country")
-        
+        // Elements
+        const query = document.querySelector('.query input')
+        const show  = document.querySelector('.query button')
+        let   q     = 'Manizales'
+ 
+        // Events
+        show.addEventListener('click', (e) => {
+            e.preventDefault()
+            if (query.value != '') {
+                q = query.value
+                loadWeather(q)
+            }
+        })
 
-        const loadWeather = async () => {
+        const temp    = document.querySelector('.temp')
+        const country = document.querySelector(".country")
+        const icon    = document.querySelector(".icon")
+
+        const loadWeather = async (q) => {
+            
+            const url = 'http://api.weatherapi.com/v1/current.json?key=1c33861797b947219fa62737242211&q='+q
             const response = await fetch(url)
             const data = await response.json()
-            temp.textContent = data.current.temp_c
             country.textContent = data.location.country
-            
-           
+            temp.textContent = data.current.temp_c
+            icon.setAttribute('src', data.current.condition.icon)
+            //console.log(data.current.temp_c)
         }
-        loadWeather()
-        // const temp = document.querySelector('.temp')
-        // const url = 'http://api.weatherapi.com/v1/current.json?key=lalalala&q=Manizales';
-        // const loadWeather = async () => {
-        //     const response = await fetch(url)
-        //     const data = await response.json()
-        //     temp.textContent = data.current.temp_c
-        //     //console.log(data.current.temp_c)
-        // }
-        // loadWeather()
+        loadWeather(q)
     </script>
 </body>
 </html>

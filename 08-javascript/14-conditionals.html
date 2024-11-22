@@ -26,7 +26,8 @@
             border: 2px solid #f0db4f;
             margin: 2rem 0;
         }
-        section h4.day {
+        section h4.day,
+        section h4.member {
             align-items: center;
             background-color: #f0db4f;
             font-size: 1.4rem;
@@ -54,6 +55,8 @@
             <button class="validate">Validated</button>
             <hr>
             <h4 class="day"></h4>
+            <hr>
+            <h4 class="member"></h4>
         </section>
     </main>  
     <script>
@@ -61,6 +64,8 @@
         const answer = document.querySelector('.answer')
         const validate = document.querySelector('.validate')
         const day = document.querySelector('.day')  
+        const member = document.querySelector('.member')
+
         // Btn Action
         validate.addEventListener('click', () => {
             // Conditional IF
@@ -97,6 +102,16 @@
                 day.textContent = 'Today is: Weekend 😎'
             break;
         }
+        // Ternary Operator
+        let isMember = true
+        member.textContent = isMember ? 'True: Is Member' : "False: Is'nt not Member";
+
+        // Comparicion con los condicionales.
+        // if(isMember == true) {
+        //     member.textContent = 'True: is member'
+        // } else {
+        //     member.textContent = 'False: is not member'
+        // }
     </script>
 </body>
 </html>
