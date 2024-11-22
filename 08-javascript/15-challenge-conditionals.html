@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>15- Challengue Conditionals</title>
     <link rel="stylesheet" href="css/master.css">
-    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* section h4{
             font-size: 4rem;
@@ -30,14 +29,34 @@
                 width: 550px;
                 margin: 3px auto;
 
-                header.title {
-                    div.title-locate {
-                        background: url(images/wheather/title.svg) no-repeat center;
+                div.title {
+                    border: solid 2px red;
+                    height: 120px;
+                    width: 530px;
+                    margin: 2px auto;
+                    display: flex;
+                    justify-content: center;
+                    gap: 10px;
+                    
+                    
+                    div.logo_locate {
+                        background: url(images/wheather/logo_locate.svg) no-repeat center;
                         border: solid 2px red;
                         position: relative;
-                        height: 120px;
-                        width: 530px;
-                        top: 17px;
+                        height: 85px;
+                        width: 85px;
+                        top: 15px;
+                    }
+                    h4.country {
+                        font-size: 40px;
+                        position: relative;
+                        top: 5px;
+                        left: 15px;
+                    }
+                    h4.city {
+                        font-size: 50px;
+                        position: relative;
+                        bottom: 20px;
                     }
                 }
                 div.body-clima {
@@ -172,12 +191,18 @@
             <h2>Este challengue es del clima API</h2>
         </header>
         <section class="container-menu">
-            <!-- <h4 class="temp"></h4>
-            fecha con tiempo: 2024 -->
+            <h4 class="temp"></h4>
+            
+            
+            
             <div class="widget-clima">
-                <header class="title">
-                    <div class="title-locate"></div>
-                </header>
+                <div class="title">  
+                    <div class="logo_locate"></div>
+                    <div>
+                        <h4 class="country"></h4>
+                        <h4 class="city"></h4>
+                    </div>                      
+                </div>
                 <div class="body-clima">
                     <div>
                         <div class="state-day"></div>
@@ -202,15 +227,30 @@
 
     </main>
     <script>
+        //const url = 'http://api.weatherapi.com/v1/current.json?key=9711613e634d413785c161102241511&q=Manizales';
+        const url = 'http://api.weatherapi.com/v1/current.json?key=1c33861797b947219fa62737242211&q=Manizales';
         const temp = document.querySelector('.temp')
-        const url = 'http://api.weatherapi.com/v1/current.json?key=lalalala&q=Manizales';
+        const country = document.querySelector(".country")
+        
+
         const loadWeather = async () => {
             const response = await fetch(url)
             const data = await response.json()
             temp.textContent = data.current.temp_c
-            //console.log(data.current.temp_c)
+            country.textContent = data.location.country
+            
+           
         }
         loadWeather()
+        // const temp = document.querySelector('.temp')
+        // const url = 'http://api.weatherapi.com/v1/current.json?key=lalalala&q=Manizales';
+        // const loadWeather = async () => {
+        //     const response = await fetch(url)
+        //     const data = await response.json()
+        //     temp.textContent = data.current.temp_c
+        //     //console.log(data.current.temp_c)
+        // }
+        // loadWeather()
     </script>
 </body>
 </html>
