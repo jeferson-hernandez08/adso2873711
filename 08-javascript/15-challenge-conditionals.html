@@ -13,25 +13,147 @@
         section h4{
             font-size: 3rem;
         } */
-        div.widget-clima {
-            background: url(images/wheather/body.svg) no-repeat center;
-            border: solid 2px red;
-            height: 550px;
-            width: 550px;
-            margin: 1rem auto;
 
-            header.title {
-                div.title-locate {
-                    background: url(images/wheather/title.svg) no-repeat center;
-                    border: solid 2px red;
-                    position: relative;
+        section.container-menu {
+            display: flex;
+            justify-content: center;
+            border-radius: 10px;
+            background-color: #fff9;
+            color: #0009;
+            padding: 10px;
+            width: 600px;   /* NOTA: Trabajar todos los challengue NO superior a 400px por section/400px/master.css */    
+
+            div.widget-clima {
+                background: url(images/wheather/body.svg) no-repeat center;
+                border: solid 2px red;
+                height: 550px;
+                width: 550px;
+                margin: 3px auto;
+
+                header.title {
+                    div.title-locate {
+                        background: url(images/wheather/title.svg) no-repeat center;
+                        border: solid 2px red;
+                        position: relative;
+                        height: 120px;
+                        width: 530px;
+                        top: 17px;
+                    }
+                }
+                div.body-clima {
+                    border: solid 2px rgb(0, 0, 0);
+                    height: 265px;
+                    width: 530px;
+                    margin: 1rem auto;
+                    display: flex;
+
+                    div.state-day {
+                        background: url(images/wheather/day.svg) no-repeat center;
+                        border: solid 2px red;
+                        position: relative;
+                        height: 250px;
+                        width: 250px;
+                        top: 12px;
+                        left: 10px;
+                    }
+                    div.date {
+                        background: url(images/wheather/date.svg) no-repeat center;
+                        border: solid 2px rgb(0, 0, 0);
+                        position: relative;
+                        height: 39px;
+                        width: 171px;
+                        top: 12px;
+                        left: 60px;
+                    }
+                    div.hour {
+                        background: url(images/wheather/10_20.svg) no-repeat center;
+                        border: solid 2px rgb(0, 0, 0);
+                        position: relative;
+                        height: 70px;
+                        width: 220px;
+                        top: 25px;
+                        left: 35px;
+                    }
+                    div.line-1 {
+                        background: url(images/wheather/line_2.svg) no-repeat center;
+                        border: solid 1px red;
+                        height: 5px;
+                        width: 265px;
+                        position: relative;
+                        top: 45px;
+                        left: 9px;
+                    }
+                    div.grade {
+                        background: url(images/wheather/30_°.svg) no-repeat center;
+                        border: solid 2px rgb(0, 0, 0);
+                        position: relative;
+                        height: 70px;
+                        width: 220px;
+                        top: 70px;
+                        left: 55px;
+                    } 
+                }
+                footer.clime-data {
+                    border: solid 1px red;
                     height: 120px;
                     width: 530px;
-                    top: 17px;
+                    margin: auto;
+
+                    div.line-2 {
+                        background: url(images/wheather/line_3.svg) no-repeat center;
+                        border: solid 1px red;
+                        height: 5px;
+                        width: 525px;
+                        position: relative;
+                        top: 0px;
+                        left: 0px;
+                    }
+                    div.condition {
+                        background: url(images/wheather/condition.svg) no-repeat center;
+                        border: solid 2px rgb(0, 0, 0);
+                        position: relative;
+                        height: 45px;
+                        width: 215px;
+                        top: 10px;
+                        margin: auto;
+                    }
+                    div.condition-2 {
+                        display: flex;
+                        gap: 10px;
+
+                        div.humidity {
+                            background: url(images/wheather/humidity.svg) no-repeat center;
+                            border: solid 2px rgb(0, 0, 0);
+                            position: relative;
+                            height: 45px;
+                            width: 215px;
+                            top: 10px;
+                            margin: auto;
+
+                        }
+                        div.cloud {
+                            background: url(images/wheather/cloud.svg) no-repeat center;
+                            border: solid 2px rgb(0, 0, 0);
+                            position: relative;
+                            height: 45px;
+                            width: 215px;
+                            top: 10px;
+                            margin: auto;
+                        }
+                    }
+                    
                 }
 
 
+                /* div div.date {
+                    border: solid 2px rgb(0, 0, 0);
+                    height: 300px;
+                    width: 530px;
+                    margin: 1rem auto;
 
+
+
+                } */
 
             }
 
@@ -47,27 +169,38 @@
     <main>
         <header>
             <h1>15- Challengue Conditionals</h1>
-            <h2>Description</h2>
+            <h2>Este challengue es del clima API</h2>
         </header>
-        <section>
+        <section class="container-menu">
             <!-- <h4 class="temp"></h4>
             fecha con tiempo: 2024 -->
             <div class="widget-clima">
                 <header class="title">
                     <div class="title-locate"></div>
-
-
-
                 </header>
-                <!-- <section>
-
-
-                </section> -->
-
-            </div> 
+                <div class="body-clima">
+                    <div>
+                        <div class="state-day"></div>
+                    </div>
+                    <div>
+                        <div class="date"></div>
+                        <div class="hour"></div>
+                        <div class="line-1"></div>
+                        <div class="grade"></div>
+                    </div>
+                </div>
+                <footer class="clime-data">
+                    <div class="line-2"></div>
+                    <div class="condition"></div>
+                    <div class="condition-2">
+                        <div class="humidity"></div>
+                        <div class="cloud"></div>
+                    </div>
+                </footer>
+            </div>
         </section>
-         
-    </main>  
+
+    </main>
     <script>
         const temp = document.querySelector('.temp')
         const url = 'http://api.weatherapi.com/v1/current.json?key=lalalala&q=Manizales';
