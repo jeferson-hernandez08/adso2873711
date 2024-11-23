@@ -56,13 +56,15 @@
                 border: 1px solid red;
                 height: 550px;
                 margin: 0.8rem auto;
+                transform-style: preserve-3d;
+                perspective: 1000px;
                 position: relative;
                 width: 550px;
                 &.day {
-                    background: url(images/wheather/bg-day.svg) no-repeat center;
+                    background: url(images/weather/bg-day.svg) no-repeat center;
                 }
                 &.night {
-                    background: url(images/wheather/bg-night.svg) no-repeat center;
+                    background: url(images/weather/bg-night.svg) no-repeat center;
                 }
                 h4 {
                     position: absolute;
@@ -121,6 +123,7 @@
                     top: 120px;
                     width: 240px;
                     height: 160px;
+                    animation: animIcon 4s linear infinite; /* Aplica la animación */
                     figcaption {
                         font-size: 110px;
                         color: #0009;
@@ -151,16 +154,14 @@
                     }
                 }
             }
-
-            
-
-
-
-
-
-
-
-
+        }
+        @keyframes animIcon {
+            0% {
+                background-position-x: 240px;
+            }
+            100% {
+                background-position-x: -140px;
+            }
         }
     </style>
 </head>
@@ -206,24 +207,55 @@
             if (query.value != '') {
                 q = query.value
                 loadWeather(q)
+                query.value = ''
             }
         })
 
-        const temp    = document.querySelector('.temp')
-        const country = document.querySelector(".country")
-        const icon    = document.querySelector(".icon")
+        // Widget
+        const widget    = document.querySelector('.widget')
+        const country   = document.querySelector(".country")
+        const city      = document.querySelector(".city")
+        const dateTime  = document.querySelector(".datetime")
+        const icon      = document.querySelector(".icon")
+        const temp      = document.querySelector('.temp')
+        const condition = document.querySelector('.condition')
+        const humidity  = document.querySelector('.humidity')
+        const cloud     = document.querySelector('.cloud')
 
         const loadWeather = async (q) => {
-            
-            const url = 'http://api.weatherapi.com/v1/current.json?key=1c33861797b947219fa62737242211&q='+q
+            const url      = 'http://api.weatherapi.com/v1/current.json?key=1c33861797b947219fa62737242211&q='+q
             const response = await fetch(url)
-            const data = await response.json()
-            country.textContent = data.location.country
-            temp.textContent = data.current.temp_c
-            icon.setAttribute('src', data.current.condition.icon)
+            const data     = await response.json()
+            // isDay --------------
+            let isDay      = data.current.is_day ? true : false
+            widget.classList.remove('day', 'night')
+            if (isDay) {
+                widget.classList.add('day')
+            } else {
+                widget.classList.add('night')
+            }
+            // Country - City - DateTime
+            country.textContent  = data.location.country
+            city.textContent     = data.location.name
+            dateTime.textContent = data.location.localtime
+            // Icon -Temp
+            icon.style.backgroundImage = 'url('+data.current.condition.icon+')'
+            temp.textContent = data.current.temp_c + '°'
+            // Condition - Humidity - Cloud
+            condition.textContent = 'Condition: ' + data.current.condition.text
+            humidity.textContent  = 'Humadity: ' + data.current.humidity
+            cloud.textContent     = 'Cloud: ' + data.current.cloud
             //console.log(data.current.temp_c)
         }
         loadWeather(q)
+
+        // Card 3D: 👇🏼 Para movimiento 3D de la card
+        // const section = document.querySelector('section')
+        // section.addEventListener('mousemove', function(e) {
+        //     let xAxis = (window.innerWidth / 2 - e.pageX) / 10;
+        //     let yAxis = (window.innerHeight / 2 - e.pageY) / 5;
+        //     widget.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        // })
     </script>
 </body>
 </html>
