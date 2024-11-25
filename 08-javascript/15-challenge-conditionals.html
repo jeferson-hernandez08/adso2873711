@@ -53,7 +53,7 @@
                 }
             }
             div.widget {
-                border: 1px solid red;
+                /* border: 1px solid red; */
                 height: 550px;
                 margin: 0.8rem auto;
                 transform-style: preserve-3d;
@@ -69,88 +69,132 @@
                 h4 {
                     position: absolute;
                     left: 50%;
-                    transform: translateX(-50%);    /* // Truco de Ofac para centrar */
+                    transform: translateX(-50%);    /* Truco de Ofac para centrar */
                     margin: 0;
                     &.country {
                         font-size: 34px;
                         font-weight: 600;
-                        top: 15px;
-                        color: #fffc;
+                        font-family: cursive;
+                        top: 10px;
+                        color: #ffff;
                     }
                     &.city {
                         font-size: 44px;
                         font-weight: 700;
-                        top: 40px;
-                        color: #0007;
+                        font-family: cursive;
+                        top: 42px;
+                        color: #000f;
                     }
                     &.datetime {
-                        font-size: 14px;
+                        font-size: 10px;
                         font-weight: 300;
-                        top: 90px;
-                        color: #000c;
+                        top: 97px;
+                        color: #000f;
+                    }
+                    &.datetime-two {       /* Solo Fecha */ /* Agregado por Yo */
+                        font-size: 20px;
+                        font-weight: 300;
+                        font-family: sans-serif;
+                        top: 144px;
+                        left: 405px;
+                        color: #000f;
+                    }
+                    &.datetime-three {       /* Solo Hora */ /* Agregado por Yo */
+                        font-size: 75px;
+                        font-weight: 300;
+                        font-family: cursive;
+                        top: 170px;
+                        left: 405px;
+                        color: #ffff;
                     }
                     &.condition,
                     &.humidity,
                     &.cloud {
-                        font-size: 14px;
-                        font-weight: 300;
-                        color: #fffc;
+                        font-size: 13px;
+                        font-weight: 500;
+                        color: #000f;
                     }
                     &.condition {
-                        top: 303px;
+                        top: 439px;
+                        left: 284px;
                     }
                     &.humidity {
-                        top: 339px;
-                        left: 80px;
+                        top: 486px;
+                        left: 130px;
                     }
                     &.cloud {
-                        top: 339px;
-                        left: 280px;
+                        top: 488px;
+                        left: 420px;
                     }
                 }
                 figure.icon {
-                    border: 1px solid red;
+                    /* border: 1px solid red; */
                     background-repeat: no-repeat;
                     background-size: contain;
                     background-position: center;
                     position: absolute;
-                    left: 50%;
+                    left: 55%;    
                     margin: 0;
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    transform: translateX(-50%);
-                    top: 120px;
-                    width: 240px;
-                    height: 160px;
+                    /* transform: translateX(-50%); */
+                    top: 280px;
+                    width: 220px;
+                    height: 140px;
                     animation: animIcon 4s linear infinite; /* Aplica la animación */
                     figcaption {
-                        font-size: 110px;
-                        color: #0009;
+                        font-size: 75px;
+                        font-weight: 300;
+                        font-family: cursive;
+                        color: #ffff;
                     }
+                }
+                figure.icon-two {
+                    /* border: 1px solid red; */
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    background-position: center;
+                    position: absolute;
+                    left: 2.5%;    
+                    margin: 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    /* transform: translateX(-50%); */
+                    top: 125px;
+                    width: 260px;
+                    height: 280px;
+                    animation: animIconTwo 4s linear infinite;   /* Aplica la animación */
                 }
             }
             /* Night */
             div.widget.night {
                 h4 {
                     &.country {
-                        color: #000c;
+                        color: #000f;
                     }
                     &.city {
-                        color: #fff7;
+                        color: #ffff;
                     }
                     &.datetime {
-                        color: #fffc;
+                        color: #ffff;
+                    }
+                    &.datetime-two {        /* Solo fecha */ /* Agregado por Yo */
+                        color: #ffff;
+                    }
+                    &.datetime-three {     /* Solo Hora */ /* Agregado por Yo */
+                        color: #ffff;
                     }
                     &.condition,
                     &.humidity,
                     &.cloud {
-                        color: #000c;
+                        color: #ffff;
                     }
                 }
                 figure.icon {
                     figcaption {
-                        color: #0009;
+                        color: #ffff;
                     }
                 }
             }
@@ -161,6 +205,14 @@
             }
             100% {
                 background-position-x: -140px;
+            }
+        }
+        @keyframes animIconTwo {
+            0% {
+                background-position-x: 240px;
+            }
+            100% {
+                background-position-x: -250px;
             }
         }
     </style>
@@ -186,9 +238,12 @@
                 <h4 class="country"></h4>
                 <h4 class="city"></h4>
                 <h4 class="datetime"></h4>
+                <h4 class="datetime-two"></h4>
+                <h4 class="datetime-three"></h4>
                 <figure class="icon">
                     <figcaption class="temp"></figcaption>
                 </figure>
+                <figure class="icon-two"></figure>
                 <h4 class="condition"></h4>
                 <h4 class="humidity"></h4>
                 <h4 class="cloud"></h4>
@@ -212,15 +267,18 @@
         })
 
         // Widget
-        const widget    = document.querySelector('.widget')
-        const country   = document.querySelector(".country")
-        const city      = document.querySelector(".city")
-        const dateTime  = document.querySelector(".datetime")
-        const icon      = document.querySelector(".icon")
-        const temp      = document.querySelector('.temp')
-        const condition = document.querySelector('.condition')
-        const humidity  = document.querySelector('.humidity')
-        const cloud     = document.querySelector('.cloud')
+        const widget        = document.querySelector('.widget')
+        const country       = document.querySelector(".country")
+        const city          = document.querySelector(".city")
+        const dateTime      = document.querySelector(".datetime")
+        const dateTimeTwo   = document.querySelector(".datetime-two")
+        const dateTimeThree = document.querySelector(".datetime-three")
+        const icon          = document.querySelector(".icon")
+        const iconTwo         = document.querySelector(".icon-two")
+        const temp          = document.querySelector('.temp')
+        const condition     = document.querySelector('.condition')
+        const humidity      = document.querySelector('.humidity')
+        const cloud         = document.querySelector('.cloud')
 
         const loadWeather = async (q) => {
             const url      = 'http://api.weatherapi.com/v1/current.json?key=1c33861797b947219fa62737242211&q='+q
@@ -235,11 +293,14 @@
                 widget.classList.add('night')
             }
             // Country - City - DateTime
-            country.textContent  = data.location.country
-            city.textContent     = data.location.name
-            dateTime.textContent = data.location.localtime
+            country.textContent       = data.location.country
+            city.textContent          = data.location.name
+            dateTime.textContent      = data.location.localtime
+            dateTimeTwo.textContent   = (data.location.localtime).substring(0, 11)  // El .substring(0, 11) es para poner solo la fecha por que de 0 a 11 caracteres va hasta el dia. 
+            dateTimeThree.textContent = (data.location.localtime).substring(11)     // El .substring(11) es a donde comienza pero no adonde termina, significa que despues de 11 va estar la hora. 
             // Icon -Temp
             icon.style.backgroundImage = 'url('+data.current.condition.icon+')'
+            iconTwo.style.backgroundImage = 'url('+data.current.condition.icon+')'
             temp.textContent = data.current.temp_c + '°'
             // Condition - Humidity - Cloud
             condition.textContent = 'Condition: ' + data.current.condition.text
@@ -250,12 +311,17 @@
         loadWeather(q)
 
         // Card 3D: 👇🏼 Para movimiento 3D de la card
-        // const section = document.querySelector('section')
-        // section.addEventListener('mousemove', function(e) {
-        //     let xAxis = (window.innerWidth / 2 - e.pageX) / 10;
-        //     let yAxis = (window.innerHeight / 2 - e.pageY) / 5;
-        //     widget.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
-        // })
+        const section = document.querySelector('section')
+        section.addEventListener('mousemove', function(e) {
+            let xAxis = (window.innerWidth / 2 - e.pageX) / 10;
+            let yAxis = (window.innerHeight / 2 - e.pageY) / 5;
+            widget.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        })
     </script>
 </body>
 </html>
+
+<!-- 
+URL de la API consumida :
+https://www.weatherapi.com/my/ 
+-->
