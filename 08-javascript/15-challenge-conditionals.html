@@ -281,7 +281,7 @@
         const cloud         = document.querySelector('.cloud')
 
         const loadWeather = async (q) => {
-            const url      = 'http://api.weatherapi.com/v1/current.json?key=1c33861797b947219fa62737242211&q='+q
+            const url      = 'https://api.weatherapi.com/v1/current.json?key=1c33861797b947219fa62737242211&q='+q
             const response = await fetch(url)
             const data     = await response.json()
             // isDay --------------
