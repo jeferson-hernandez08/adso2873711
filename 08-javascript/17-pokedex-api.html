@@ -32,6 +32,95 @@
                 }
             }
         }
+
+        /*** Challengue Pokedex API ***/
+        section div.home {
+            background: url(images/pokedex/body-home.svg) no-repeat center;
+            border: red solid 2px;
+            height: 633px;
+            width: 372px;
+            margin: 1rem auto;
+            position: relative; /* Necesario para que el botón se posicione relativo a este contenedor */
+            
+            .button-home {
+                background: url(images/pokedex/button_enter.svg) no-repeat center;
+                border: red solid 2px;
+                height: 43px;
+                width: 205px;
+                margin: 1rem auto;
+                position: absolute;
+                bottom: 1rem; /* Alinea el botón a la parte inferior */
+                left: 50%;
+                transform: translateX(-50%);        /* Centra el botón horizontalmente */
+                transition: transform 0.3s;        /* Añade transiciones suaves | Funciona con el hover */  
+            }
+                .button-home:hover {
+                    transform: translateX(-50%) scale(1.1); /* Aumenta el tamaño del botón al hacer hover */ 
+                    cursor: pointer; /* Cambia el cursor para indicar que es clickeable */
+                }   
+        }
+        section div.characters {
+            background: url(images/pokedex/body-characters.svg) no-repeat center;
+            border: red solid 2px;
+            height: 633px;
+            width: 372px;
+            position: relative;   /* Necesario para que el botón se posicione relativo a este contenedor */
+
+            .button-back {
+                background: url(images/pokedex/back.svg) no-repeat center;
+                border: red solid 2px;
+                height: 34px;
+                width: 34px;
+                position: absolute;
+                top: 112px;
+                left: 20px;
+                transition: all 0.3s;
+            }
+                .button-back:hover {
+                    transform: scale(1.3);
+                    cursor: pointer;
+                }
+        }
+        section div.character-detail {
+            background: url(images/pokedex/body-character.svg) no-repeat center;
+            border: red solid 2px;
+            height: 633px;
+            width: 372px;
+            position: relative;   /* Necesario para que el botón se posicione relativo a este contenedor */
+
+            .button-back2 {
+                background: url(images/pokedex/back.svg) no-repeat center;
+                border: red solid 2px;
+                height: 34px;
+                width: 34px;
+                position: absolute;
+                top: 25px;
+                left: 25px;
+                transition: all 0.3s;
+            }
+                .button-back2:hover {
+                    transform: scale(1.3);
+                    cursor: pointer;
+                }
+        }
+
+        /**** Target  ****/
+        section div {
+            display: none;  /* Oculta todas las secciones */
+        }
+
+        section div:target {
+            display: block;  /* Muestra la sección cuando su id coincide con el hash en la URL */
+        }
+
+
+        
+
+
+
+
+
+
     </style>
     
     
@@ -49,10 +138,33 @@
         </header>
         <section>
             <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="450" src="https://embed.figma.com/design/1PdCIHNKxSo52X1ZEOs5Ai/Pokedex-API?node-id=0-1&embed-host=share" allowfullscreen></iframe>
+            <div class="home" id="page1-home">
+                <a href="#page2-characters" class="button-home"></a>
+            
+            </div>
+            <div class="characters" id="page2-characters">
+                <a href="#page1-home" class="button-back"></a>
+                
+
+            </div>
+            <div class="character-detail" >
+                <a href="#page2-characters" class="button-back2"></a>
+
+            </div>
+
+
+
+
+
+
+
             <ul class="pokemons">
     
             </ul>
-    </main>  
+        </section> 
+      
+    </main> 
+
     <script>
         const season1 = [1, 151];
         const season2 = [152, 251];
