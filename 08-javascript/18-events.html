@@ -33,6 +33,32 @@
                 width: 140px;
             }
         }
+        .section-change {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 0.6rem;
+            select {
+                border: 2px solid #b7a63c;
+                border-radius: 5px;
+                padding: 0.5rem;
+                width: 160px;
+            }
+            p {
+                zoom: 3;
+                margin: 0;
+            }
+        }
+        .event-mouse {
+            background-color: #fff;
+            border-radius: 50%;
+            border: 4px solid #b7a63c;
+            margin: 0.6rem auto;
+            display: flex;
+            object-fit: cover;
+            width: 240px;
+            height: 200px;
+        }
     </style>
     
 </head>
@@ -63,17 +89,31 @@
             <h3>Event: onresize</h3>
             <h4 class="event-resize">No resize</h4>
             <h4 class="event-resize-h">No resize</h4>
-
+            <h3>Event: onchange</h3>
+            <div class="section-change">
+                <select>
+                    <option value="😊" selected>Select an animal...</option>
+                    <option value="🐼">🐼 Panda</option>
+                    <option value="🐺">🐺 Wolf</option>
+                    <option value="🦝">🦝 Raccoon</option>
+                    <option value="🐻">🐻 Bear</option>
+                    <option value="🐭">🐭 Mouse</option>
+                </select>
+                <p class="event-change">😊</p>
+            </div>
+            <h3>Event: onmouseover</h3>
+            <img src="images/goku.png" class="event-mouse">
         </section>
          
     </main>  
     <script>
         // messages
-        const msgLoad   = document.querySelector('.event-onload')
-        const msgDbl    = document.querySelector('.event-dbl')
-        const msgKeyUp  = document.querySelector('.event-keyup')
-        const msgReSize = document.querySelector('.event-resize')
+        const msgLoad    = document.querySelector('.event-onload')
+        const msgDbl     = document.querySelector('.event-dbl')
+        const msgKeyUp   = document.querySelector('.event-keyup')
+        const msgReSize  = document.querySelector('.event-resize')
         const msgReSizeH = document.querySelector('.event-resize-h')
+        const msgChange  = document.querySelector('.event-change')
 
         // Event: onload
         const ebody = document.querySelector('body')
@@ -101,10 +141,22 @@
             msgReSize.textContent = 'Window width: ' + window.outerWidth + 'px'
             msgReSizeH.textContent = 'Window hight: ' + window.outerHeight + 'px'
         }
-    
-    
 
+        // Event: onchange
+        const sltChange = document.querySelector('.section-change select')
+        sltChange.addEventListener('change', function() {
+            msgChange.textContent = this.value
+        })
 
+        // Event: onmouseover/onmouseout
+        const imgMouse = document.querySelector('.event-mouse')
+        imgMouse.addEventListener('mouseover', function() {
+            this.src = 'images/gokuUltraInstinto.png'
+        }) 
+        imgMouse.addEventListener('mouseout', function() {
+            this.src = 'images/goku.png'
+        })
+    
     </script>
 </body>
 </html>
