@@ -91,6 +91,11 @@
         const string = document.querySelector('textarea')
         const upper  = document.querySelector('.upper')
         const lower  = document.querySelector('.lower')
+        const wdOri  = document.querySelector('.word-ori')
+        const wdRep  = document.querySelector('.word-rep')
+        const pStr   = document.querySelector('.pos-s')
+        const pFnl   = document.querySelector('.pos-f')
+        
 
         const btn    = document.querySelector('.btn-generate')
         const output = document.querySelector('.output')
@@ -99,14 +104,26 @@
         let isUpper = false
 
         // Event
+        upper.addEventListener('click', function() {
+            isUpper = true
+        })
+        lower.addEventListener('click', function() {
+            isUpper = false
+        })
+
+
         btn.addEventListener('click', () => {            // Array función en lugar de usar funtion
             if(string.value.length > 0) {
                 output.innerHTML = "<li><strong>Original String: </strong>"+string.value+"</li>"
+                output.innerHTML += "<li><strong>Lenght String: </strong>"+string.value.length+"</li>" 
                 if(isUpper) {
-                    output.innerHTML += "<li><strong>UpperCase String: </strong>"+string.value.toeUpperCase()+"</li>"
+                    output.innerHTML += "<li><strong>UpperCase String: </strong>"+string.value.toUpperCase()+"</li>"
                 } else {
                     output.innerHTML += "<li><strong>LowerCase String: </strong>"+string.value.toLowerCase()+"</li>"
                 }
+                output.innerHTML += "<li><strong>Replacement String: </strong>"+string.value.replace(wdOri.value, wdRep.value)+"</li>"
+                output.innerHTML += "<li><strong>Cut String: </strong>"+string.value.substring(parseInt(pStr.value), parseInt(pFnl.value))+"</li>"
+
 
             } else {
                 alert('Please enter a paragraph!')
