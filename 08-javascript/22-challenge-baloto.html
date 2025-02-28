@@ -159,17 +159,6 @@
         section .page-target:target {
             display: block;               /*  Muestra la sección cuando su id coincide con el hash en la URL */                             
         }                               /*  Se le pone flex en luhar de block por que main es flex. */   
-
-    
-
-        
-
-
-
-
-
-
-                                
        
     </style>
     
@@ -257,6 +246,7 @@
           superBalotaDiv.textContent = superBalota;
         }
 
+        // Funcion para funcionamiento del Confetti
         function lanzarConfetti() {
             function randomInRange(min, max) {
                 return Math.random() * (max - min) + min;
@@ -273,7 +263,7 @@
         // Asignar evento al botón "Jugar"
         botonJugar.addEventListener('click', function(){
             mostrarResultado();
-            lanzarConfetti();
+            lanzarConfetti();      // Llamamos al Confetti
         })
 
 
