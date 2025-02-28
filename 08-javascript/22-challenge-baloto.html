@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>22- challengue-baloto</title>
     <link rel="stylesheet" href="css/master.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <style>
          /*** Pague # 1: Home Principal ***/
          section div.home-principal {
@@ -99,14 +100,57 @@
                     cursor: pointer;
 
                 }
+            
+            div.page-play > div.numero-1 {
+                /* border: red solid 1px; */
+                width: 50px;
+                height: 50px;
+                position: absolute;
+                top: 377px;
+                left: 35px;
+            }
+            div.page-play > div.numero-2 {
+                /* border: red solid 1px; */
+                width: 50px;
+                height: 50px;
+                position: absolute;
+                top: 297px;
+                left: 100px;
+            }
+            div.page-play > div.numero-3 {
+                /* border: red solid 1px; */
+                width: 50px;
+                height: 50px;
+                position: absolute;
+                top: 237px;
+                left: 175px;
+            }
+            div.page-play > div.numero-4 {
+                /* border: red solid 1px; */
+                width: 50px;
+                height: 50px;
+                position: absolute;
+                top: 297px;
+                left: 255px;
+            }
+            div.page-play > div.numero-5 {
+                /* border: red solid 1px; */
+                width: 50px;
+                height: 50px;
+                position: absolute;
+                top: 377px;
+                left: 300px;
+            }
+            div.page-play > div.super-balota  {
+                /* border: red solid 1px; */
+                width: 50px;
+                height: 50px;
+                position: absolute;
+                top: 391px;
+                left: 181px;
 
+            }
 
-        
-
-
-
-
-        
         /**** Target: Paginaciones  ****/
         section .page-target {
              display: none;                 /*  Oculta todas las secciones 17-pokedex-api.html#page1-home-principal */
@@ -147,23 +191,94 @@
             <div class="home-principal page-target" id="page1-home-principal">
                 <a href="#page2-play-balloto" class="button-home"></a>
             </div> 
+
             <!-- Page # 2 --> 
             <div class="page-play page-target" id="page2-play-balloto">
                 <div class="header-play">
                     <a href="#page1-home-principal" class="button-back"></a>
                     <div class="title-balloto"></div>
                 </div>
-                <button class="button-play"></button>
+                <button id="botonJugar" class="button-play"></button>
+
+                <!-- Contenedores para los números y la súper balota -->
+                <div id="numero1" class="numero-1"></div>
+                <div id="numero2" class="numero-2"></div>
+                <div id="numero3" class="numero-3"></div>
+                <div id="numero4" class="numero-4"></div>
+                <div id="numero5" class="numero-5"></div>
+                <div id="superBalota" class="super-balota"></div>
             </div>
             
         </section>
          
     </main>  
     <script>
-        // Elements
-        let array = []
+        // Elementos 
+        const botonJugar = document.getElementById('botonJugar');
+        const numero1 = document.getElementById('numero1');
+        const numero2 = document.getElementById('numero2');
+        const numero3 = document.getElementById('numero3');
+        const numero4 = document.getElementById('numero4');
+        const numero5 = document.getElementById('numero5');
+        const superBalotaDiv = document.getElementById('superBalota');
 
+        // Función para generar los números aleatorios
+        function generarNumerosBaloto() {
+          const numeros = [];
+          const superBalota = Math.floor(Math.random() * 16) + 1;    // match randon, Número del 1 al 16
         
+          // Generar 5 números únicos del 1 al 43
+          while (numeros.length < 5) {             // Generar los numeros unicos  lo agregamos a la lista numeros
+            const numero = Math.floor(Math.random() * 43) + 1;
+            if (!numeros.includes(numero)) {
+              numeros.push(numero);
+            }
+          }
+      
+          // Ordenar los números de menor a mayor
+          //numeros.sort((a, b) => a - b);
+      
+          return { numeros, superBalota };
+        }
+
+        // Función para mostrar los números
+        function mostrarResultado() {
+          // Generar nuevos números
+          const { numeros, superBalota } = generarNumerosBaloto();
+        
+          // Asignar cada número a su div correspondiente
+          numero1.textContent = numeros[0];
+          numero2.textContent = numeros[1];
+          numero3.textContent = numeros[2];
+          numero4.textContent = numeros[3];
+          numero5.textContent = numeros[4];
+        
+          // Asignar la súper balota a su div
+          superBalotaDiv.textContent = superBalota;
+        }
+
+        function lanzarConfetti() {
+            function randomInRange(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            confetti({
+            angle: randomInRange(55, 125),
+            spread: randomInRange(50, 70),
+            particleCount: randomInRange(50, 100),
+            origin: { y: 0.6 }
+            });
+        }
+
+        // Asignar evento al botón "Jugar"
+        botonJugar.addEventListener('click', function(){
+            mostrarResultado();
+            lanzarConfetti();
+        })
+
+
+      
+
 
     </script>
 </body>
