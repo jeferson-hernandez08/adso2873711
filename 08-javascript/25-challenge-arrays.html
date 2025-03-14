@@ -78,27 +78,111 @@
                     div.title-xmen:hover {
                         transform: rotateX(360deg);
                     }
-            
-            .page-play > button.button-play {
-                background: url(images/balloto/button_play.svg) no-repeat center;
-                /* border: red solid 1px; */
-                border-radius: 10px;
-                height: 50px;
-                width: 210px;
-                /* Truco de Centrado: */
-                position: absolute;
-                bottom: 1rem;                       /* Alinea el botón a la parte inferior */
-                left: 50%;
-                transform: translateX(-50%);        /*  Centra el botón horizontalmente */   
-                margin-bottom: 10px;                /*  Para subir el botón un poco  */
-                transition: all 0.3s;
-            }
-                button.button-play:hover {
-                    transform: translateX(-50%) scale(1.1);
-                    cursor: pointer;
 
+            /* <!-- Contenedor Personajes --> */
+            div.container-characters {
+                /* border: solid red 1px; */
+                margin-top: 42px;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);      /* Cuatro columnas de igual ancho */
+                grid-gap: 10px; /* Espacio entre los elementos */
+                padding: 10px;
+            }
+
+                .container-characters > .character-1, .character-2, .character-3, .character-4, .character-5, .character-6, .character-7, .character-8 {
+                    height: 75px;
+                    width: 75px;
+                    color: white;
+                    text-align: center;
+                    padding: 20px;
+                    font-size: 1.5em;
+                    /* border: 1px solid #ff0000; */
                 }
+
+                .container-characters > .character-1 {
+                    background: url(images/array/wolwerine.svg) no-repeat center;
+                    transition: all 0.3s;
+                }
+                    .character-1:hover {
+                        transform: scale(1.2);
+                        cursor: pointer;
+                    }
+
+                .container-characters > .character-2 {
+                    background: url(images/array/magneto.svg) no-repeat center;
+                    transition: all 0.3s;
+                }
+                    .character-2:hover {
+                        transform: scale(1.2);
+                        cursor: pointer;
+                    }
+                    
+                .container-characters > .character-3 {
+                    background: url(images/array/ciclope.svg) no-repeat center;
+                    transition: all 0.3s;
+                }
+                    .character-3:hover {
+                        transform: scale(1.2);
+                        cursor: pointer;
+                    }
+
+                .container-characters > .character-4 {
+                    background: url(images/array/deadpool.svg) no-repeat center;
+                    transition: all 0.3s;
+                }
+                    .character-4:hover {
+                        transform: scale(1.2);
+                        cursor: pointer;
+                    }
+
+                .container-characters > .character-5 {
+                    background: url(images/array/storm.svg) no-repeat center;
+                    transition: all 0.3s;
+                }
+                    .character-5:hover {
+                        transform: scale(1.2);
+                        cursor: pointer;
+                    }
+
+                .container-characters > .character-6 {
+                    background: url(images/array/gambito.svg) no-repeat center;
+                    transition: all 0.3s;
+                }
+                    .character-6:hover {
+                        transform: scale(1.2);
+                        cursor: pointer;
+                    }
+
+                .container-characters > .character-7 {
+                    background: url(images/array/nightcrawler.svg) no-repeat center;
+                    transition: all 0.3s;
+                }
+                    .character-7:hover {
+                        transform: scale(1.2);
+                        cursor: pointer;
+                    }
+
+                .container-characters > .character-8 {
+                    background: url(images/array/mystique.svg) no-repeat center;
+                    transition: all 0.3s;
+                }
+                    .character-8:hover {
+                        transform: scale(1.2);
+                        cursor: pointer;
+                    }
+
+            /* <!-- Contenedor Selects --> */
+            div.container-selects {
+                border: solid red 1px;
+                margin-top: 42px;
+                padding: 20px;
+            }
+
+
+
             
+                
+
            
 
 
@@ -149,13 +233,26 @@
                     <a href="#page1-home-principal" class="button-back"></a>
                     <div class="title-xmen"></div>
                 </div>
-            
-            
+                <!-- Contenedor Personajes --> 
+                <div class="container-characters">
+                    <div class="character-1"></div>
+                    <div class="character-2"></div>
+                    <div class="character-3"></div>
+                    <div class="character-4"></div>
+                    <div class="character-5"></div>
+                    <div class="character-6"></div>
+                    <div class="character-7"></div>
+                    <div class="character-8"></div>
+                </div>
+                <!-- Contenedor Selects -->
+                <div class="container-selects">
+                    <div class="select-firts-last"></div>
+                    <div class="select-add-remove"></div>
+                    <input class="select-position" type="number" placeholder="position">
+                </div>
 
-                
 
             </div>
-
         </section>
          
     </main>  
