@@ -6,7 +6,7 @@
     <title>25- challengue-array</title>
     <link rel="stylesheet" href="css/master.css">
     <style>
-        /*** Pague # 1: Home Principal ***/
+        /*** Pague # 1: Home Principal ***/    
         section div.home-principal {
             background: url(images/array/body_home.svg) no-repeat center;
             /* border: red solid 2px; */
@@ -187,14 +187,24 @@
                     background: url(images/array/button_first.svg) no-repeat center;
                     width: 92px;
                     height: 25px;
+                    transition: all 0.3s;
                 }
+                    .select-firts-last:hover {
+                        transform: scale(1.1);
+                        cursor: pointer;
+                    }
 
                 div.container-selects > .select-add-remove {
                     /* border: red solid 1px; */
                     background: url(images/array/button_add.svg) no-repeat center;
                     width: 92px;
                     height: 25px;
+                    transition: all 0.3s;
                 }
+                    .select-add-remove:hover {
+                        transform: scale(1.1);
+                        cursor: pointer;
+                    }
 
                 div.container-selects > .select-position {
                     /* border: red solid 1px; */
@@ -234,6 +244,13 @@
                         transform: scale(1.4);
                         cursor: pointer;
                     }
+            
+            /* <!-- Contenedor Resultados --> */
+            div.container-results {
+                border: red 1px solid;
+                margin-top: 55px;
+                padding: 40px;
+            }
 
         
          /**** Target: Paginaciones  ****/
@@ -285,19 +302,50 @@
                 </div>
                 <!-- Contenedor Selects -->
                 <div class="container-selects">
-                    <div class="select-firts-last"></div>
-                    <div class="select-add-remove"></div>
+                    <div id="select-first-last" class="select-firts-last"></div>
+                    <div id="select-add-remove" class="select-add-remove"></div>
                     <div class="select-position">
                         <input class="input" type="number" placeholder="  position">
                     </div>
                 </div>
                 <!-- Contenedor Button Agregar y remover -->
                 <div class="container-add-remove">
-                    <div class="button-add-remove"></div>
+                    <div id="button-add-remove" class="button-add-remove"></div>
                 </div>
+                <!-- Contenedor Resultados -->
+                 <div class="container-results">
+
+                 </div>
             </div>
         </section>
          
     </main>  
+    <script>
+         // Selecciona los botones por su ID
+        const selectFirstLast = document.getElementById('select-first-last');
+        const selectAddRemove = document.getElementById('select-add-remove');
+        const buttonAddRemove = document.getElementById('button-add-remove');
+
+        // Agrega eventos de clic a los botones
+        selectFirstLast.addEventListener('click', function() {
+            // Cambia la imagen de fondo del botón
+            if (selectFirstLast.style.backgroundImage.includes('button_first.svg')) {
+                selectFirstLast.style.backgroundImage = 'url(images/array/button_last.svg)';
+            } else {
+                selectFirstLast.style.backgroundImage = 'url(images/array/button_first.svg)';
+            }
+        });
+
+        selectAddRemove.addEventListener('click', function() {
+            // Cambia la imagen de fondo del botón
+            if (selectAddRemove.style.backgroundImage.includes('button_add.svg')) {
+                selectAddRemove.style.backgroundImage = 'url(images/array/button_remove.svg)';
+                buttonAddRemove.style.backgroundImage = 'url(images/array/signo-menos.svg)';
+            } else {
+                selectAddRemove.style.backgroundImage = 'url(images/array/button_add.svg)';
+                buttonAddRemove.style.backgroundImage = 'url(images/array/signo-mas.svg)';
+            }
+        });
+    </script>
 </body>
 </html>
