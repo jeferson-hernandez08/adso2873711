@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>25- challengue-array</title>
     <link rel="stylesheet" href="css/master.css">
-    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /*** Pague # 1: Home Principal ***/
         section div.home-principal {
@@ -92,9 +91,10 @@
                 .container-characters > .character-1, .character-2, .character-3, .character-4, .character-5, .character-6, .character-7, .character-8 {
                     height: 75px;
                     width: 75px;
+                    margin: auto;
                     color: white;
-                    text-align: center;
-                    padding: 20px;
+                    
+                    padding: 0px;
                     font-size: 1.5em;
                     /* border: 1px solid #ff0000; */
                 }
@@ -173,29 +173,69 @@
 
             /* <!-- Contenedor Selects --> */
             div.container-selects {
-                border: solid red 1px;
-                margin-top: 42px;
-                padding: 20px;
+                /* border: solid red 1px; */
+                margin-top: 40px;
+                padding: 10px;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0px;
+                justify-items: center;
             }
 
+                div.container-selects > .select-firts-last {
+                    /* border: red solid 1px; */
+                    background: url(images/array/button_first.svg) no-repeat center;
+                    width: 92px;
+                    height: 25px;
+                }
 
+                div.container-selects > .select-add-remove {
+                    /* border: red solid 1px; */
+                    background: url(images/array/button_add.svg) no-repeat center;
+                    width: 92px;
+                    height: 25px;
+                }
 
-            
-                
+                div.container-selects > .select-position {
+                    /* border: red solid 1px; */
+                    background:url(images/array/button_position.svg);
+                    width: 92px;
+                    height: 25px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    
+                    .input {
+                        /* border: red solid 1px; */
+                        border-radius: 10px;
+                        width: 70px;
+                        height: 12px;
+                        text-align: center;
+                        
+                    }
+                }
 
-           
+            /* <!-- Contenedor Button Agregar y remover --> */
+            div.container-add-remove {
+                /* border: red 1px solid; */
+                padding: 5px;
+            }
 
+                div.container-add-remove > .button-add-remove {
+                    /* border: red 1px solid; */
+                    background: url(images/array/signo-mas.svg);
+                    width: 43px;
+                    height: 43px;
+                    margin: auto;
+                    transition: all 0.5s;
+                    
+                }
+                    .button-add-remove:hover {
+                        transform: scale(1.4);
+                        cursor: pointer;
+                    }
 
-
-
-
-
-
-
-
-
-
-
+        
          /**** Target: Paginaciones  ****/
         section .page-target {
              display: none;                 /*  Oculta todas las secciones 17-pokedex-api.html#page1-home-principal */
@@ -204,7 +244,6 @@
         section .page-target:target {
             display: block;               /*  Muestra la sección cuando su id coincide con el hash en la URL */                             
         }                               /*  Se le pone flex en luhar de block por que main es flex. */  
-
 
     </style>
     
@@ -248,10 +287,14 @@
                 <div class="container-selects">
                     <div class="select-firts-last"></div>
                     <div class="select-add-remove"></div>
-                    <input class="select-position" type="number" placeholder="position">
+                    <div class="select-position">
+                        <input class="input" type="number" placeholder="  position">
+                    </div>
                 </div>
-
-
+                <!-- Contenedor Button Agregar y remover -->
+                <div class="container-add-remove">
+                    <div class="button-add-remove"></div>
+                </div>
             </div>
         </section>
          
