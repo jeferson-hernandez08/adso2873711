@@ -438,17 +438,27 @@
 
             if (isAddMode) {
                 // Agregar personaje al array charactersArray
-                if (isFirstMode) {     // Si verdadero al principio
-                    charactersArray.unshift(selectedCharacter);     // Unshift:  Agrega al principio del array charactersArray
-                } else {         // Si falso al final
-                    charactersArray.push(selectedCharacter);       // Push: Agrega al final del array charactersArray
+                if (positionInput.value !== "") {
+                    const index = parseInt(positionInput.value);                 // let charactersArray = ["Wolverine", "Magneto", "Storm"];
+                    if (index >= 0 && index <= charactersArray.length) {         // Agregar: Solo podemos agregar elementos en cualquier posición, incluyendo al final del array. Por eso, el índice puede ser menor o igual a la longitud del array (index <= charactersArray.length). < se usa para eliminar porque solo puedes eliminar elementos que ya existen.     
+                        charactersArray.splice(index, 0, selectedCharacter);     // Agrega en la posición especificada, sin eliminar ningún elemento. array.splice(start, deleteCount, item1, item2, ...); start: Es el índice en el que comienza la modificación del array. deletecount: 0 o 1, 0 no se elimina ningún elemento. item: array
+                    } else {
+                        alert("Índice fuera de rango.");
+                        return;
+                    }
+                } else {
+                    if (isFirstMode) {     // Si verdadero al principio
+                        charactersArray.unshift(selectedCharacter);     // Unshift:  Agrega al principio del array charactersArray
+                    } else {         // Si falso al final
+                        charactersArray.push(selectedCharacter);       // Push: Agrega al final del array charactersArray
+                    }
                 }
             } else {
                 // Eliminar personaje
                 if (positionInput.value !== "") {
                     const index = parseInt(positionInput.value);
-                    if (index >= 0 && index < charactersArray.length) {
-                        charactersArray.splice(index, 1);     // Elimina en la posición especificada
+                    if (index >= 0 && index < charactersArray.length) {     // Eliminar: Solo podemos eliminar elementos que ya existen en el array. Por eso, el índice debe ser menor que la longitud del array (index < charactersArray.length). <= se usa para agregar porque puedes insertar un nuevo elemento en una posición que aún no existe (como el final del array).
+                        charactersArray.splice(index, 1);                   // Elimina en la posición especificada
                     } else {
                         alert("Índice fuera de rango.");
                         return;
@@ -478,6 +488,19 @@
             });
         }
 
+        // 6. Funciones utilizadas para la manipulacion de arrays.
+        /*
+            a. splice():    El método .splice() es una función incorporada en JavaScript que se utiliza para modificar arrays.
+                            Es una herramienta muy poderosa porque te permite agregar, eliminar o reemplazar elementos en un array en cualquier posición. 
+                            Su flexibilidad lo convierte en una de las funciones más utilizadas para manipular arrays.
+            b. .unshift():  Agrega al principio del array
+
+            c. .push():     Agrega al final del array 
+
+            d. .shift():    Elimina al principio del array
+
+            e. .pop();      Elimina al final del array
+        */
     </script>
 </body>
 </html>
