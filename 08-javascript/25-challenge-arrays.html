@@ -89,18 +89,51 @@
             }
 
                 .container-characters > .character-1, .character-2, .character-3, .character-4, .character-5, .character-6, .character-7, .character-8 {
-                    height: 75px;
-                    width: 75px;
+                    height: 70px;
+                    width: 70px;
                     margin: auto;
                     color: white;
-                    
+                    border-radius: 50%;
                     padding: 0px;
                     font-size: 1.5em;
                     /* border: 1px solid #ff0000; */
                 }
 
+                /* Aplicamos el efecto de resaltado difunado a cada personaje */
+                .character-1.selected {
+                    box-shadow: 0 0 15px 10px #F4F41F;  /* Efecto de wolwerine */  /* 1: desplazamiento horizontal de la sombra, 2: desplazamiento vertical de la sombra, 3: difusión de sombra, 4: Tamaño de espanción de sombra */
+                }
+
+                .character-2.selected {
+                    box-shadow: 0 0 15px 10px #DF4531; /* Efecto de magneto */
+                }
+
+                .character-3.selected {
+                    box-shadow: 0 0 15px 10px #2485B7; /* Efecto de ciclope */
+                }
+
+                .character-4.selected {
+                    box-shadow: 0 0 15px 10px #CA373B; /* Efecto de deadpool */
+                }
+
+                .character-5.selected {
+                    box-shadow: 0 0 15px 10px #DBDBDB; /* Efecto de storm */
+                }
+
+                .character-6.selected {
+                    box-shadow: 0 0 15px 10px #CC6C97; /* Efecto de gambito */
+                }
+
+                .character-7.selected {
+                    box-shadow: 0 0 15px 10px #B1283A; /* Efecto de nightcrawler */
+                }
+
+                .character-8.selected {
+                    box-shadow: 0 0 15px 10px #1FC0E8; /* Efecto de mystique */
+                }
+
                 .container-characters > .character-1 {
-                    background: url(images/array/wolwerine.svg) no-repeat center;
+                    background: url(images/array/wolverine.svg) no-repeat center;
                     transition: all 0.3s;
                 }
                     .character-1:hover {
@@ -248,8 +281,33 @@
             /* <!-- Contenedor Resultados --> */
             div.container-results {
                 border: red 1px solid;
-                margin-top: 55px;
-                padding: 40px;
+                margin-top: 46px;
+                padding: 10px;
+                display: flex;
+                overflow-x: auto;        /* Para evitar el desbordamiento */
+                gap: 10px;
+                white-space: nowrap;     /* Evita que los elementos se envuelvan */
+                height: 100px;           /* Altura fija para el contenedor */
+            }
+
+            .result-character {
+                height: 75px;
+                width: 75px;
+                position: relative;
+                background-size: cover;
+                flex-shrink: 0;          /* Evita que los elementos se reduzcan */
+            }
+
+            .result-character::before {
+                content: attr(data-index);
+                position: absolute;
+                top: 5px;
+                left: 5px;
+                background: rgba(0, 0, 0, 0.7);
+                color: white;
+                padding: 2px 5px;
+                border-radius: 3px;
+                font-size: 12px;
             }
 
         
@@ -291,21 +349,21 @@
                 </div>
                 <!-- Contenedor Personajes --> 
                 <div class="container-characters">
-                    <div class="character-1"></div>
-                    <div class="character-2"></div>
-                    <div class="character-3"></div>
-                    <div class="character-4"></div>
-                    <div class="character-5"></div>
-                    <div class="character-6"></div>
-                    <div class="character-7"></div>
-                    <div class="character-8"></div>
+                    <div class="character character-1" data-name="Wolverine"></div>
+                    <div class="character character-2" data-name="Magneto"></div>
+                    <div class="character character-3" data-name="Ciclope"></div>
+                    <div class="character character-4" data-name="Deadpool"></div>
+                    <div class="character character-5" data-name="Storm"></div>
+                    <div class="character character-6" data-name="Gambito"></div>
+                    <div class="character character-7" data-name="Nightcrawler"></div>
+                    <div class="character character-8" data-name="Mystique"></div>
                 </div>
                 <!-- Contenedor Selects -->
                 <div class="container-selects">
                     <div id="select-first-last" class="select-firts-last"></div>
                     <div id="select-add-remove" class="select-add-remove"></div>
                     <div class="select-position">
-                        <input class="input" type="number" placeholder="  position">
+                        <input id="position-input" class="input" type="number" placeholder="  position">
                     </div>
                 </div>
                 <!-- Contenedor Button Agregar y remover -->
@@ -313,7 +371,7 @@
                     <div id="button-add-remove" class="button-add-remove"></div>
                 </div>
                 <!-- Contenedor Resultados -->
-                 <div class="container-results">
+                 <div id="container-results" class="container-results">
 
                  </div>
             </div>
@@ -321,31 +379,104 @@
          
     </main>  
     <script>
-         // Selecciona los botones por su ID
+        // Variables globales
+        let selectedCharacter = null;  // Variable para mensaje de alerta
+        let charactersArray = [];      // Inicializacion y Decalracion de array para almacenar los personajes
+        let isAddMode = true;          // true para agregar, false para eliminar
+        let isFirstMode = true;        // true para agregar/eliminar al principio, false para el final
+
+        // Seleccionamos los elementos del DOM | por su ID
+        const characters = document.querySelectorAll('.character');            // Selecciono todos los character
         const selectFirstLast = document.getElementById('select-first-last');
         const selectAddRemove = document.getElementById('select-add-remove');
         const buttonAddRemove = document.getElementById('button-add-remove');
+        const containerResults = document.getElementById('container-results');
+        const positionInput = document.getElementById('position-input');
 
-        // Agrega eventos de clic a los botones
-        selectFirstLast.addEventListener('click', function() {
-            // Cambia la imagen de fondo del botón
-            if (selectFirstLast.style.backgroundImage.includes('button_first.svg')) {
-                selectFirstLast.style.backgroundImage = 'url(images/array/button_last.svg)';
-            } else {
-                selectFirstLast.style.backgroundImage = 'url(images/array/button_first.svg)';
-            }
+        // 1. Evento para seleccionar un personaje y aplicar efecto resaltado o difuninado a cada personaje
+        characters.forEach(character => {                // forEch para sleccionar los character
+            character.addEventListener('click', () => {
+                // Deselecciona todos los personajes
+                characters.forEach(c => c.classList.remove('selected'));
+                // Selecciona el personaje por lo cual que demos click
+                character.classList.add('selected');
+                selectedCharacter = character.getAttribute('data-name');   // Me Guarda el personaje cuando de click en la variable selectAddRemove y Mas abajo lo agrega al arreglo. 
+            });
         });
 
-        selectAddRemove.addEventListener('click', function() {
-            // Cambia la imagen de fondo del botón
+        // 2. Evento para cambiar entre agregar y eliminar y suicheo de images | add a remove
+        selectAddRemove.addEventListener('click', () => {
             if (selectAddRemove.style.backgroundImage.includes('button_add.svg')) {
-                selectAddRemove.style.backgroundImage = 'url(images/array/button_remove.svg)';
+                selectAddRemove.style.backgroundImage = 'url(images/array/button_remove.svg)';  // selectAddRemove propiedad para suicheo o cambio de imgs
                 buttonAddRemove.style.backgroundImage = 'url(images/array/signo-menos.svg)';
+                isAddMode = false;
             } else {
                 selectAddRemove.style.backgroundImage = 'url(images/array/button_add.svg)';
                 buttonAddRemove.style.backgroundImage = 'url(images/array/signo-mas.svg)';
+                isAddMode = true;
             }
         });
+
+        // 3. Evento para cambiar entre agregar y eliminar al principio o al final del array y suicheo de images | first a last
+        selectFirstLast.addEventListener('click', () => {
+            if (selectFirstLast.style.backgroundImage.includes('button_first.svg')) {
+                selectFirstLast.style.backgroundImage = 'url(images/array/button_last.svg)';
+                isFirstMode = false;
+            } else {
+                selectFirstLast.style.backgroundImage = 'url(images/array/button_first.svg)';
+                isFirstMode = true;
+            }
+        });
+
+        // 4. Evento logica para agregar o eliminar personajes |    AQUI Error de wolwerine 
+        buttonAddRemove.addEventListener('click', () => {
+            if (!selectedCharacter) {
+                alert("Por favor seleccione un personaje.");
+                return;
+            }
+
+            if (isAddMode) {
+                // Agregar personaje al array charactersArray
+                if (isFirstMode) {     // Si verdadero al principio
+                    charactersArray.unshift(selectedCharacter);     // Unshift:  Agrega al principio del array charactersArray
+                } else {         // Si falso al final
+                    charactersArray.push(selectedCharacter);       // Push: Agrega al final del array charactersArray
+                }
+            } else {
+                // Eliminar personaje
+                if (positionInput.value !== "") {
+                    const index = parseInt(positionInput.value);
+                    if (index >= 0 && index < charactersArray.length) {
+                        charactersArray.splice(index, 1);     // Elimina en la posición especificada
+                    } else {
+                        alert("Índice fuera de rango.");
+                        return;
+                    }
+                } else {
+                    if (isFirstMode) {
+                        charactersArray.shift();     // Shift: Elimina al principio del array charactersArray
+                    } else {
+                        charactersArray.pop();     // Pop: Elimina al final del array charactersArray
+                    }
+                }
+            }
+
+            // Actualiza la visualización de los resultados
+            updateResults();
+        });
+
+        // Función para actualizar la visualización de los resultados
+        function updateResults() {
+            containerResults.innerHTML = ""; // Limpia el contenedor
+            charactersArray.forEach((character, index) => {
+                const characterDiv = document.createElement('div');
+                characterDiv.className = `result-character ${character.toLowerCase()}`;
+                characterDiv.style.backgroundImage = `url(images/array/${character.toLowerCase()}.svg)`;   // Busca la imagen del personaje correspondiente (Mismo nombre con la imagen y el data-name) | Por eso no me imprima wolverine por que estaba wolwerine.svg
+                characterDiv.setAttribute('data-index', index);
+                containerResults.appendChild(characterDiv);
+            });
+        }
+
     </script>
 </body>
 </html>
