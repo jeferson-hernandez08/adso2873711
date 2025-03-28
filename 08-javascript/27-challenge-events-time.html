@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>27- challenge-events-time</title>
+    <link rel="stylesheet" href="css/master.css">
+    <style>
+        /* body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #000;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        } */
+
+        #game-container {
+            position: relative;
+            width: 400px;
+            height: 600px;
+            background: #222;
+            overflow: hidden;
+            border: 4px solid #555;
+            box-shadow: 0 0 20px #0ff;
+        }
+
+        #road {
+            position: absolute;
+            width: 300px;
+            height: 2000px;
+            left: 50px;
+            background: #333;
+            background-image: 
+                linear-gradient(90deg, #fff 0%, #fff 5%, transparent 5%, transparent 95%, #fff 95%, #fff 100%),
+                linear-gradient(90deg, #fff 0%, #fff 5%, transparent 5%, transparent 95%, #fff 95%, #fff 100%),
+                linear-gradient(90deg, #fff 0%, #fff 5%, transparent 5%, transparent 95%, #fff 95%, #fff 100%);
+            background-size: 100% 80px;
+            background-repeat: repeat-y;
+            animation: roadMove 1s linear infinite;
+        }
+
+        @keyframes roadMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 80px; }
+        }
+
+        #player-car {
+            position: absolute;
+            width: 40px;
+            height: 70px;
+            bottom: 100px;
+            left: 180px;
+            z-index: 10;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 70"><rect x="5" y="10" width="30" height="50" fill="%23d00"/><rect x="10" y="0" width="20" height="10" fill="%23d00"/><rect x="15" y="5" width="10" height="5" fill="%23ccc"/><rect x="0" y="20" width="5" height="30" fill="%23aaa"/><rect x="35" y="20" width="5" height="30" fill="%23aaa"/><circle cx="10" cy="60" r="5" fill="%23222"/><circle cx="30" cy="60" r="5" fill="%23222"/></svg>');
+        }
+
+        .enemy-car {
+            position: absolute;
+            width: 40px;
+            height: 70px;
+            z-index: 5;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 70"><rect x="5" y="10" width="30" height="50" fill="%2300d"/><rect x="10" y="0" width="20" height="10" fill="%2300d"/><rect x="15" y="5" width="10" height="5" fill="%23ccc"/><rect x="0" y="20" width="5" height="30" fill="%23aaa"/><rect x="35" y="20" width="5" height="30" fill="%23aaa"/><circle cx="10" cy="60" r="5" fill="%23222"/><circle cx="30" cy="60" r="5" fill="%23222"/></svg>');
+        }
+
+        .fuel {
+            position: absolute;
+            width: 30px;
+            height: 50px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 50"><rect x="5" y="0" width="20" height="40" fill="%23ff0" stroke="%23000" stroke-width="1"/><rect x="10" y="40" width="10" height="10" fill="%23800"/></svg>');
+            z-index: 5;
+        }
+
+        #hud {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            font-size: 18px;
+            z-index: 20;
+            text-shadow: 2px 2px 2px #000;
+        }
+
+        #fuel-gauge {
+            position: absolute;
+            top: 40px;
+            left: 10px;
+            width: 100px;
+            height: 10px;
+            background: #333;
+            border: 1px solid #fff;
+            z-index: 20;
+        }
+
+        #fuel-level {
+            height: 100%;
+            width: 100%;
+            background: #ff0;
+            transition: width 0.3s;
+        }
+
+        #game-over {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            z-index: 30;
+        }
+
+        #game-over h1 {
+            color: #f00;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        #start-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            z-index: 30;
+        }
+
+        #start-screen h1 {
+            color: #f00;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background: #d00;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .explosion {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" fill="%23f80"/><circle cx="25" cy="25" r="15" fill="%23ff0"/><circle cx="25" cy="25" r="10" fill="%23f00"/></svg>');
+            background-size: contain;
+            z-index: 15;
+            animation: explode 0.5s forwards;
+        }
+
+        @keyframes explode {
+            0% { transform: scale(0.5); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="controls">
+        <a href="index.html"> <!-- ../para devolverme  -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        </a>
+    </nav>
+    <main>
+        <header>
+            <h1>27- Challenge events time</h1>
+            <h2>Este challengue es de video juego</h2>
+        </header>
+        <section>
+            <div id="game-container">
+                <div id="road"></div>
+                <div id="player-car"></div>
+                <div id="hud">SCORE: <span id="score">0</span></div>
+                <div id="fuel-gauge"><div id="fuel-level"></div></div>
+                
+                <div id="game-over">
+                    <h1>GAME OVER</h1>
+                    <p>FINAL SCORE: <span id="final-score">0</span></p>
+                    <button id="restart-btn">PLAY AGAIN</button>
+                </div>
+                
+                <div id="start-screen">
+                    <h1>ROAD FIGHTER</h1>
+                    <p>Use arrow keys to drive</p>
+                    <p>Avoid crashes with cars and road edges!</p>
+                    <button id="start-btn">START GAME</button>
+                </div>
+            </div>
+        
+            <audio id="engine-sound" loop src="https://assets.mixkit.co/sfx/preview/mixkit-car-engine-revving-1560.mp3"></audio>
+            <audio id="crash-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-car-crash-with-explosion-1617.mp3"></audio>
+            <audio id="fuel-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-arcade-game-complete-or-approved-205.mp3"></audio>
+
+        </section>
+    </main>  
+    <script>
+        // Game elements
+        const gameContainer = document.getElementById('game-container');
+        const playerCar = document.getElementById('player-car');
+        const scoreDisplay = document.getElementById('score');
+        const fuelLevel = document.getElementById('fuel-level');
+        const gameOverScreen = document.getElementById('game-over');
+        const finalScoreDisplay = document.getElementById('final-score');
+        const restartBtn = document.getElementById('restart-btn');
+        const startScreen = document.getElementById('start-screen');
+        const startBtn = document.getElementById('start-btn');
+        
+        // Sounds
+        const engineSound = document.getElementById('engine-sound');
+        const crashSound = document.getElementById('crash-sound');
+        const fuelSound = document.getElementById('fuel-sound');
+        
+        // Game variables
+        let score = 0;
+        let fuel = 100;
+        let gameSpeed = 2;
+        let gameRunning = false;
+        let animationId;
+        let enemies = [];
+        let fuels = [];
+        let explosions = [];
+        
+        // Player car properties
+        const player = {
+            x: 180,
+            y: 480,
+            width: 40,
+            height: 70,
+            speed: 5
+        };
+        
+        // Controls
+        const keys = {
+            ArrowUp: false,
+            ArrowDown: false,
+            ArrowLeft: false,
+            ArrowRight: false
+        };
+        
+        // Event listeners
+        document.addEventListener('keydown', (e) => {
+            if (keys.hasOwnProperty(e.key)) {
+                keys[e.key] = true;
+            }
+        });
+        
+        document.addEventListener('keyup', (e) => {
+            if (keys.hasOwnProperty(e.key)) {
+                keys[e.key] = false;
+            }
+        });
+        
+        startBtn.addEventListener('click', startGame);
+        restartBtn.addEventListener('click', startGame);
+        
+        // Start game
+        function startGame() {
+            // Reset game state
+            score = 0;
+            fuel = 100;
+            gameSpeed = 2;
+            enemies = [];
+            fuels = [];
+            
+            // Reset displays
+            scoreDisplay.textContent = '0';
+            fuelLevel.style.width = '100%';
+            
+            // Reset player position
+            player.x = 180;
+            player.y = 480;
+            updatePlayerPosition();
+            
+            // Clear existing elements
+            document.querySelectorAll('.enemy-car, .fuel, .explosion').forEach(el => el.remove());
+            
+            // Hide screens
+            gameOverScreen.style.display = 'none';
+            startScreen.style.display = 'none';
+            
+            // Start engine sound
+            engineSound.currentTime = 0;
+            engineSound.play();
+            
+            // Start game loop
+            gameRunning = true;
+            gameLoop();
+        }
+        
+        // Main game loop
+        function gameLoop() {
+            if (!gameRunning) return;
+            
+            // Move player
+            movePlayer();
+            
+            // Check if player hits road edges
+            checkRoadEdges();
+            
+            // Spawn enemies and fuel
+            if (Math.random() < 0.02) {
+                spawnEnemy();
+            }
+            
+            if (Math.random() < 0.005) {
+                spawnFuel();
+            }
+            
+            // Move game elements
+            moveEnemies();
+            moveFuel();
+            
+            // Check collisions
+            checkCollisions();
+            
+            // Update score and fuel
+            updateGameState();
+            
+            // Continue game loop
+            animationId = requestAnimationFrame(gameLoop);
+        }
+        
+        // Move player car
+        function movePlayer() {
+            if (keys.ArrowLeft) {
+                player.x -= player.speed;
+            }
+            if (keys.ArrowRight) {
+                player.x += player.speed;
+            }
+            if (keys.ArrowUp) {
+                player.y -= player.speed;
+            }
+            if (keys.ArrowDown) {
+                player.y += player.speed;
+            }
+            
+            updatePlayerPosition();
+        }
+        
+        // Check if player hits road edges
+        function checkRoadEdges() {
+            // Left edge (50px is road start)
+            if (player.x < 50) {
+                player.x = 50;
+                handleCrash(null); // Explode without enemy
+            }
+            // Right edge (350px is road end - 50px start + 300px width)
+            else if (player.x + player.width > 350) {
+                player.x = 350 - player.width;
+                handleCrash(null); // Explode without enemy
+            }
+            
+            updatePlayerPosition();
+        }
+        
+        function updatePlayerPosition() {
+            playerCar.style.left = `${player.x}px`;
+            playerCar.style.top = `${player.y}px`;
+        }
+        
+        // Spawn enemy car
+        function spawnEnemy() {
+            const enemy = document.createElement('div');
+            enemy.className = 'enemy-car';
+            
+            const lane = Math.floor(Math.random() * 3);
+            const x = 60 + (lane * 100) + Math.random() * 20 - 10;
+            const y = -70;
+            
+            enemy.style.left = `${x}px`;
+            enemy.style.top = `${y}px`;
+            
+            gameContainer.appendChild(enemy);
+            
+            enemies.push({
+                element: enemy,
+                x: x,
+                y: y,
+                width: 40,
+                height: 70,
+                speed: 2 + Math.random() * gameSpeed
+            });
+        }
+        
+        // Spawn fuel can
+        function spawnFuel() {
+            const fuelCan = document.createElement('div');
+            fuelCan.className = 'fuel';
+            
+            const x = 60 + Math.random() * 280;
+            const y = -50;
+            
+            fuelCan.style.left = `${x}px`;
+            fuelCan.style.top = `${y}px`;
+            
+            gameContainer.appendChild(fuelCan);
+            
+            fuels.push({
+                element: fuelCan,
+                x: x,
+                y: y,
+                width: 30,
+                height: 50,
+                speed: 1 + Math.random() * gameSpeed
+            });
+        }
+        
+        // Move enemies
+        function moveEnemies() {
+            for (let i = enemies.length - 1; i >= 0; i--) {
+                const enemy = enemies[i];
+                enemy.y += enemy.speed;
+                enemy.element.style.top = `${enemy.y}px`;
+                
+                // Remove if off screen
+                if (enemy.y > 600) {
+                    enemy.element.remove();
+                    enemies.splice(i, 1);
+                }
+            }
+        }
+        
+        // Move fuel cans
+        function moveFuel() {
+            for (let i = fuels.length - 1; i >= 0; i--) {
+                const fuelCan = fuels[i];
+                fuelCan.y += fuelCan.speed;
+                fuelCan.element.style.top = `${fuelCan.y}px`;
+                
+                // Remove if off screen
+                if (fuelCan.y > 600) {
+                    fuelCan.element.remove();
+                    fuels.splice(i, 1);
+                }
+            }
+        }
+        
+        // Check collisions
+        function checkCollisions() {
+            // Enemy collisions
+            for (let i = 0; i < enemies.length; i++) {
+                const enemy = enemies[i];
+                if (checkCollision(player, enemy)) {
+                    handleCrash(enemy);
+                    return;
+                }
+            }
+            
+            // Fuel collisions
+            for (let i = 0; i < fuels.length; i++) {
+                const fuelCan = fuels[i];
+                if (checkCollision(player, fuelCan)) {
+                    collectFuel(fuelCan);
+                    return;
+                }
+            }
+        }
+        
+        // Check if two objects collide
+        function checkCollision(obj1, obj2) {
+            return obj1.x < obj2.x + obj2.width &&
+                   obj1.x + obj1.width > obj2.x &&
+                   obj1.y < obj2.y + obj2.height &&
+                   obj1.y + obj1.height > obj2.y;
+        }
+        
+        // Handle crash with enemy or road edge
+        function handleCrash(enemy) {
+            // Play crash sound
+            crashSound.currentTime = 0;
+            crashSound.play();
+            
+            // Create explosion at player position
+            createExplosion(player.x, player.y);
+            
+            // Remove enemy if it was a collision
+            if (enemy) {
+                enemy.element.remove();
+                enemies = enemies.filter(e => e !== enemy);
+            }
+            
+            // Lose fuel
+            fuel -= 30;
+            if (fuel <= 0) {
+                fuel = 0;
+                gameOver();
+            }
+            
+            // Flash screen red
+            gameContainer.style.backgroundColor = '#300';
+            setTimeout(() => {
+                gameContainer.style.backgroundColor = '#222';
+            }, 200);
+        }
+        
+        // Handle fuel collection
+        function collectFuel(fuelCan) {
+            // Play fuel sound
+            fuelSound.currentTime = 0;
+            fuelSound.play();
+            
+            // Add fuel
+            fuel = Math.min(100, fuel + 25);
+            
+            // Remove fuel can
+            fuelCan.element.remove();
+            fuels = fuels.filter(f => f !== fuelCan);
+            
+            // Add score
+            score += 50;
+        }
+        
+        // Create explosion effect
+        function createExplosion(x, y) {
+            const explosion = document.createElement('div');
+            explosion.className = 'explosion';
+            explosion.style.left = `${x - 5}px`;
+            explosion.style.top = `${y - 5}px`;
+            
+            gameContainer.appendChild(explosion);
+            
+            // Remove after animation
+            setTimeout(() => {
+                explosion.remove();
+            }, 500);
+        }
+        
+        // Update game state (score, fuel)
+        function updateGameState() {
+            // Decrease fuel over time
+            fuel -= 0.05;
+            fuelLevel.style.width = `${fuel}%`;
+            
+            // Increase score based on speed
+            score += Math.floor(gameSpeed);
+            scoreDisplay.textContent = score;
+            
+            // Increase difficulty
+            if (score % 500 === 0) {
+                gameSpeed += 0.2;
+            }
+            
+            // Game over if no fuel
+            if (fuel <= 0) {
+                gameOver();
+            }
+        }
+        
+        // Game over
+        function gameOver() {
+            gameRunning = false;
+            cancelAnimationFrame(animationId);
+            
+            // Stop engine sound
+            engineSound.pause();
+            
+            // Show game over screen
+            finalScoreDisplay.textContent = score;
+            gameOverScreen.style.display = 'flex';
+        }
+    </script>
+</body>
+</html>
