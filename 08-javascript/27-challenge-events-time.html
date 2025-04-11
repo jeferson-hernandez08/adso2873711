@@ -240,6 +240,25 @@
             100% { transform: scale(2); opacity: 0; }
         }
 
+         /* Superman flying animation */
+         .superman {
+            position: absolute;
+            width: 50px;
+            height: 30px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 30"><path d="M25,5 L30,15 L25,25 L20,15 Z" fill="%23FF0000"/><path d="M15,15 L35,15" stroke="%23FF0000" stroke-width="2"/><circle cx="25" cy="10" r="3" fill="%230000FF"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 25;
+            left: 20px;
+            animation: supermanFly 3s linear infinite;
+            display: none;
+        }
+
+        @keyframes supermanFly {
+            0% { top: -30px; }
+            100% { top: 614px; }
+        }
+
         /**** Target: Paginaciones  ****/
         section .page-target {
              display: none;                 /*  Oculta todas las secciones 17-pokedex-api.html#page1-home-principal */
@@ -274,6 +293,7 @@
                 <div id="player-car"></div>
                 <div id="hud">SCORE: <span id="score">0</span></div>
                 <div id="fuel-gauge"><div id="fuel-level"></div></div>
+                <div class="superman" id="superman"></div>
                 
                 <div id="game-over">
                     <h1>GAME OVER</h1>
@@ -306,6 +326,7 @@
         const restartBtn = document.getElementById('restart-btn');
         const startScreen = document.getElementById('start-screen');
         const startBtn = document.getElementById('start-btn');
+        const supermanElement = document.getElementById('superman');   // Superman
         
         // Sounds
         const engineSound = document.getElementById('engine-sound');
@@ -321,6 +342,7 @@
         let enemies = [];
         let fuels = [];
         let explosions = [];
+        let supermanShown = false;
         
         // Player car properties
         const player = {
@@ -363,10 +385,14 @@
             gameSpeed = 2;
             enemies = [];
             fuels = [];
+            supermanShown = false;
             
             // Reset displays
             scoreDisplay.textContent = '0';
             fuelLevel.style.width = '100%';
+
+            // Hide superman
+            supermanElement.style.display = 'none';
             
             // Reset player position
             player.x = 162.5;
@@ -420,6 +446,26 @@
             
             // Continue game loop
             animationId = requestAnimationFrame(gameLoop);
+        }
+
+        // Check if we should show superman
+        function checkSupermanAppearance() {
+            if (score >= 2000 && !supermanShown) {
+                showSuperman();
+                supermanShown = true;
+            }
+        }
+        
+        // Show superman flying
+        function showSuperman() {
+            supermanElement.style.display = 'block';
+            supermanElement.style.left = '20px';
+            supermanElement.style.top = '-30px';
+            
+            // Reset superman after animation completes
+            setTimeout(() => {
+                supermanElement.style.display = 'none';
+            }, 3000);
         }
         
         // Move player car
