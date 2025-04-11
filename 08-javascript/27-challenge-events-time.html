@@ -6,7 +6,7 @@
     <title>27- challenge-events-time</title>
     <link rel="stylesheet" href="css/master.css">
     <style>
-        /* body {
+       /* body {
             margin: 0;
             padding: 0;
             display: flex;
@@ -20,8 +20,9 @@
 
         #game-container {
             position: relative;
-            width: 400px;
-            height: 600px;
+            width: 355px;
+            height: 614px;
+            margin: 1rem auto;
             background: #222;
             overflow: hidden;
             border: 4px solid #555;
@@ -30,17 +31,18 @@
 
         #road {
             position: absolute;
-            width: 300px;
+            width: 189px;        /* Dimension de carretera */
             height: 2000px;
-            left: 50px;
-            background: #333;
-            background-image: 
+            left: 83px; /* (355 - 189) / 2 = 83 */
+            /* background: #333; */
+            background: url(images/videoGame/carretera.svg) no-repeat center;
+            /* background-image: 
                 linear-gradient(90deg, #fff 0%, #fff 5%, transparent 5%, transparent 95%, #fff 95%, #fff 100%),
                 linear-gradient(90deg, #fff 0%, #fff 5%, transparent 5%, transparent 95%, #fff 95%, #fff 100%),
-                linear-gradient(90deg, #fff 0%, #fff 5%, transparent 5%, transparent 95%, #fff 95%, #fff 100%);
-            background-size: 100% 80px;
+                linear-gradient(90deg, #fff 0%, #fff 5%, transparent 5%, transparent 95%, #fff 95%, #fff 100%); */
+            /* background-size: 100% 80px; */
             background-repeat: repeat-y;
-            animation: roadMove 1s linear infinite;
+            animation: roadMove 0.2s linear infinite;
         }
 
         @keyframes roadMove {
@@ -50,28 +52,60 @@
 
         #player-car {
             position: absolute;
-            width: 40px;
-            height: 70px;
+            width: 30px;
+            height: 38px;
             bottom: 100px;
-            left: 180px;
+            left: 162.5px; /* (355 - 30) / 2 = 162.5 */
             z-index: 10;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 70"><rect x="5" y="10" width="30" height="50" fill="%23d00"/><rect x="10" y="0" width="20" height="10" fill="%23d00"/><rect x="15" y="5" width="10" height="5" fill="%23ccc"/><rect x="0" y="20" width="5" height="30" fill="%23aaa"/><rect x="35" y="20" width="5" height="30" fill="%23aaa"/><circle cx="10" cy="60" r="5" fill="%23222"/><circle cx="30" cy="60" r="5" fill="%23222"/></svg>');
+            background: url(images/videoGame/player-car.svg) no-repeat center;
+            /* background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 50"><rect x="3.75" y="7.14" width="22.5" height="35.71" fill="%23d00"/><rect x="7.5" y="0" width="15" height="7.14" fill="%23d00"/><rect x="11.25" y="3.57" width="7.5" height="3.57" fill="%23ccc"/><rect x="0" y="14.29" width="3.75" height="21.43" fill="%23aaa"/><rect x="26.25" y="14.29" width="3.75" height="21.43" fill="%23aaa"/><circle cx="7.5" cy="42.86" r="3.75" fill="%23222"/><circle cx="22.5" cy="42.86" r="3.75" fill="%23222"/></svg>'); */
         }
 
-        .enemy-car {
+        /* Carro Enemigo Amarillo*/
+        .enemy-car-1 {
             position: absolute;
-            width: 40px;
-            height: 70px;
+            width: 30px;
+            height: 34px;
             z-index: 5;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 70"><rect x="5" y="10" width="30" height="50" fill="%2300d"/><rect x="10" y="0" width="20" height="10" fill="%2300d"/><rect x="15" y="5" width="10" height="5" fill="%23ccc"/><rect x="0" y="20" width="5" height="30" fill="%23aaa"/><rect x="35" y="20" width="5" height="30" fill="%23aaa"/><circle cx="10" cy="60" r="5" fill="%23222"/><circle cx="30" cy="60" r="5" fill="%23222"/></svg>');
+            background: url(images/videoGame/enemy-car1-yellow.svg) no-repeat center;
+            /* background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 50"><rect x="3.75" y="7.14" width="22.5" height="35.71" fill="%2300d"/><rect x="7.5" y="0" width="15" height="7.14" fill="%2300d"/><rect x="11.25" y="3.57" width="7.5" height="3.57" fill="%23ccc"/><rect x="0" y="14.29" width="3.75" height="21.43" fill="%23aaa"/><rect x="26.25" y="14.29" width="3.75" height="21.43" fill="%23aaa"/><circle cx="7.5" cy="42.86" r="3.75" fill="%23222"/><circle cx="22.5" cy="42.86" r="3.75" fill="%23222"/></svg>'); */
         }
 
-        .fuel {
+        /* Carro Verde - Tipo 2 (Sedán) */
+        .enemy-car-2 {
             position: absolute;
             width: 30px;
             height: 50px;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 50"><rect x="5" y="0" width="20" height="40" fill="%23ff0" stroke="%23000" stroke-width="1"/><rect x="10" y="40" width="10" height="10" fill="%23800"/></svg>');
             z-index: 5;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 50"><rect x="5" y="10" width="20" height="30" fill="%230a0" rx="2"/><rect x="10" y="0" width="10" height="10" fill="%230a0"/><rect x="12.5" y="5" width="5" height="5" fill="%23fff"/><rect x="0" y="15" width="5" height="20" fill="%23555"/><rect x="25" y="15" width="5" height="20" fill="%23555"/><circle cx="10" cy="45" r="5" fill="%23111"/><circle cx="20" cy="45" r="5" fill="%23111"/></svg>');
+        }
+
+        /* Carro Naranja - Tipo 3 (Deportivo) */
+        .enemy-car-3 {
+            position: absolute;
+            width: 32px;
+            height: 48px;
+            z-index: 5;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 48"><rect x="5" y="8" width="22" height="32" fill="%23f80" rx="3"/><rect x="8" y="0" width="16" height="8" fill="%23f80" rx="2"/><rect x="12" y="4" width="8" height="4" fill="%23fff"/><rect x="0" y="14" width="5" height="20" fill="%23800"/><rect x="27" y="14" width="5" height="20" fill="%23800"/><circle cx="10" cy="43" r="5" fill="%23000"/><circle cx="22" cy="43" r="5" fill="%23000"/></svg>');
+        }
+
+        /* Carro Blanco - Tipo 4 (Camioneta) */
+        .enemy-car-4 {
+            position: absolute;
+            width: 35px;
+            height: 55px;
+            z-index: 5;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 55"><rect x="3" y="8" width="29" height="35" fill="%23fff" rx="3"/><rect x="8" y="0" width="19" height="8" fill="%23fff" rx="2"/><rect x="12" y="4" width="11" height="4" fill="%23000"/><rect x="0" y="15" width="5" height="25" fill="%23aaa"/><rect x="30" y="15" width="5" height="25" fill="%23aaa"/><circle cx="10" cy="50" r="5" fill="%23000"/><circle cx="25" cy="50" r="5" fill="%23000"/></svg>');
+        }
+
+        /* Carro fuel Gasolina */
+        .fuel {
+            position: absolute;
+            width: 29px;
+            height: 35px;
+            z-index: 5;
+            background: url(images/videoGame/fuel-car.svg);
+            /* background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 36"><rect x="3.67" y="0" width="14.67" height="28.8" fill="%23ff0" stroke="%23000" stroke-width="0.73"/><rect x="7.33" y="28.8" width="7.33" height="7.2" fill="%23800"/></svg>'); */
         }
 
         #hud {
@@ -79,17 +113,17 @@
             top: 10px;
             left: 10px;
             color: white;
-            font-size: 18px;
+            font-size: 16px;
             z-index: 20;
             text-shadow: 2px 2px 2px #000;
         }
 
         #fuel-gauge {
             position: absolute;
-            top: 40px;
+            top: 35px;
             left: 10px;
-            width: 100px;
-            height: 10px;
+            width: 80px;
+            height: 8px;
             background: #333;
             border: 1px solid #fff;
             z-index: 20;
@@ -119,8 +153,8 @@
 
         #game-over h1 {
             color: #f00;
-            font-size: 36px;
-            margin-bottom: 20px;
+            font-size: 32px;
+            margin-bottom: 15px;
         }
 
         #start-screen {
@@ -140,26 +174,26 @@
 
         #start-screen h1 {
             color: #f00;
-            font-size: 36px;
-            margin-bottom: 20px;
+            font-size: 32px;
+            margin-bottom: 15px;
         }
 
         button {
-            padding: 10px 20px;
-            font-size: 18px;
+            padding: 8px 16px;
+            font-size: 16px;
             background: #d00;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
         .explosion {
             position: absolute;
-            width: 50px;
-            height: 50px;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" fill="%23f80"/><circle cx="25" cy="25" r="15" fill="%23ff0"/><circle cx="25" cy="25" r="10" fill="%23f00"/></svg>');
+            width: 40px;
+            height: 40px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="%23f80"/><circle cx="20" cy="20" r="12" fill="%23ff0"/><circle cx="20" cy="20" r="8" fill="%23f00"/></svg>');
             background-size: contain;
             z-index: 15;
             animation: explode 0.5s forwards;
@@ -183,6 +217,7 @@
             <h2>Este challengue es de video juego</h2>
         </header>
         <section>
+            <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="450" src="https://embed.figma.com/design/Zorg9fnFdR50UM5MirLa7w/videoGame?node-id=0-1&embed-host=share" allowfullscreen></iframe>
             <div id="game-container">
                 <div id="road"></div>
                 <div id="player-car"></div>
@@ -210,8 +245,8 @@
         </section>
     </main>  
     <script>
-        // Game elements
-        const gameContainer = document.getElementById('game-container');
+         // Game elements
+         const gameContainer = document.getElementById('game-container');
         const playerCar = document.getElementById('player-car');
         const scoreDisplay = document.getElementById('score');
         const fuelLevel = document.getElementById('fuel-level');
@@ -238,11 +273,11 @@
         
         // Player car properties
         const player = {
-            x: 180,
-            y: 480,
-            width: 40,
-            height: 70,
-            speed: 5
+            x: 162.5,
+            y: 464,
+            width: 30,
+            height: 50,
+            speed: 4
         };
         
         // Controls
@@ -283,12 +318,12 @@
             fuelLevel.style.width = '100%';
             
             // Reset player position
-            player.x = 180;
-            player.y = 480;
+            player.x = 162.5;
+            player.y = 464;
             updatePlayerPosition();
             
             // Clear existing elements
-            document.querySelectorAll('.enemy-car, .fuel, .explosion').forEach(el => el.remove());
+            document.querySelectorAll('[class^="enemy-car-"], .fuel, .explosion').forEach(el => el.remove());
             
             // Hide screens
             gameOverScreen.style.display = 'none';
@@ -356,15 +391,22 @@
         
         // Check if player hits road edges
         function checkRoadEdges() {
-            // Left edge (50px is road start)
-            if (player.x < 50) {
-                player.x = 50;
-                handleCrash(null); // Explode without enemy
+            // Left edge (83px is road start)
+            if (player.x < 83) {
+                player.x = 83;
+                handleCrash(null);
             }
-            // Right edge (350px is road end - 50px start + 300px width)
-            else if (player.x + player.width > 350) {
-                player.x = 350 - player.width;
-                handleCrash(null); // Explode without enemy
+            // Right edge (83 + 189 = 272px is road end)
+            else if (player.x + player.width > 272) {
+                player.x = 272 - player.width;
+                handleCrash(null);
+            }
+            
+            // Top and bottom boundaries
+            if (player.y < 0) {
+                player.y = 0;
+            } else if (player.y + player.height > 614) {
+                player.y = 614 - player.height;
             }
             
             updatePlayerPosition();
@@ -375,14 +417,32 @@
             playerCar.style.top = `${player.y}px`;
         }
         
-        // Spawn enemy car
+        // Spawn enemy car con dimensiones específicas
         function spawnEnemy() {
+            const carType = Math.floor(Math.random() * 4) + 1;
             const enemy = document.createElement('div');
-            enemy.className = 'enemy-car';
+            enemy.className = `enemy-car-${carType}`;
+            
+            // Configuración por tipo
+            let config;
+            switch(carType) {
+                case 1: // Compacto
+                    config = { width: 28, height: 45, speed: 2.2, scoreValue: 10 };
+                    break;
+                case 2: // Sedán
+                    config = { width: 30, height: 50, speed: 2.0, scoreValue: 15 };
+                    break;
+                case 3: // Deportivo
+                    config = { width: 32, height: 48, speed: 2.8, scoreValue: 20 };
+                    break;
+                case 4: // Camioneta
+                    config = { width: 35, height: 55, speed: 1.8, scoreValue: 25 };
+                    break;
+            }
             
             const lane = Math.floor(Math.random() * 3);
-            const x = 60 + (lane * 100) + Math.random() * 20 - 10;
-            const y = -70;
+            const x = 88 + (lane * 60) + Math.random() * 15 - 7.5;
+            const y = -config.height;
             
             enemy.style.left = `${x}px`;
             enemy.style.top = `${y}px`;
@@ -393,9 +453,8 @@
                 element: enemy,
                 x: x,
                 y: y,
-                width: 40,
-                height: 70,
-                speed: 2 + Math.random() * gameSpeed
+                ...config,
+                type: carType
             });
         }
         
@@ -404,8 +463,8 @@
             const fuelCan = document.createElement('div');
             fuelCan.className = 'fuel';
             
-            const x = 60 + Math.random() * 280;
-            const y = -50;
+            const x = 88 + Math.random() * 165;
+            const y = -36;
             
             fuelCan.style.left = `${x}px`;
             fuelCan.style.top = `${y}px`;
@@ -416,8 +475,8 @@
                 element: fuelCan,
                 x: x,
                 y: y,
-                width: 30,
-                height: 50,
+                width: 22,
+                height: 36,
                 speed: 1 + Math.random() * gameSpeed
             });
         }
@@ -430,7 +489,7 @@
                 enemy.element.style.top = `${enemy.y}px`;
                 
                 // Remove if off screen
-                if (enemy.y > 600) {
+                if (enemy.y > 614) {
                     enemy.element.remove();
                     enemies.splice(i, 1);
                 }
@@ -445,7 +504,7 @@
                 fuelCan.element.style.top = `${fuelCan.y}px`;
                 
                 // Remove if off screen
-                if (fuelCan.y > 600) {
+                if (fuelCan.y > 614) {
                     fuelCan.element.remove();
                     fuels.splice(i, 1);
                 }
@@ -494,6 +553,10 @@
             if (enemy) {
                 enemy.element.remove();
                 enemies = enemies.filter(e => e !== enemy);
+                
+                // Sumar puntos según el tipo de carro
+                score += enemy.scoreValue;
+                scoreDisplay.textContent = score;
             }
             
             // Lose fuel
@@ -502,6 +565,7 @@
                 fuel = 0;
                 gameOver();
             }
+            fuelLevel.style.width = `${fuel}%`;
             
             // Flash screen red
             gameContainer.style.backgroundColor = '#300';
@@ -518,6 +582,7 @@
             
             // Add fuel
             fuel = Math.min(100, fuel + 25);
+            fuelLevel.style.width = `${fuel}%`;
             
             // Remove fuel can
             fuelCan.element.remove();
@@ -525,6 +590,7 @@
             
             // Add score
             score += 50;
+            scoreDisplay.textContent = score;
         }
         
         // Create explosion effect
@@ -575,6 +641,8 @@
             finalScoreDisplay.textContent = score;
             gameOverScreen.style.display = 'flex';
         }
+       
+      
     </script>
 </body>
 </html>
