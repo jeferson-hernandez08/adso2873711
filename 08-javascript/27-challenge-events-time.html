@@ -6,7 +6,7 @@
     <title>27- challenge-events-time</title>
     <link rel="stylesheet" href="css/master.css">
     <style>
-       /* body {
+       /* body { ****
             margin: 0;
             padding: 0;
             display: flex;
@@ -18,6 +18,35 @@
             font-family: 'Arial', sans-serif;
         } */
 
+        /*** Pague # 1: Home Principal ***/ 
+        section > div.home-principal {
+            background: url(images/videoGame/body_home.svg) no-repeat center;
+            /* border: red solid 2px; */
+            width: 355px;
+            height: 614px;
+            margin: 1rem auto;
+            position: relative;    /*  Necesario para que el botón se posicione relativo a este contenedor  */
+            
+            .button-home {
+                background: url(images/videoGame/button_play.svg) no-repeat center;
+                /* border: red solid 2px; */
+                height: 43px;
+                width: 205px;
+                margin: 1rem auto;
+                /* Truco de Centrado: */
+                position: absolute;
+                bottom: 1rem;                       /* Alinea el botón a la parte inferior */
+                left: 50%;
+                transform: translateX(-50%);        /*  Centra el botón horizontalmente */
+                transition: transform 0.3s;         /*   Añade transiciones suaves | Funciona con el hover */
+            }
+                .button-home:hover {
+                    transform: translateX(-50%) scale(1.1);     /*  Aumenta el tamaño del botón al hacer hover */
+                    cursor: pointer;                            /*  Cambia el cursor para indicar que es clickeable */
+                }   
+         }   
+
+        /*** Page # 2: Page Play ***/
         #game-container {
             background: url(images/videoGame/body_play.svg) no-repeat center;
             position: relative;
@@ -34,16 +63,10 @@
 
         #road {
             position: absolute;
-            width: 189px;        /* Dimension de carretera */
+            width: 189px;          /* Dimension de carretera */
             height: 2000px;
             left: 83px; /* (355 - 189) / 2 = 83 */
-            /* background: #333; */
             background: url(images/videoGame/carretera.svg) no-repeat center;
-            /* background-image: 
-                linear-gradient(90deg, #fff 0%, #fff 5%, transparent 5%, transparent 95%, #fff 95%, #fff 100%),
-                linear-gradient(90deg, #fff 0%, #fff 5%, transparent 5%, transparent 95%, #fff 95%, #fff 100%),
-                linear-gradient(90deg, #fff 0%, #fff 5%, transparent 5%, transparent 95%, #fff 95%, #fff 100%); */
-            /* background-size: 100% 80px; */
             background-repeat: repeat-y;
             animation: roadMove 1s linear infinite;
         }
@@ -60,8 +83,8 @@
 
         #player-car {
             position: absolute;
-            width: 30px;
-            height: 38px;
+            width: 23px;
+            height: 33px;
             bottom: 100px;
             left: 162.5px; /* (355 - 30) / 2 = 162.5 */
             z-index: 10;
@@ -71,8 +94,8 @@
         /* Carro enemigo amarillo*/
         .enemy-car-1 {
             position: absolute;
-            width: 30px;
-            height: 34px;
+            width: 22px;
+            height: 30px;
             z-index: 5;
             background: url(images/videoGame/enemy-car1-yellow.svg) no-repeat center;
         }
@@ -80,8 +103,8 @@
         /* Carro enemigo azul */
         .enemy-car-2 {
             position: absolute;
-            width: 29px;
-            height: 39px;
+            width: 24px;
+            height: 35px;
             z-index: 5;
             background: url(images/videoGame/enemy-car2-blue.svg) no-repeat center;
         }
@@ -89,8 +112,8 @@
         /* Carro enemigo tractomula*/
         .enemy-car-3 {
             position: absolute;
-            width: 40px;
-            height: 80px;
+            width: 34px;
+            height: 75px;
             z-index: 5;
             background: url(images/videoGame/enemy-car3-tractomula.svg) no-repeat center;
         }
@@ -107,8 +130,8 @@
         /* Carro fuel Gasolina */
         .fuel {
             position: absolute;
-            width: 29px;
-            height: 35px;
+            width: 24px;
+            height: 32px;
             z-index: 5;
             background: url(images/videoGame/fuel-car.svg);
             /* background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 36"><rect x="3.67" y="0" width="14.67" height="28.8" fill="%23ff0" stroke="%23000" stroke-width="0.73"/><rect x="7.33" y="28.8" width="7.33" height="7.2" fill="%23800"/></svg>'); */
@@ -143,6 +166,7 @@
         }
 
         #game-over {
+            border: red solid 1px;
             position: absolute;
             top: 0;
             left: 0;
@@ -163,7 +187,12 @@
             margin-bottom: 15px;
         }
 
+        .final-score {
+            color: green;
+        }
+
         #start-screen {
+            border: red solid 1px;
             position: absolute;
             top: 0;
             left: 0;
@@ -175,6 +204,7 @@
             justify-content: center;
             align-items: center;
             color: white;
+            text-align: center;
             z-index: 30;
         }
 
@@ -209,6 +239,16 @@
             0% { transform: scale(0.5); opacity: 1; }
             100% { transform: scale(2); opacity: 0; }
         }
+
+        /**** Target: Paginaciones  ****/
+        section .page-target {
+             display: none;                 /*  Oculta todas las secciones 17-pokedex-api.html#page1-home-principal */
+        }  
+
+        section .page-target:target {
+            display: block;               /*  Muestra la sección cuando su id coincide con el hash en la URL */                             
+        } 
+
     </style>
 </head>
 <body>
@@ -224,7 +264,12 @@
         </header>
         <section>
             <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="450" src="https://embed.figma.com/design/Zorg9fnFdR50UM5MirLa7w/videoGame?node-id=0-1&embed-host=share" allowfullscreen></iframe>
-            <div id="game-container">
+            <!-- Page # 1 --> 
+            <div class="home-principal page-target" id="page1-home-principal">
+                <a href="#game-container" class="button-home"></a>
+            </div> 
+            <!-- Page # 2 --> 
+            <div id="game-container" class="page-target">
                 <div id="road"></div>
                 <div id="player-car"></div>
                 <div id="hud">SCORE: <span id="score">0</span></div>
@@ -232,14 +277,14 @@
                 
                 <div id="game-over">
                     <h1>GAME OVER</h1>
-                    <p>FINAL SCORE: <span id="final-score">0</span></p>
+                    <p class="final-score">FINAL SCORE: <span id="final-score">0</span></p>
                     <button id="restart-btn">PLAY AGAIN</button>
                 </div>
                 
                 <div id="start-screen">
                     <h1>ROAD FIGHTER</h1>
-                    <p>Use arrow keys to drive</p>
-                    <p>Avoid crashes with cars and road edges!</p>
+                    <p>Use las flechas para conducir.</p>
+                    <p>Evita las colisiones con coches y los bordes de la carretera !</p>
                     <button id="start-btn">START GAME</button>
                 </div>
             </div>
@@ -251,8 +296,8 @@
         </section>
     </main>  
     <script>
-         // Game elements
-         const gameContainer = document.getElementById('game-container');
+        // Game elements
+        const gameContainer = document.getElementById('game-container');
         const playerCar = document.getElementById('player-car');
         const scoreDisplay = document.getElementById('score');
         const fuelLevel = document.getElementById('fuel-level');
@@ -442,7 +487,7 @@
                     config = { width: 40, height: 80, speed: 2.8, scoreValue: 20 };
                     break;
                 case 4: // Carro enemigo rojo
-                    config = { width: 22, height: 30, speed: 1.8, scoreValue: 25 };
+                    config = { width: 22, height: 30, speed: 1.0, scoreValue: 25 };
                     break;
             }
             
