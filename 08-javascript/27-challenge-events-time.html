@@ -19,14 +19,17 @@
         } */
 
         #game-container {
+            background: url(images/videoGame/body_play.svg) no-repeat center;
             position: relative;
             width: 355px;
             height: 614px;
             margin: 1rem auto;
-            background: #222;
+            /* background: #222; */
             overflow: hidden;
             border: 4px solid #555;
             box-shadow: 0 0 20px #0ff;
+            background-repeat: repeat-y;
+            animation: gameContainerMove 3s linear infinite;
         }
 
         #road {
@@ -42,12 +45,17 @@
                 linear-gradient(90deg, #fff 0%, #fff 5%, transparent 5%, transparent 95%, #fff 95%, #fff 100%); */
             /* background-size: 100% 80px; */
             background-repeat: repeat-y;
-            animation: roadMove 0.2s linear infinite;
+            animation: roadMove 1s linear infinite;
+        }
+
+        @keyframes gameContainerMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 614px; }
         }
 
         @keyframes roadMove {
             0% { background-position: 0 0; }
-            100% { background-position: 0 80px; }
+            100% { background-position: 0 614px; }
         }
 
         #player-car {
@@ -58,44 +66,42 @@
             left: 162.5px; /* (355 - 30) / 2 = 162.5 */
             z-index: 10;
             background: url(images/videoGame/player-car.svg) no-repeat center;
-            /* background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 50"><rect x="3.75" y="7.14" width="22.5" height="35.71" fill="%23d00"/><rect x="7.5" y="0" width="15" height="7.14" fill="%23d00"/><rect x="11.25" y="3.57" width="7.5" height="3.57" fill="%23ccc"/><rect x="0" y="14.29" width="3.75" height="21.43" fill="%23aaa"/><rect x="26.25" y="14.29" width="3.75" height="21.43" fill="%23aaa"/><circle cx="7.5" cy="42.86" r="3.75" fill="%23222"/><circle cx="22.5" cy="42.86" r="3.75" fill="%23222"/></svg>'); */
         }
 
-        /* Carro Enemigo Amarillo*/
+        /* Carro enemigo amarillo*/
         .enemy-car-1 {
             position: absolute;
             width: 30px;
             height: 34px;
             z-index: 5;
             background: url(images/videoGame/enemy-car1-yellow.svg) no-repeat center;
-            /* background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 50"><rect x="3.75" y="7.14" width="22.5" height="35.71" fill="%2300d"/><rect x="7.5" y="0" width="15" height="7.14" fill="%2300d"/><rect x="11.25" y="3.57" width="7.5" height="3.57" fill="%23ccc"/><rect x="0" y="14.29" width="3.75" height="21.43" fill="%23aaa"/><rect x="26.25" y="14.29" width="3.75" height="21.43" fill="%23aaa"/><circle cx="7.5" cy="42.86" r="3.75" fill="%23222"/><circle cx="22.5" cy="42.86" r="3.75" fill="%23222"/></svg>'); */
         }
 
-        /* Carro Verde - Tipo 2 (Sedán) */
+        /* Carro enemigo azul */
         .enemy-car-2 {
             position: absolute;
-            width: 30px;
-            height: 50px;
+            width: 29px;
+            height: 39px;
             z-index: 5;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 50"><rect x="5" y="10" width="20" height="30" fill="%230a0" rx="2"/><rect x="10" y="0" width="10" height="10" fill="%230a0"/><rect x="12.5" y="5" width="5" height="5" fill="%23fff"/><rect x="0" y="15" width="5" height="20" fill="%23555"/><rect x="25" y="15" width="5" height="20" fill="%23555"/><circle cx="10" cy="45" r="5" fill="%23111"/><circle cx="20" cy="45" r="5" fill="%23111"/></svg>');
+            background: url(images/videoGame/enemy-car2-blue.svg) no-repeat center;
         }
 
-        /* Carro Naranja - Tipo 3 (Deportivo) */
+        /* Carro enemigo tractomula*/
         .enemy-car-3 {
             position: absolute;
-            width: 32px;
-            height: 48px;
+            width: 40px;
+            height: 80px;
             z-index: 5;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 48"><rect x="5" y="8" width="22" height="32" fill="%23f80" rx="3"/><rect x="8" y="0" width="16" height="8" fill="%23f80" rx="2"/><rect x="12" y="4" width="8" height="4" fill="%23fff"/><rect x="0" y="14" width="5" height="20" fill="%23800"/><rect x="27" y="14" width="5" height="20" fill="%23800"/><circle cx="10" cy="43" r="5" fill="%23000"/><circle cx="22" cy="43" r="5" fill="%23000"/></svg>');
+            background: url(images/videoGame/enemy-car3-tractomula.svg) no-repeat center;
         }
 
-        /* Carro Blanco - Tipo 4 (Camioneta) */
+        /* Carro enemigo rojo */
         .enemy-car-4 {
             position: absolute;
-            width: 35px;
-            height: 55px;
+            width: 22px;
+            height: 30px;
             z-index: 5;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 55"><rect x="3" y="8" width="29" height="35" fill="%23fff" rx="3"/><rect x="8" y="0" width="19" height="8" fill="%23fff" rx="2"/><rect x="12" y="4" width="11" height="4" fill="%23000"/><rect x="0" y="15" width="5" height="25" fill="%23aaa"/><rect x="30" y="15" width="5" height="25" fill="%23aaa"/><circle cx="10" cy="50" r="5" fill="%23000"/><circle cx="25" cy="50" r="5" fill="%23000"/></svg>');
+            background: url(images/videoGame/enemy-car4-red.svg) no-repeat center;
         }
 
         /* Carro fuel Gasolina */
@@ -426,17 +432,17 @@
             // Configuración por tipo
             let config;
             switch(carType) {
-                case 1: // Compacto
-                    config = { width: 28, height: 45, speed: 2.2, scoreValue: 10 };
+                case 1: // Carro enemigo amarillo
+                    config = { width: 30, height: 34, speed: 2.2, scoreValue: 10 };
                     break;
-                case 2: // Sedán
-                    config = { width: 30, height: 50, speed: 2.0, scoreValue: 15 };
+                case 2: // Carro enemigo azul
+                    config = { width: 29, height: 39, speed: 2.0, scoreValue: 15 };
                     break;
-                case 3: // Deportivo
-                    config = { width: 32, height: 48, speed: 2.8, scoreValue: 20 };
+                case 3: // Carro enemigo tractomula
+                    config = { width: 40, height: 80, speed: 2.8, scoreValue: 20 };
                     break;
-                case 4: // Camioneta
-                    config = { width: 35, height: 55, speed: 1.8, scoreValue: 25 };
+                case 4: // Carro enemigo rojo
+                    config = { width: 22, height: 30, speed: 1.8, scoreValue: 25 };
                     break;
             }
             
