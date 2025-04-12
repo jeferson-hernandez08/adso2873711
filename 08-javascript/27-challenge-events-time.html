@@ -165,6 +165,7 @@
             transition: width 0.3s;
         }
 
+        /**** Game over ****/
         #game-over {
             border: red solid 1px;
             position: absolute;
@@ -181,7 +182,89 @@
             z-index: 30;
         }
 
-        #game-over h1 {
+        .game-over-card {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 240px;
+            padding: 30px;
+            background: linear-gradient(145deg, #1a1a2e8a, #16213ea1);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5),
+                        0 0 0 2px rgba(255, 215, 0, 0.3),
+                        0 0 30px rgba(255, 69, 0, 0.6);
+            text-align: center;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            z-index: 100;
+            animation: fadeIn 0.5s ease-out, pulse 2s infinite alternate;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .game-over-card h1 {
+            color: #ff5555;
+            font-size: 2.1rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .final-score {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: #f8f8f8;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        #final-score {
+            color: #4CAF50;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        #restart-btn {
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 65, 108, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        #restart-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(255, 65, 108, 0.6);
+            background: linear-gradient(to right, #ff4b2b, #ff416c);
+        }
+
+        #restart-btn:active {
+            transform: translateY(1px);
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -60%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
+        }
+
+        @keyframes pulse {
+            from { box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5),
+                            0 0 0 2px rgba(255, 215, 0, 0.3),
+                            0 0 30px rgba(255, 69, 0, 0.6); }
+            to { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6),
+                        0 0 0 3px rgba(255, 215, 0, 0.4),
+                        0 0 40px rgba(255, 69, 0, 0.8); }
+        }
+
+        /* #game-over h1 {
             color: #f00;
             font-size: 32px;
             margin-bottom: 15px;
@@ -189,8 +272,9 @@
 
         .final-score {
             color: green;
-        }
+        } */
 
+        /**** Start Screen Pantalla de Inicio ****/
         #start-screen {
             border: red solid 1px;
             position: absolute;
@@ -208,7 +292,115 @@
             z-index: 30;
         }
 
-        #start-screen h1 {
+        .start-screen-card {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 240px;
+            padding: 40px 30px;
+            background: rgba(10, 10, 20, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.5),
+                        0 0 30px rgba(255, 100, 0, 0.7),
+                        inset 0 0 10px rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            animation: fadeIn 0.8s ease-out, neonGlow 3s infinite alternate;
+        }
+
+        .start-screen-card h1 {
+            color: #ff5555;
+            font-size: 3rem;
+            margin-bottom: 25px;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.7),
+                        0 0 20px rgba(255, 50, 0, 0.5);
+            letter-spacing: 3px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-top: 0;
+        }
+
+        .start-screen-card p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #e0e0e0;
+            line-height: 1.5;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .start-screen-card p:last-of-type {
+            margin-bottom: 30px;
+        }
+
+        #start-btn {
+            background: linear-gradient(135deg, #b02900, #dda938);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 176, 155, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #start-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 176, 155, 0.6);
+            background: linear-gradient(135deg, #96c93d, #00b09b);
+        }
+
+        #start-btn:active {
+            transform: translateY(1px);
+        }
+
+        #start-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+            pointer-events: none;
+        }
+
+        #start-btn:hover::after {
+            left: 100%;
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -60%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
+        }
+
+        @keyframes neonGlow {
+            from { 
+                box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.5),
+                            0 0 30px rgba(255, 100, 0, 0.7),
+                            inset 0 0 10px rgba(255, 255, 255, 0.1);
+            }
+            to { 
+                box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.7),
+                            0 0 40px rgba(255, 100, 0, 0.9),
+                            inset 0 0 15px rgba(255, 255, 255, 0.2);
+            }
+        }
+
+        /* #start-screen h1 {
             color: #f00;
             font-size: 32px;
             margin-bottom: 15px;
@@ -223,7 +415,7 @@
             border-radius: 4px;
             cursor: pointer;
             margin-top: 15px;
-        }
+        } */
 
         .explosion {
             position: absolute;
@@ -296,16 +488,20 @@
                 <div class="superman" id="superman"></div>
                 
                 <div id="game-over">
-                    <h1>GAME OVER</h1>
-                    <p class="final-score">FINAL SCORE: <span id="final-score">0</span></p>
-                    <button id="restart-btn">PLAY AGAIN</button>
+                    <div class="game-over-card">
+                        <h1>GAME OVER</h1>
+                        <p class="final-score">FINAL SCORE: <span id="final-score">0</span></p>
+                        <button id="restart-btn">PLAY AGAIN</button>
+                    </div>
                 </div>
                 
                 <div id="start-screen">
-                    <h1>ROAD FIGHTER</h1>
-                    <p>Use las flechas para conducir.</p>
-                    <p>Evita las colisiones con coches y los bordes de la carretera !</p>
-                    <button id="start-btn">START GAME</button>
+                    <div class="start-screen-card">
+                        <h1>ROAD FIGHTER</h1>
+                        <p>Use las flechas para conducir.</p>
+                        <p>Evita las colisiones con coches y los bordes de la carretera !</p>
+                        <button id="start-btn">START GAME</button>
+                    </div>
                 </div>
             </div>
         
