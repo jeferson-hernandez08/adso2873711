@@ -68,7 +68,7 @@
             left: 83px; /* (355 - 189) / 2 = 83 */
             background: url(images/videoGame/carretera.svg) no-repeat center;
             background-repeat: repeat-y;
-            animation: roadMove 1s linear infinite;
+            animation: roadMove 0.6s linear infinite;
         }
 
         @keyframes gameContainerMove {
@@ -723,16 +723,16 @@
             let config;
             switch(carType) {
                 case 1: // Carro enemigo amarillo
-                    config = { width: 30, height: 34, speed: 2.2, scoreValue: 10 };
+                    config = { width: 22, height: 30, speed: 3.9, scoreValue: 10 };
                     break;
                 case 2: // Carro enemigo azul
-                    config = { width: 29, height: 39, speed: 2.0, scoreValue: 15 };
+                    config = { width: 24, height: 35, speed: 3.9, scoreValue: 15 };
                     break;
                 case 3: // Carro enemigo tractomula
-                    config = { width: 40, height: 80, speed: 2.8, scoreValue: 20 };
+                    config = { width: 34, height: 75, speed: 3.9, scoreValue: 20 };
                     break;
                 case 4: // Carro enemigo rojo
-                    config = { width: 22, height: 30, speed: 1.0, scoreValue: 25 };
+                    config = { width: 22, height: 30, speed: 3.9, scoreValue: 25 };
                     break;
             }
             
