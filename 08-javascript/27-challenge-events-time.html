@@ -519,10 +519,15 @@
                     </div>
                 </div>
             </div>
-        
-            <audio id="engine-sound" loop src="https://assets.mixkit.co/sfx/preview/mixkit-car-engine-revving-1560.mp3"></audio>
-            <audio id="crash-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-car-crash-with-explosion-1617.mp3"></audio>
-            <audio id="fuel-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-arcade-game-complete-or-approved-205.mp3"></audio>
+            
+            <!-- Etiquetas para el sonido o audio  --> 
+            <audio id="intro-music" loop src="images/videoGame/audios/deep-urban.mp3"></audio>
+            <audio id="engine-sound" loop src="images/videoGame/audios/car-engine.mp3"></audio>
+            <audio id="crash-sound" src="images/videoGame/audios/car-explosion.wav"></audio>
+            <audio id="fuel-sound" src="images/videoGame/audios/fuel-coin.wav"></audio>
+            <audio id="superman-sound" src="images/videoGame/audios/fly-superman-2.wav"></audio>
+            <audio id="gameover-sound" src="images/videoGame/audios/game-over.wav"></audio>
+            <!-- Pagina para Audios: https://assets.mixkit.co/sfx/preview/mixkit-flying-superhero-1400.mp3  --> 
 
         </section>
     </main>  
@@ -540,9 +545,12 @@
         const supermanElement = document.getElementById('superman');   // Superman
         
         // Sounds
+        const introMusic = document.getElementById('intro-music');  
         const engineSound = document.getElementById('engine-sound');
         const crashSound = document.getElementById('crash-sound');
         const fuelSound = document.getElementById('fuel-sound');
+        const supermanSound = document.getElementById('superman-sound');  
+        const gameOverSound = document.getElementById('gameover-sound'); 
         
         // Game variables
         let score = 0;
@@ -597,6 +605,10 @@
             enemies = [];
             fuels = [];
             supermanShown = false;
+
+            // Stop intro music and superman sound if playing
+            introMusic.pause();
+            supermanSound.pause();
             
             // Reset displays
             scoreDisplay.textContent = '0';
@@ -699,11 +711,19 @@
         function showSuperman() {
             supermanElement.style.display = 'block';
             supermanElement.style.left = '20px';
-            supermanElement.style.top = '614px';    // El superman empieza desde abajo
-            
+            supermanElement.style.top = '614px';    // Aquí el superman empieza desde abajo
+
+            // Reproducir | Play superman sound
+            supermanSound.currentTime = 0;      // Metodo para reiniciar el audio 
+            supermanSound.play();               // Metodo para reproducir el audio
+
+            // Parar | Stop audio
+            engineSound.pause();
+             
             // Reset superman after animation completes
             setTimeout(() => {
                 supermanElement.style.display = 'none';
+                engineSound.play();             // Despues del setTime de 4 segundos reproducir el audio
             }, 4000);
         }
         
@@ -906,8 +926,8 @@
         // Handle crash with enemy or road edge
         function handleCrash(enemy) {
             // Play crash sound
-            crashSound.currentTime = 0;
-            crashSound.play();
+            crashSound.currentTime = 0;     // Metodo para reiniciar audio
+            crashSound.play();              // Metodo para reproducir audio
             
             // Create explosion at player position
             createExplosion(player.x, player.y);
@@ -940,8 +960,8 @@
         // Handle fuel collection
         function collectFuel(fuelCan) {
             // Play fuel sound
-            fuelSound.currentTime = 0;
-            fuelSound.play();
+            fuelSound.currentTime = 0;     // Metodo para reiniciar el audio
+            fuelSound.play();              // Metodo para reproducir audio
             
             // Add fuel
             fuel = Math.min(100, fuel + 25);
@@ -1015,13 +1035,40 @@
             gameRunning = false;
             cancelAnimationFrame(animationId);
             
-            // Stop engine sound
+            // Parar audios | Stop all sounds
+            introMusic.pause();
             engineSound.pause();
+            supermanSound.pause();
+
+            // Reproducir audio game over sound | Start game over sound
+            gameOverSound.currentTime = 0;
+            gameOverSound.play();
             
             // Show game over screen
             finalScoreDisplay.textContent = score;
             gameOverScreen.style.display = 'flex';
         }
+
+        // Al cargar la página, reproducir la música de inicio
+        window.addEventListener('load', () => {
+            // introMusic.currentTime = 0; // Reiniciar la música
+            // introMusic.play(); // Reproducir música
+           
+        });
+
+
+        // Reproducir audio de intro al hacer clic en el botón de inicio
+        startBtn.addEventListener('click', () => {
+            introMusic.currentTime = 0; // Reiniciar la música
+            introMusic.play(); // Reproducir música
+            startGame(); // Llama a la funcion iniciar el juego
+        });
+        
+        // Para que la musica se muestre en la pantalla de inicio
+        startScreen.style.display = 'flex';
+        introMusic.currentTime = 0;
+        introMusic.play();
+
        
       
     </script>
