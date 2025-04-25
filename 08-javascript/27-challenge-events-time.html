@@ -137,32 +137,56 @@
             /* background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 36"><rect x="3.67" y="0" width="14.67" height="28.8" fill="%23ff0" stroke="%23000" stroke-width="0.73"/><rect x="7.33" y="28.8" width="7.33" height="7.2" fill="%23800"/></svg>'); */
         }
 
-        #hud {
-            position: absolute;
+        .score-fuel-container {
+            /* border: red 3px solid; */
+            border-radius: 5px;
+            position: absolute;     /* Padre posicion absoluta */
             top: 10px;
             left: 10px;
-            color: white;
-            font-size: 16px;
+            background-color: #000000a6; 
+            padding: 5px;
             z-index: 20;
-            text-shadow: 2px 2px 2px #000;
-        }
+            display: flex;
+            flex-direction: column;
+            gap: 5px;                 /* Espacio entre el score y la barra de combustible */
 
-        #fuel-gauge {
-            position: absolute;
-            top: 35px;
-            left: 10px;
-            width: 80px;
-            height: 8px;
-            background: #333;
-            border: 1px solid #fff;
-            z-index: 20;
-        }
+                #hud {
+                    /* border: red 2px solid; */
+                    /* position: absolute; */
+                    /* top: 10px;
+                    left: 10px; */
+                    color: white;
+                    font-size: 16px;
+                    /* z-index: 20; */
+                    text-shadow: 2px 2px 2px #000;
+                }
 
-        #fuel-level {
-            height: 100%;
-            width: 100%;
-            background: #ff0;
-            transition: width 0.3s;
+                .fuel-icon {
+                    border: red 2px solid;
+                    background: url(images/videoGame/)no-repeat center;     /*Agregar ICONO AQUI */
+                    height: 15px;
+                    width: 15px;
+                }
+        
+                #fuel-gauge {
+                    /* border: red 2px solid; */
+                    /* position: absolute; */
+                    /* top: 35px;
+                    left: 10px; */
+                    width: 120px;
+                    height: 8px;
+                    background: #333;
+                    border: 1px solid #fff;
+                    z-index: 20;
+                }
+    
+                #fuel-level {
+                    /* border: red 2px solid; */
+                    height: 100%;
+                    width: 100%;
+                    background: #ff0;
+                    transition: width 0.3s;
+                }
         }
 
         /**** Game over ****/
@@ -498,8 +522,11 @@
             <div id="game-container" class="page-target">
                 <div id="road"></div>
                 <div id="player-car"></div>
-                <div id="hud">SCORE: <span id="score">0</span></div>
-                <div id="fuel-gauge"><div id="fuel-level"></div></div>
+                <div class="score-fuel-container">
+                    <div id="hud">SCORE: <span id="score">0</span></div>
+                    <div class="fuel-icon"></div>
+                    <div id="fuel-gauge"><div id="fuel-level"></div></div>
+                </div>
                 <div class="superman" id="superman"></div>
                 
                 <div id="game-over">
@@ -514,7 +541,8 @@
                     <div class="start-screen-card">
                         <h1>ROAD FIGHTER</h1>
                         <p>Use las flechas para conducir.</p>
-                        <p>Evita las colisiones con coches y los bordes de la carretera !</p>
+                        <p>Evita las colisiones con coches y los bordes de la carretera.</p>
+                        <p>Apuesta, el que haga más puntos gana !</p>
                         <button id="start-btn">START GAME</button>
                     </div>
                 </div>
@@ -527,7 +555,8 @@
             <audio id="fuel-sound" src="images/videoGame/audios/fuel-coin.wav"></audio>
             <audio id="superman-sound" src="images/videoGame/audios/fly-superman.wav"></audio>
             <audio id="gameover-sound" src="images/videoGame/audios/game-over.wav"></audio>
-            <!-- Pagina para Audios: https://assets.mixkit.co/sfx/preview/mixkit-flying-superhero-1400.mp3  --> 
+            <!-- Pagina para Audios: https://assets.mixkit.co/sfx/preview/mixkit-flying-superhero-1400.mp3  -->
+            <!-- Pagina para Recortar Audios: https://vocalremover.org/es/cutter --> 
 
         </section>
     </main>  
@@ -559,9 +588,9 @@
         let gameRunning = false;
         let animationId;
         let enemies = [];
-        let fuels = [];        // Declaración de Array para los fuels cars
+        let fuels = [];               // Declaración de Array para los fuels cars
         let explosions = [];
-        let supermanShown = false;
+        let supermanShown = false;    // Variable para mostrar super man 
         
         // Propiedades del Carro del Jugador
         const player = {
