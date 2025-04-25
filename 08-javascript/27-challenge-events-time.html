@@ -432,6 +432,21 @@
             100% { transform: scale(2); opacity: 0; }
         }
 
+        .green-explosion {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="%2390ee90"/><circle cx="20" cy="20" r="12" fill="%2332cd32"/><circle cx="20" cy="20" r="8" fill="%23008000"/></svg>');
+            background-size: contain;
+            z-index: 15;
+            animation: green-explode 0.5s forwards;
+        }
+
+        @keyframes green-explode {
+            0% { transform: scale(0.5); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+
          /* Superman flying animation */
          .superman {
             position: absolute;
@@ -610,6 +625,31 @@
             gameRunning = true;
             gameLoop();
         }
+
+        // Funcion para verificar si una pocision está ocupada
+        function isPositionOccupied(x, y, width, height, buffer = 10) {
+            // Verificar colisión con otros enemigos
+            for (const enemy of enemies) {
+                if (x < enemy.x + enemy.width + buffer && 
+                    x + width + buffer > enemy.x && 
+                    y < enemy.y + enemy.height + buffer && 
+                    y + height + buffer > enemy.y) {
+                    return true;
+                }
+            }
+            
+            // Verificar colisión con objetos de combustible
+            for (const fuel of fuels) {
+                if (x < fuel.x + fuel.width + buffer && 
+                    x + width + buffer > fuel.x && 
+                    y < fuel.y + fuel.height + buffer && 
+                    y + height + buffer > fuel.y) {
+                    return true;
+                }
+            }
+            
+            return false;
+        }
         
         // Main game loop
         function gameLoop() {
@@ -736,10 +776,22 @@
                     break;
             }
             
-            const lane = Math.floor(Math.random() * 3);
-            const x = 88 + (lane * 60) + Math.random() * 15 - 7.5;
-            const y = -config.height;
+            let x, y;
+            let attempts = 0;
+            const maxAttempts = 10;
             
+            do {
+                const lane = Math.floor(Math.random() * 3);
+                x = 88 + (lane * 60) + Math.random() * 15 - 7.5;
+                y = -config.height;
+                attempts++;
+                
+                if (attempts >= maxAttempts) {
+                    // Si no encontramos posición después de varios intentos, no generamos el enemigo
+                    return;
+                }
+            } while (isPositionOccupied(x, y, config.width, config.height));
+
             enemy.style.left = `${x}px`;
             enemy.style.top = `${y}px`;
             
@@ -759,8 +811,22 @@
             const fuelCan = document.createElement('div');
             fuelCan.className = 'fuel';
             
-            const x = 88 + Math.random() * 165;
-            const y = -36;
+            let x, y;
+            let attempts = 0;
+            const maxAttempts = 10;
+            const fuelWidth = 24;
+            const fuelHeight = 32;
+
+            do {
+                x = 88 + Math.random() * 165;
+                y = -fuelHeight;
+                attempts++;
+                
+                if (attempts >= maxAttempts) {
+                    // Si no encontramos posición después de varios intentos, no generamos el combustible
+                    return;
+                }
+            } while (isPositionOccupied(x, y, fuelWidth, fuelHeight));
             
             fuelCan.style.left = `${x}px`;
             fuelCan.style.top = `${y}px`;
@@ -771,9 +837,10 @@
                 element: fuelCan,
                 x: x,
                 y: y,
-                width: 22,
-                height: 36,
-                speed: 1 + Math.random() * gameSpeed
+                width: fuelWidth,
+                height: fuelHeight,
+                speed: 3.9       // Velocidad fija
+                // speed: 1 + Math.random() * gameSpeed    // Velocidad variable
             });
         }
         
@@ -879,6 +946,9 @@
             // Add fuel
             fuel = Math.min(100, fuel + 25);
             fuelLevel.style.width = `${fuel}%`;
+
+            // Create green explosion effect at fuel can position
+            createGreenExplosion(player.x, player.y);   // Llamamos la función para crear la explosión de vida a player car
             
             // Remove fuel can
             fuelCan.element.remove();
@@ -893,6 +963,21 @@
         function createExplosion(x, y) {
             const explosion = document.createElement('div');
             explosion.className = 'explosion';
+            explosion.style.left = `${x - 5}px`;
+            explosion.style.top = `${y - 5}px`;
+            
+            gameContainer.appendChild(explosion);
+            
+            // Remove after animation
+            setTimeout(() => {
+                explosion.remove();
+            }, 500);
+        }
+
+        // Create green explosion effect
+        function createGreenExplosion(x, y) {
+            const explosion = document.createElement('div');
+            explosion.className = 'green-explosion';
             explosion.style.left = `${x - 5}px`;
             explosion.style.top = `${y - 5}px`;
             
