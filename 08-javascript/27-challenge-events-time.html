@@ -525,14 +525,14 @@
             <audio id="engine-sound" loop src="images/videoGame/audios/car-engine.mp3"></audio>
             <audio id="crash-sound" src="images/videoGame/audios/car-explosion.wav"></audio>
             <audio id="fuel-sound" src="images/videoGame/audios/fuel-coin.wav"></audio>
-            <audio id="superman-sound" src="images/videoGame/audios/fly-superman-2.wav"></audio>
+            <audio id="superman-sound" src="images/videoGame/audios/fly-superman.wav"></audio>
             <audio id="gameover-sound" src="images/videoGame/audios/game-over.wav"></audio>
             <!-- Pagina para Audios: https://assets.mixkit.co/sfx/preview/mixkit-flying-superhero-1400.mp3  --> 
 
         </section>
     </main>  
     <script>
-        // Game elements
+        // Declaración de Variables | Elementos del juego
         const gameContainer = document.getElementById('game-container');
         const playerCar = document.getElementById('player-car');
         const scoreDisplay = document.getElementById('score');
@@ -544,7 +544,7 @@
         const startBtn = document.getElementById('start-btn');
         const supermanElement = document.getElementById('superman');   // Superman
         
-        // Sounds
+        // Declaración de Variables | Audios del Juego
         const introMusic = document.getElementById('intro-music');  
         const engineSound = document.getElementById('engine-sound');
         const crashSound = document.getElementById('crash-sound');
@@ -552,18 +552,18 @@
         const supermanSound = document.getElementById('superman-sound');  
         const gameOverSound = document.getElementById('gameover-sound'); 
         
-        // Game variables
+        // Variables del Juego
         let score = 0;
         let fuel = 100;
         let gameSpeed = 2;
         let gameRunning = false;
         let animationId;
         let enemies = [];
-        let fuels = [];
+        let fuels = [];        // Declaración de Array para los fuels cars
         let explosions = [];
         let supermanShown = false;
         
-        // Player car properties
+        // Propiedades del Carro del Jugador
         const player = {
             x: 162.5,
             y: 464,
@@ -572,7 +572,7 @@
             speed: 4
         };
         
-        // Controls
+        // Controles
         const keys = {
             ArrowUp: false,
             ArrowDown: false,
@@ -580,7 +580,7 @@
             ArrowRight: false
         };
         
-        // Event listeners
+        // Event listeners | Eventos o Escuchar DOM
         document.addEventListener('keydown', (e) => {
             if (keys.hasOwnProperty(e.key)) {
                 keys[e.key] = true;
@@ -596,9 +596,9 @@
         startBtn.addEventListener('click', startGame);
         restartBtn.addEventListener('click', startGame);
         
-        // Start game
+        // Iniciar Juego o Start game
         function startGame() {
-            // Reset game state
+            // Resetear Estado del Juego | Reset game state
             score = 0;
             fuel = 100;
             gameSpeed = 2;
@@ -606,26 +606,26 @@
             fuels = [];
             supermanShown = false;
 
-            // Stop intro music and superman sound if playing
+            // Parar el audio de intro y el audio de Superman si se reproduce
             introMusic.pause();
             supermanSound.pause();
             
-            // Reset displays
+            // Resetear  Displays | Reset displays
             scoreDisplay.textContent = '0';
             fuelLevel.style.width = '100%';
 
-            // Hide superman
-            supermanElement.style.display = 'none';
+            // Ocultar el SuperMan | Hide superman
+            supermanElement.style.display = 'none';     // Se necesita ocultar el super cuando el juego Start Game
             
-            // Reset player position
+            // Resetear la posición del jugador | Reset player position
             player.x = 162.5;
             player.y = 464;
             updatePlayerPosition();
             
-            // Clear existing elements
-            document.querySelectorAll('[class^="enemy-car-"], .fuel, .explosion').forEach(el => el.remove());
+            // Borrar Elementos Existentes
+            document.querySelectorAll('[class^="enemy-car-"], .fuel, .explosion').forEach(el => el.remove());    // Borra o resetea los elementos existentes
             
-            // Hide screens
+            // Ocultar Pantallas gameOverScreen y startScreen | Hide screens
             gameOverScreen.style.display = 'none';
             startScreen.style.display = 'none';
             
@@ -633,7 +633,7 @@
             engineSound.currentTime = 0;
             engineSound.play();
             
-            // Start game loop
+            // Iniciar bucle de juego | Start game loop
             gameRunning = true;
             gameLoop();
         }
@@ -663,17 +663,17 @@
             return false;
         }
         
-        // Main game loop
-        function gameLoop() {
+        // Bucle principal del juego | Main game loop
+        function gameLoop() {          // Función donde el juego juega
             if (!gameRunning) return;
             
-            // Move player
+            // Mover Jugardor | Move player
             movePlayer();
             
-            // Check if player hits road edges
+            // Comprueba si el jugador choca con los bordes de la carretera
             checkRoadEdges();
             
-            // Spawn enemies and fuel
+            // if para Generar enemigos y combustible.
             if (Math.random() < 0.02) {
                 spawnEnemy();
             }
@@ -682,26 +682,26 @@
                 spawnFuel();
             }
             
-            // Move game elements
+            // Mover elementos del juego
             moveEnemies();
             moveFuel();
             
-            // Check collisions
+            // Comprobar colisiones | Check collisions
             checkCollisions();
             
-            // Update score and fuel
+            // Actualizar puntuación y combustible. | Update score and fuel
             updateGameState();
 
-            // Check for superman appearance
+            // Comprueba la aparición de Superman | Check for superman appearance
             checkSupermanAppearance();
             
-            // Continue game loop
+            // Continuar el bucle del juego | Continue game loop
             animationId = requestAnimationFrame(gameLoop);
         }
 
-        // Check if we should show superman
+        // Funcion para validar si debemos mostrar el superman 
         function checkSupermanAppearance() {
-            if (score >= 500 && !supermanShown) {
+            if (score >= 3000 && !supermanShown) {    // Si el puntaje es mayor a loq ue le indiquemos chowSuperman()
                 showSuperman();
                 supermanShown = true;   
             }
@@ -709,25 +709,26 @@
         
         // Show superman flying
         function showSuperman() {
-            supermanElement.style.display = 'block';
+            supermanElement.style.display = 'block';    // Display block para mostrar el superman
             supermanElement.style.left = '20px';
             supermanElement.style.top = '614px';    // Aquí el superman empieza desde abajo
 
-            // Reproducir | Play superman sound
+            // Reproducir audio superman | Play superman sound
             supermanSound.currentTime = 0;      // Metodo para reiniciar el audio 
+            supermanSound.currentTime = 1;      // Metodo desde donde empieza el audio OFAC
             supermanSound.play();               // Metodo para reproducir el audio
 
-            // Parar | Stop audio
+            // Parar audio superman | Stop audio
             engineSound.pause();
              
-            // Reset superman after animation completes
+            // setTimeout para reiniciar a Superman después de que se complete la animación
             setTimeout(() => {
                 supermanElement.style.display = 'none';
-                engineSound.play();             // Despues del setTime de 4 segundos reproducir el audio
+                engineSound.play();             // Despues del setTime de 4 segundos reproducir el audio engine car normalmente
             }, 4000);
         }
         
-        // Move player car
+        // Mover el carro del jugador | Move player car
         function movePlayer() {
             if (keys.ArrowLeft) {
                 player.x -= player.speed;
@@ -745,20 +746,20 @@
             updatePlayerPosition();
         }
         
-        // Check if player hits road edges
+        // Funcion para validar si el jugador choca los bordes de la carretera
         function checkRoadEdges() {
-            // Left edge (83px is road start)
+            // Borde Izquierdo | Left edge (83px es el inicio de la carretera)
             if (player.x < 83) {
                 player.x = 83;
                 handleCrash(null);
             }
-            // Right edge (83 + 189 = 272px is road end)
+            // Borde Izquierdo | Right edge (83 + 189 = 272px es el final de la carretera)
             else if (player.x + player.width > 272) {
                 player.x = 272 - player.width;
                 handleCrash(null);
             }
             
-            // Top and bottom boundaries
+            // if para Límites de arriba y abajo
             if (player.y < 0) {
                 player.y = 0;
             } else if (player.y + player.height > 614) {
@@ -773,13 +774,13 @@
             playerCar.style.top = `${player.y}px`;
         }
         
-        // Spawn enemy car con dimensiones específicas
+        // Función para Generar coche enemigo con dimensiones específicas
         function spawnEnemy() {
             const carType = Math.floor(Math.random() * 4) + 1;
             const enemy = document.createElement('div');
             enemy.className = `enemy-car-${carType}`;
             
-            // Configuración por tipo
+            // Configuración por tipo Y dimensiones de los carros
             let config;
             switch(carType) {
                 case 1: // Carro enemigo amarillo
@@ -826,7 +827,7 @@
             });
         }
         
-        // Spawn fuel can
+        // Función para generar el combustible | Spawn fuel can
         function spawnFuel() {
             const fuelCan = document.createElement('div');
             fuelCan.className = 'fuel';
@@ -837,7 +838,7 @@
             const fuelWidth = 24;
             const fuelHeight = 32;
 
-            do {
+            do {    // Do While para validar si hay pocision ocupada
                 x = 88 + Math.random() * 165;
                 y = -fuelHeight;
                 attempts++;
@@ -859,12 +860,12 @@
                 y: y,
                 width: fuelWidth,
                 height: fuelHeight,
-                speed: 3.9       // Velocidad fija
+                speed: 3.9       // Velocidad fija del car fuel
                 // speed: 1 + Math.random() * gameSpeed    // Velocidad variable
             });
         }
         
-        // Move enemies
+        // Mover enemigos
         function moveEnemies() {
             for (let i = enemies.length - 1; i >= 0; i--) {
                 const enemy = enemies[i];
@@ -879,7 +880,7 @@
             }
         }
         
-        // Move fuel cans
+        // Mover carros de combustible
         function moveFuel() {
             for (let i = fuels.length - 1; i >= 0; i--) {
                 const fuelCan = fuels[i];
@@ -894,7 +895,7 @@
             }
         }
         
-        // Check collisions
+        // Comprobar colisiones | Check collisions
         function checkCollisions() {
             // Enemy collisions
             for (let i = 0; i < enemies.length; i++) {
@@ -915,7 +916,7 @@
             }
         }
         
-        // Check if two objects collide
+        // Funcion para validar si dos objetos chocan
         function checkCollision(obj1, obj2) {
             return obj1.x < obj2.x + obj2.width &&
                    obj1.x + obj1.width > obj2.x &&
@@ -923,16 +924,16 @@
                    obj1.y + obj1.height > obj2.y;
         }
         
-        // Handle crash with enemy or road edge
+        // Funcion para Manejar choques con enemigos o con el borde de la carretera
         function handleCrash(enemy) {
             // Play crash sound
             crashSound.currentTime = 0;     // Metodo para reiniciar audio
             crashSound.play();              // Metodo para reproducir audio
             
             // Create explosion at player position
-            createExplosion(player.x, player.y);
+            createExplosion(player.x, player.y);     // Asignar a quien se le genera la explision en este caso car player
             
-            // Remove enemy if it was a collision
+            // If para eliminar enemigo si hubo una colisión
             if (enemy) {
                 enemy.element.remove();
                 enemies = enemies.filter(e => e !== enemy);
@@ -942,24 +943,24 @@
                 scoreDisplay.textContent = score;
             }
             
-            // Lose fuel
+            // Perder Combustible
             fuel -= 30;
             if (fuel <= 0) {
                 fuel = 0;
-                gameOver();
+                gameOver();      // Llamamos la la función gameover
             }
             fuelLevel.style.width = `${fuel}%`;
             
-            // Flash screen red
+            // Destello de Pantalla Roja | Flash screen red
             gameContainer.style.backgroundColor = '#300';
             setTimeout(() => {
                 gameContainer.style.backgroundColor = '#222';
             }, 200);
         }
         
-        // Handle fuel collection
+        // Manejar la recolección de combustible | Handle fuel collection
         function collectFuel(fuelCan) {
-            // Play fuel sound
+            // Reproducir audio de fuelcar | Play fuel sound
             fuelSound.currentTime = 0;     // Metodo para reiniciar el audio
             fuelSound.play();              // Metodo para reproducir audio
             
@@ -967,11 +968,11 @@
             fuel = Math.min(100, fuel + 25);
             fuelLevel.style.width = `${fuel}%`;
 
-            // Create green explosion effect at fuel can position
+            // Crea un efecto de explosión verde en la posición del depósito de combustible, llamamos a la funcion explosion verde
             createGreenExplosion(player.x, player.y);   // Llamamos la función para crear la explosión de vida a player car
             
-            // Remove fuel can
-            fuelCan.element.remove();
+            // Remover o quitar el fuel car combustible | Remove fuel can
+            fuelCan.element.remove();       // Quitamos el elemento fuel car del array fuelCan
             fuels = fuels.filter(f => f !== fuelCan);
             
             // Add score
@@ -979,7 +980,7 @@
             scoreDisplay.textContent = score;
         }
         
-        // Create explosion effect
+        // Funcion para crear efecto explosion
         function createExplosion(x, y) {
             const explosion = document.createElement('div');
             explosion.className = 'explosion';
@@ -994,7 +995,7 @@
             }, 500);
         }
 
-        // Create green explosion effect
+        // Funcion para Crear efecto de explosión verde
         function createGreenExplosion(x, y) {
             const explosion = document.createElement('div');
             explosion.className = 'green-explosion';
@@ -1009,33 +1010,33 @@
             }, 500);
         }
         
-        // Update game state (score, fuel)
+        // Actualizar el estado del juego (puntuación, combustible) | Update game state (score, fuel)
         function updateGameState() {
-            // Decrease fuel over time
-            fuel -= 0.05;
+            // Disminuir el combustible con el tiempo | Decrease fuel over time
+            fuel -= 0.05;             // Variable decremento para ir disminuyendo el combustible lentanente
             fuelLevel.style.width = `${fuel}%`;
             
-            // Increase score based on speed
+            // Aumentar la puntuación en función de la velocidad | Increase score based on speed
             score += Math.floor(gameSpeed);
             scoreDisplay.textContent = score;
             
-            // Increase difficulty
+            // Aumentar la dificultad
             if (score % 500 === 0) {
                 gameSpeed += 0.2;
             }
             
-            // Game over if no fuel
+            // Validacion para acabar el juego si no hay combustible | Game over if no fuel
             if (fuel <= 0) {
                 gameOver();
             }
         }
         
-        // Game over
+        // Funcion Game over
         function gameOver() {
             gameRunning = false;
             cancelAnimationFrame(animationId);
             
-            // Parar audios | Stop all sounds
+            // Parar los audios | Stop all sounds
             introMusic.pause();
             engineSound.pause();
             supermanSound.pause();
@@ -1044,7 +1045,7 @@
             gameOverSound.currentTime = 0;
             gameOverSound.play();
             
-            // Show game over screen
+            // Mostrar juego terminado en pantalla
             finalScoreDisplay.textContent = score;
             gameOverScreen.style.display = 'flex';
         }
