@@ -1,0 +1,29 @@
+{
+    "songs": [
+        {   "id": 1,
+            "title": "Master of Puppets",
+            "artist": "Metallica",
+            "album": "Master of Puppets",
+            "year": 1986,
+            "cover": "images/mp3player/cover1.png",
+            "song": "images/mp3player/audios/master-of-puppets.mp3"
+        },
+        { "id": 2,
+            "title": "And Justice for All",
+            "artist": "Metallica",
+            "album": "And Justice for All",
+            "year": 1988,
+            "cover": "images/mp3player/cover2.png",
+            "song": "images/mp3player/audios/and-justice-for-all.mp3"
+        },
+        { "id": 3,
+            "title": "St. Anger",
+            "artist": "Metallica",
+            "album": "St. Anger",
+            "year": 2003,
+            "cover": "images/mp3player/cover3.png",
+            "song": "images/mp3player/audios/st-anger.mp3"
+        }
+    ]
+}
+

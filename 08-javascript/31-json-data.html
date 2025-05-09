@@ -6,6 +6,103 @@
     <title>31- json-data</title>
     <link rel="stylesheet" href="css/master.css">
 </head>
+<style>
+        div.player {
+            background: linear-gradient(to bottom, #0006, #000c);
+            border-radius: 10px;
+            height: 340px;
+            margin: 2rem auto;
+            position: relative;
+            width: 340px;
+        }
+        h4.title {
+            color: #D7FD00;
+            position: absolute;
+            font-size: 32px;
+            font-family: "League Spartan", sans-serif;
+            font-weight: 700;
+            margin: 0;
+            width: 320px;
+            text-align: center;
+            opacity: 0.9;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        h4.artist, 
+        h4.year {
+            color: #fff;
+            opacity: 0.9;
+            font-size: 20px;
+            font-weight: 500;
+            text-align: center;
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            margin: 0;
+            width: 320px;
+            transform: translateX(-50%);
+            font-family: "League Spartan", sans-serif;
+        }
+
+        h4.year {
+            top: 100px;
+        }
+
+        div.controls {
+            position: absolute;
+            width: 320px;
+            bottom: 40px;
+            height: 92px;
+            left: 50%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transform: translateX(-50%);
+        }
+
+        button {
+            cursor: pointer;
+            transition: transform 0.2s ease-in;
+        }
+
+        button.prev {
+            background: url("images/mp3player/anterior.svg") no-repeat center;
+            background-size: cover;
+            border: none;
+            height: 30px;
+            width: 41px;
+            &:hover {
+                transform: translateX(-4px);
+            }
+        }
+
+        button.play {
+            background: url("images/mp3player/play.svg") no-repeat center;
+            background-size: cover;
+            border: none;
+            height: 75px;
+            width: 75px;
+            &:hover {
+                transform: scale(1.1);
+                transition: all 0.3s ease-in-out;
+            }
+        }
+
+        button.next {
+            background: url("images/mp3player/siguiente.SVG") no-repeat center;
+            background-size: cover;
+            border: none;
+            height: 30px;
+            width: 41px;
+            &:hover {
+                transform: translateX(4px);
+               
+            }
+
+        }
+    </style>
 <body>
     <nav class="controls">
         <a href="index.html"> <!-- ../para devolverme  -->
@@ -15,45 +112,97 @@
     <main>
         <header>
             <h1>31- json data</h1>
-            <h2>Description</h2>
+            <h2>Formato de texto para intercambio de datos, fácil de usar.</h2>
         </header>
         <section>
+             <div class="player">
+                <h4 class="title"></h4>
+                <h4 class="artist"></h4>
+                <h4 class="year"></h4>
+                <div class="controls">
+                    <button class="prev"></button>
+                    <button class="play"></button>
+                    <button class="next"></button>
+                </div>
+            </div>
+            <audio src=""></audio>
 
         </section>
          
     </main>  
     <script>
         // Json: Es un formato de intercambio de datos, es un texto que se puede leer y escribir fácilmente, es un formato ligero y fácil de usar. Se utiliza para almacenar y transportar datos.
-        const mp3 = {
-            'songs': [
-                {   'id': 1,
-                    'title': 'Master of Puppets',
-                    'artist': 'Metallica',
-                    'album': 'Master of Puppets',
-                    'year': 1986,
-                    'cover': 'images/cover-1.jpg',
-                    'song': 'mp3/song-1.mp3'
-                },
-                { 'id': 4,
-                    'title': 'Song 2',
-                    'artist': 'Artist 2',
-                    'duration': 4.0,
-                    'year': 2021,
-                    'album': 'Album 2',
-                    'cover': 'images/cover-2.jpg',
-                    'file': 'audio/song-2.mp3'
-                },
-                { 'id': 5,
-                    'title': 'Song 3',
-                    'artist': 'Artist 3',
-                    'duration': 2.5,
-                    'year': 2022,
-                    'album': 'Album 3',
-                    'cover': 'images/cover-3.jpg',
-                    'file': 'audio/song-3.mp3'
-                }
-            ]
+        
+        // Elements
+        const player = document.querySelector('.player');
+        const title = document.querySelector('.title');
+        const artist = document.querySelector('.artist');
+        const year = document.querySelector('.year');
+        const btnPrev = document.querySelector('.prev');
+        const btnPlay = document.querySelector('.play');
+        const btnNext = document.querySelector('.next');
+        const audio = document.querySelector('audio');
+
+        // Variables
+        let songs = [];
+        let curretSong = 0;
+        let isPlaying = false;
+
+
+        // Functions
+        function loadSong(index) {
+            const song = songs[index];
+            player.style.background = `url(${song.cover}) no-repeat center`;
+            title.textContent = song.title;
+            artist.textContent = `${song.artist} - ${song.album}`;
+            year.textContent = song.year;
+            audio.src = song.song;
+            //audio.play();
+            //console.table(song);   
         }
+
+        
+        // Events
+        btnPlay.addEventListener('click', () => {
+            if (isPlaying) {
+                audio.pause();
+                btnPlay.style.background = 'url("images/mp3player/play.svg") no-repeat center';
+            } else {
+                audio.play();
+                btnPlay.style.background = 'url("images/mp3player/pause.svg") no-repeat center';
+            }
+            isPlaying = !isPlaying;
+        });
+        
+        btnNext.addEventListener('click', (e) => {
+            if(curretSong < songs.length - 1) {
+                curretSong += 1;
+            } else {
+                curretSong = 0;
+            }
+            loadSong(curretSong);
+            btnPlay.style.background = 'url("images/mp3player/play.svg") no-repeat center';
+            isPlaying = false;
+        });
+        
+        btnPrev.addEventListener('click', (e) => {
+            if(curretSong > 0) {
+                curretSong -= 1;
+            } else {
+                curretSong = songs.length - 1;
+            }
+            loadSong(curretSong);
+            btnPlay.style.background = 'url("images/mp3player/play.svg") no-repeat center';
+            isPlaying = false;
+        });
+        
+        fetch('json/playlist.json')
+           .then(response => response.json())
+           .then(data => {
+                songs = data.songs;
+                loadSong(curretSong);
+        }).catch(error => console.error('Error: ', error));
+
     </script>
 </body>
 </html>
