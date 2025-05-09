@@ -3,9 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>32- one-enter-frame</title>
+    <title>32- animation-frame</title>
     <link rel="stylesheet" href="css/master.css">
 </head>
+<style>
+    div.ninja {
+        background: url('images/ninja.png') no-repeat center center;
+        background-position: -16px;
+        background-size: contain;
+        height: 200px;
+        width: 200px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
 <body>
     <nav class="controls">
         <a href="index.html"> <!-- ../para devolverme  -->
@@ -14,10 +27,27 @@
     </nav>
     <main>
         <header>
-            <h1>32- one enter frame</h1>
+            <h1>32- animation frame</h1>
             <h2>Ejecuta código en cada fotograma para animaciones.</h2>
         </header>
-         
+         <section>
+            <div class="ninja"></div>
+         </section>
     </main>  
 </body>
+<script>
+    const ninja = document.querySelector('.ninja');
+    
+    let x = -16
+    function animateNinja() {
+        x -= -76;
+        if (x == -244) {
+            x = -16;
+        }
+        ninja.style.backgroundPosition = `${x}px`;
+        requestAnimationFrame(animate);
+    }
+
+    animateNinja();
+</script>
 </html>
