@@ -20,6 +20,7 @@ class PetSeeder extends Seeder
         $pet->age      = 8;
         $pet->breed    = 'Pincher';
         $pet->location = 'Manizales, Colombia';
+        $pet->description = 'Its a good boy';
         $pet->save();
 
         $pet = new Pet;
@@ -29,6 +30,7 @@ class PetSeeder extends Seeder
         $pet->age      = 3;
         $pet->breed    = 'Germany Shepherd';
         $pet->location = 'Berlin, Germany';
+        $pet->description = 'Its a good boy';
         $pet->save();
 
         $pet = new Pet;
@@ -38,6 +40,7 @@ class PetSeeder extends Seeder
         $pet->age      = 7;
         $pet->breed    = 'Persa';
         $pet->location = 'Abu, Dhuabi';
+        $pet->description = 'Only chickend food.';
         $pet->save();
 
         $pet = new Pet;
@@ -47,6 +50,7 @@ class PetSeeder extends Seeder
         $pet->age      = 5;
         $pet->breed    = 'Mini';
         $pet->location = 'Tokio, Japan';
+        $pet->description = 'All Kind of food.';
         $pet->save();
     }
 }

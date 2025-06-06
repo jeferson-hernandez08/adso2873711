@@ -2,10 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Pet extends Model
 {
+    use HasFactory, Notifiable;
+    
     /**
      * The attributes that are mass assignable.
      *
@@ -19,6 +23,7 @@ class Pet extends Model
         'age',
         'breed',
         'location',
+        'description',
         'active',
         'status'
     ];

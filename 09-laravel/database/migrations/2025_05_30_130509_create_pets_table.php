@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('age');
             $table->string('breed');
             $table->string('location');
+            $table->text('description');
             $table->boolean('active')->default(1);
             $table->boolean('status')->default(0); // 0: Available, 1: Adopted
             $table->timestamps();
