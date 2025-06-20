@@ -46,28 +46,30 @@ Route::get('petview/{id}', function() {
 
 });
 
-
-
 // Route challengue
 Route::get('challengue/users', function () {
     $users = User::limit(20)->get();
-    $code = "
-    
-    
-               ";
+    //dd($users->toArray()); // Dump and Die
+    $code = "<table style='border-collapse: collapse; margin: 2rem auto; font-family: Arial'>
+                <tr>
+                    <th style='background: gray; color: white; padding: 0.4rem'>Id</th>
+                    <th style='background: gray; color: white; padding: 0.4rem'>Photo</th>
+                    <th style='background: gray; color: white; padding: 0.4rem'>Full Name</th>
+                    <th style='background: gray; color: white; padding: 0.4rem'>Age</th>
+                    <th style='background: gray; color: white; padding: 0.4rem'>Created At</th>
+                </tr>";
+
     foreach ($users as $user) {
         $code .= ($user->id%2 == 0) ? "<tr style='background: #ddd'>" : "<tr>";
-        $code .= "<td style='border: 1px solid gray; padding: 0.4rem'>".$user->id."</td>"; 
-        $code .= "<td style='border: 1px solid gray; padding: 0.4rem'><img src='".asset('images/'.$user->photo)."' width='40px'></td>";
-        $code .= "<td style='border: 1px solid gray; padding: 0.4rem'>".$user->fullname."</td>"; 
-        $code .= "<td style='border: 1px solid gray; padding: 0.4rem'>".Carbon\Carbon::parse($user->birthdate)->age." years old</td>"; 
-        $code .= "<td style='border: 1px solid gray; padding: 0.4rem'>".$user->id."</td>"; 
+        $code .=    "<td style='border: 1px solid gray; padding: 0.4rem'>".$user->id."</td>"; 
+        $code .=    "<td style='border: 1px solid gray; padding: 0.4rem'><img src='".asset('images/'.$user->photo)."' width='40px'></td>";
+        $code .=    "<td style='border: 1px solid gray; padding: 0.4rem'>".$user->fullname."</td>"; 
+        $code .=    "<td style='border: 1px solid gray; padding: 0.4rem'>".Carbon\Carbon::parse($user->birthdate)->age." years old</td>"; 
+        $code .=    "<td style='border: 1px solid gray; padding: 0.4rem'>".$user->created_at->diffForHumans()."</td>"; 
+        $code .= "</tr>";
     }
-      
+    return $code .= "</table>";
 }); 
-
-
-
 
 
 Route::get('/dashboard', function () {
