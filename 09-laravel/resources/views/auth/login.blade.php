@@ -60,7 +60,7 @@
             @if (count($errors->all()) > 0)
                 <div class="flex flex-col gap-1 my-4">
                     @foreach ($errors->all() as $msg)
-                        <div class="badge badge-error">
+                        <div class="badge badge-error text-xs">
                             {{ $msg }}
                         </div>
                     @endforeach
