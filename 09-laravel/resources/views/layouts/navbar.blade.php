@@ -1,9 +1,6 @@
-<div class="navbar bg-[#0006] text-white shadow-sm">
+<div class="navbar bg-[#fff6] shadow-sm adsolute top-0">
   <div class="flex-1">
-    <a  href="{{ url('/') }}"  class="btn btn-ghost text-xl">daisyUI
-    
-    
-    </a>
+    <a class="btn btn-ghost text-xl">daisyUI</a>
   </div>
   <div class="flex-none">
     <ul class="menu menu-horizontal px-1">
@@ -12,8 +9,8 @@
         <details>
           <summary>Parent</summary>
           <ul class="bg-base-100 rounded-t-none p-2">
-            <li><a>Login</a></li>
-            <li><a>Register</a></li>
+            <li><a>Link 1</a></li>
+            <li><a>Link 2</a></li>
           </ul>
         </details>
       </li>
