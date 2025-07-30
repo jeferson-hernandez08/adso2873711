@@ -9,6 +9,23 @@
     </a>
   </div>
   <div class="flex-none">
+    @auth
+      <ul class="flex items-center gap-2"> 
+        <li>
+          <div class="avatar">
+            <div class="mask mask-squircle w-12">
+              <img src="{{ asset('images/'.Auth::user()->photo) }}" alt="Photo">
+            </div>
+          </div>
+        </li>
+        <li>
+          <span class="badge text-white bg-[#fff3]">
+            Admin: {{ Auth::user()->fullname }}
+          </span>
+        </li>
+      </ul>
+
+    @endauth
     @guest {{-- Si el usuario no está autenticado, muestra los enlaces de login y register y Si el usuario está registrado, No muestra los enlaces de login y register --}}
     <ul class="menu menu-horizontal px-1">
       <li>
