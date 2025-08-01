@@ -20,7 +20,7 @@
         </li>
         <li>
           <span class="badge text-white bg-[#fff3]">
-            Admin: {{ Auth::user()->fullname }}
+            {{ Auth::user()->role }}: {{ Auth::user()->fullname }}
           </span>
         </li>
       </ul>

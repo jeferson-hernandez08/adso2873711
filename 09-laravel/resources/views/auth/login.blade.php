@@ -21,6 +21,13 @@
                     @endforeach
                 </div>
             @endif
+            @if (session('error'))
+                <div class="flex flex-col gap-1 my-4">
+                    <div class="badge badge-error text-xs">
+                        {{ session('error') }}
+                    </div>
+                </div>
+            @endif
             <form method="POST" action="{{ route('login') }}" class="flex flex-col gap-6">
                 @csrf
                 <div class="mt-4">
