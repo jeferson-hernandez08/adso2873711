@@ -3,100 +3,83 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
- 
+
 use App\Models\User;
-
-
- 
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
-    //return "<h1>Hello, welcome to the Pet Adoption App! ❤</h1>";
 });
 
-Route::get('sayhello/{name}', function () {
-    return "<h1>Hello ".request()->name." ❤</h1>";
+Route::get('sayhello/{name}', function() {
+    return "<h1> Hello ".request()->name." ❤️ </h1>";
 });
 
-// Route to show all pets
-Route::get('pets/all', function () {
-    $pets = \App\Models\Pet::all();
+Route::get('pets/all', function() {
+    $pets = App\Models\Pet::all();
     //return var_dump($pets->toArray());
-    dd($pets->toArray()); // Dump and Die
+    dd($pets->toArray()); // Dump & Die
 });
 
-// Route to show one pet by ID | Por mi
-Route::get('pets/{id}', function ($id) {
-    $pets = \App\Models\Pet::find($id);
-    //return var_dump($pets->toArray());
-    dd($pets->toArray()); // Dump and Die
+Route::get('pets/{id}', function() {
+    $pet = App\Models\Pet::find(request()->id);
+    dd($pet->toArray());
 });
-
-// Route to show one pet by ID | Por OFAC
-// Route::get('pets/{id}', function () {
-//     $pets = \App\Models\Pet::find(request()->id);  // Recoje el id por get
-//     //return var_dump($pets->toArray());
-//     dd($pets->toArray()); // Dump and Die
-// });
 
 Route::get('petsview', function() {
-    $pets = \App\Models\Pet::all();
+    $pets = App\Models\Pet::all();
     return view('pets-view')->with('pets', $pets);
-
 });
 
-Route::get('petview/{id}', function() {
-    $pet = App\Models\Pet::find(request()->id);  // Recoje el id por get
+Route::get('petsview/{id}', function() {
+    $pet = App\Models\Pet::find(request()->id);
     return view('pet-view')->with('pet', $pet);
-
 });
 
-// Route challengue
-Route::get('challengue/users', function () {
+Route::get('challenge/users', function() {
     $users = User::limit(20)->get();
-    //dd($users->toArray()); // Dump and Die
+    //dd($users->toArray());
     $code = "<table style='border-collapse: collapse; margin: 2rem auto; font-family: Arial'>
                 <tr>
                     <th style='background: gray; color: white; padding: 0.4rem'>Id</th>
                     <th style='background: gray; color: white; padding: 0.4rem'>Photo</th>
-                    <th style='background: gray; color: white; padding: 0.4rem'>Full Name</th>
+                    <th style='background: gray; color: white; padding: 0.4rem'>Fullname</th>
                     <th style='background: gray; color: white; padding: 0.4rem'>Age</th>
                     <th style='background: gray; color: white; padding: 0.4rem'>Created At</th>
                 </tr>";
-
-    foreach ($users as $user) {
+    foreach($users as $user) {
         $code .= ($user->id%2 == 0) ? "<tr style='background: #ddd'>" : "<tr>";
-        $code .=    "<td style='border: 1px solid gray; padding: 0.4rem'>".$user->id."</td>"; 
+        $code .=    "<td style='border: 1px solid gray; padding: 0.4rem'>".$user->id."</td>";
         $code .=    "<td style='border: 1px solid gray; padding: 0.4rem'><img src='".asset('images/'.$user->photo)."' width='40px'></td>";
-        $code .=    "<td style='border: 1px solid gray; padding: 0.4rem'>".$user->fullname."</td>"; 
-        $code .=    "<td style='border: 1px solid gray; padding: 0.4rem'>".Carbon\Carbon::parse($user->birthdate)->age." years old</td>"; 
-        $code .=    "<td style='border: 1px solid gray; padding: 0.4rem'>".$user->created_at->diffForHumans()."</td>"; 
+        $code .=    "<td style='border: 1px solid gray; padding: 0.4rem'>".$user->fullname."</td>";
+        $code .=    "<td style='border: 1px solid gray; padding: 0.4rem'>".Carbon\Carbon::parse($user->birthdate)->age." years old</td>";
+        $code .=    "<td style='border: 1px solid gray; padding: 0.4rem'>".$user->created_at->diffForHumans()."</td>";
         $code .= "</tr>";
     }
-    return $code .= "</table>";
-}); 
+    return $code . "</table>";
+});
 
-
-Route::get('/dashboard', function (Request $request) {
-    if (Auth::user()->role == 'Admin') {
+Route::get('/dashboard', function(Request $request) {
+    if(Auth::user()->role == 'Admin') {
         return view('dashboard-admin');
-    } else if (Auth::user()->role == 'Customer') {
+    } else if(Auth::user()->role == 'Customer')  {
         return view('dashboard-customer');
     } else {
         Auth::guard('web')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->back()->with('error', 'Role no exist!'); 
+        return redirect()->back()->with('error', 'Role no exist!');
     }
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::resources([
-        // 'users' => UserController::class,
-        // 'perts' => PetController::class,
-        // 'adoptions' => AdoptionController::class
-    ]);
-    
+    Route::group(['middleware' => 'admin'], function() {
+        Route::resources([
+            'users'     => UserController::class,
+            // 'pets'      => PetController::class,
+            // 'adoptions' => AdoptionController::class
+        ]);
+    });
 });
 
 require __DIR__.'/auth.php';
