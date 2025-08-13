@@ -87,7 +87,12 @@
                             <h3 class="text-gray-400 text-sm font-semibold">Phone</h3>
                             <p class="mt-1">{{ $user->phone }}</p>
                         </div>
-                        
+
+                        <div class="bg-[#0006] p-4 rounded-lg md:col-span-2">
+                            <h3 class="text-gray-400 text-sm font-semibold">Role</h3>
+                            <p class="mt-1">{{ $user->role }}</p>
+                        </div>
+
                         <div class="bg-[#0006] p-4 rounded-lg md:col-span-2">
                             <h3 class="text-gray-400 text-sm font-semibold">Registered At</h3>
                             <p class="mt-1">{{ $user->created_at->format('d/m/Y H:i') }}</p>
