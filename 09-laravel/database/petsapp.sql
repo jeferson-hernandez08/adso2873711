@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-07-2025 a las 00:41:46
+-- Tiempo de generación: 13-08-2025 a las 17:45:28
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -254,8 +254,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('EgokascyKJouMfe1TpkNvDA5QZxvScI3eh4BKfdr', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoieVpOZzZTcWgzOGJXZm5pZFVmQjRmckhUUkU5MThOYUhWRFVVZG40RiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kYXNoYm9hcmQiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', 1753914352),
-('PlUrnL9kbymYjboPA74UxdteSCbTRnQSbdcrz8hF', 34, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiQmx4d1hDcjN4czlibkViY2ZzV0lrNHk1cUMxTVZ4WVJqTzYyd3o0TiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjM0O30=', 1753896191);
+('f05KTWRjKYlVgLsMASATPcVKav4TJ8Qn8c5p2ixq', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiWldxc3ZmczViaFc5ZmhZeDUwdVlYQUVOalBwWEU1VXZ6Y05aUVlCTyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC91c2Vycy80MCI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1755099789);
 
 -- --------------------------------------------------------
 
@@ -319,7 +318,9 @@ INSERT INTO `users` (`id`, `document`, `fullname`, `gender`, `birthdate`, `photo
 (31, 76539883, 'Regan Monahan', 'Male', '1989-10-16', '7502626741.png', '320.272.3068', 'fritsch.rogelio@example.com', '2025-06-06 21:45:50', '$2y$12$z/.uwObTTR05OiiHGBsYpu57xuKxNfMGRHp0jpX3ScPEYGZdcnLg6', 1, 'Customer', 'fAMMgpwwfj', '2025-06-06 21:45:53', '2025-06-06 21:45:53'),
 (32, 77947800, 'Claire McDermott', 'Female', '1985-09-16', '7522037825.png', '785-945-0632', 'mertz.may@example.org', '2025-06-06 21:45:53', '$2y$12$z/.uwObTTR05OiiHGBsYpu57xuKxNfMGRHp0jpX3ScPEYGZdcnLg6', 1, 'Customer', 'CJipcugbGF', '2025-06-06 21:45:53', '2025-06-06 21:45:53'),
 (33, 981231238, 'Dayrito Moreno', 'Male', '1985-10-10', 'no-photo.webp', '3124776578', 'dayron@gmail.com', NULL, '$2y$12$0D0k/BJi3z4BCthBpiX/MuHWE/UVLzUgkyEQi9NF3x2f7Y287o55S', 1, 'Customer', NULL, '2025-06-13 17:55:03', '2025-06-13 18:25:20'),
-(34, 1234, 'Edgar Hernandez', 'Male', '1966-11-23', 'no-photo.webp', '3134884232', 'edgar@gmail.com', NULL, '$2y$12$zghuAG4a5rWaWi0U7XPW0eXIKl3YgbwaELl9NkIDjFcHC6J5KRXiC', 1, 'Customer', NULL, '2025-07-30 22:19:17', '2025-07-30 22:19:17');
+(34, 1234, 'Edgar Hernandez', 'Male', '1966-11-23', 'no-photo.webp', '3134884232', 'edgar@gmail.com', NULL, '$2y$12$zghuAG4a5rWaWi0U7XPW0eXIKl3YgbwaELl9NkIDjFcHC6J5KRXiC', 1, 'Customer', NULL, '2025-07-30 22:19:17', '2025-07-30 22:19:17'),
+(39, 7000046, 'Elon Musk', 'Male', '2025-08-06', '1754671332.png', '3003456789', 'elon@gmail.com', NULL, '$2y$12$5.Ax8iX0dUlhVjC1TejT9upch3o4b3AnSuU1ixgowDsj9BmIFufte', 1, 'Customer', NULL, '2025-08-08 21:42:12', '2025-08-08 21:42:12'),
+(40, 1053843496, 'Jeferson Hernandez', 'Male', '1995-06-15', '1754671702.jpg', '3113975576', 'jefer.hernandez1@gmail.com', NULL, '$2y$12$qfDvJtJCJbNtUyqD93emGObzgNyQDlq6yyilY/LWueGbVCAXsE822', 1, 'Customer', NULL, '2025-08-08 21:48:22', '2025-08-08 21:48:22');
 
 --
 -- Índices para tablas volcadas
@@ -438,7 +439,7 @@ ALTER TABLE `pets`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- Restricciones para tablas volcadas
