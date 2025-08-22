@@ -6,9 +6,7 @@
     <main class="bg-[#154869] pt-20 bg-cover w-full min-h-[100dvh] flex flex-col justify-center items-center">
         <div class="bg-[#0006] md:w-10/12 w-full text-white p-10 rounded-lg flex flex-col justify-center items-center">
             <h1 class="text-2xl flex gap-2 items-center pb-2 border-b-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="size-12" fill="currentColor" viewBox="0 0 256 256">
-                    <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm48-88a8,8,0,0,1-8,8H136v32a8,8,0,0,1-16,0V136H88a8,8,0,0,1,0-16h32V88a8,8,0,0,1,16,0v32h32A8,8,0,0,1,176,128Z"></path>
-                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="size-12" fill="#fff" viewBox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path></svg>
                 User Details
             </h1>
 
@@ -33,8 +31,8 @@
                     </li>
                     <li>
                         <span class="inline-flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="size-5" fill="currentColor" viewBox="0 0 256 256">
-                                <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm48-88a8,8,0,0,1-8,8H136v32a8,8,0,0,1-16,0V136H88a8,8,0,0,1,0-16h32V88a8,8,0,0,1,16,0v32h32A8,8,0,0,1,176,128Z"></path>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="size-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                             </svg>
                             View User
                         </span>
@@ -63,6 +61,7 @@
                         <div class="mt-4 text-center">
                             <h2 class="text-xl font-bold">{{ $user->fullname }}</h2>
                             <p class="text-gray-300">{{ $user->email }}</p>
+                            <p class="text-gray-300">{{ $user->role }}</p>
                         </div>
                     </div>
 
@@ -88,13 +87,31 @@
                             <p class="mt-1">{{ $user->phone }}</p>
                         </div>
 
-                        <div class="bg-[#0006] p-4 rounded-lg md:col-span-2">
+                        <div class="bg-[#0006] p-4 rounded-lg">
+                            <h3 class="text-gray-400 text-sm font-semibold">Email</h3>
+                            <p class="mt-1">{{ $user->email }}</p>
+                        </div>
+
+                        <div class="bg-[#0006] p-4 rounded-lg">
                             <h3 class="text-gray-400 text-sm font-semibold">Role</h3>
                             <p class="mt-1">{{ $user->role }}</p>
                         </div>
 
                         <div class="bg-[#0006] p-4 rounded-lg md:col-span-2">
-                            <h3 class="text-gray-400 text-sm font-semibold">Registered At</h3>
+                            <h3 class="text-gray-400 text-sm font-semibold">Active:</h3>
+                                @if ($user->active == 1)
+                                    <div class="mt-1 w-8 h-8 rounded-full text-white bg-green-600 flex items-center justify-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="size-8" fill="#000000" viewBox="0 0 256 256"><path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path></svg>
+                                    </div>
+                                @else
+                                    <div class="mt-1 w-8 h-8 rounded-full text-white bg-red-600 flex">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="size-8" fill="#000000" viewBox="0 0 256 256"><path d="M165.66,101.66,139.31,128l26.35,26.34a8,8,0,0,1-11.32,11.32L128,139.31l-26.34,26.35a8,8,0,0,1-11.32-11.32L116.69,128,90.34,101.66a8,8,0,0,1,11.32-11.32L128,116.69l26.34-26.35a8,8,0,0,1,11.32,11.32ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path></svg>
+                                    </div>
+                                @endif 
+                        </div>
+
+                        <div class="bg-[#0006] p-4 rounded-lg md:col-span-2">
+                            <h3 class="text-gray-400 text-sm font-semibold">Created At</h3>
                             <p class="mt-1">{{ $user->created_at->format('d/m/Y H:i') }}</p>
                         </div>
                     </div>
