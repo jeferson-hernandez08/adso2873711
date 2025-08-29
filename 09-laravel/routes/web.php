@@ -82,6 +82,14 @@ Route::middleware('auth')->group(function () {
         // Search
         Route::post('search/users', [UserController::class, 'search']);
         //Route::post('search/pets', [UserController::class, 'pets']);
+
+        // PDF 
+        Route::get('export/users/pdf', [UserController::class, 'pdf']);
+
+        // Excel
+        Route::get('export/users/excel', [UserController::class, 'excel']);
+        Route::post('import/users', [UserController::class, 'import']);
+
     });
 });
 
