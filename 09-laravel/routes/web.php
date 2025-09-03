@@ -76,7 +76,7 @@ Route::middleware('auth')->group(function () {
     Route::group(['middleware' => 'admin'], function() {
         Route::resources([
             'users'     => UserController::class,
-            // 'pets'      => PetController::class,
+            //'pets'      => PetController::class,
             // 'adoptions' => AdoptionController::class
         ]);
         // Search
