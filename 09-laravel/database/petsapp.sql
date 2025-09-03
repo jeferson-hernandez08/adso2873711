@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-08-2025 a las 17:45:28
+-- Tiempo de generación: 03-09-2025 a las 14:43:49
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -254,7 +254,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('f05KTWRjKYlVgLsMASATPcVKav4TJ8Qn8c5p2ixq', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiWldxc3ZmczViaFc5ZmhZeDUwdVlYQUVOalBwWEU1VXZ6Y05aUVlCTyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC91c2Vycy80MCI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1755099789);
+('5hsetU6qHxkdwsIEq7jjXaioNn33s3Kt3j55klWB', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoic3VRTXRPcHNmT0RUb3JPY0owMk1ydTJDWlQyT1ZWN2pvU3hKRG5ubCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC91c2VycyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1756486035);
 
 -- --------------------------------------------------------
 
@@ -285,9 +285,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `document`, `fullname`, `gender`, `birthdate`, `photo`, `phone`, `email`, `email_verified_at`, `password`, `active`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 75000001, 'John Wick', 'Male', '1964-09-12', 'jhon.png', '300000001', 'jonhw@gmail.com', NULL, '$2y$12$zd44nt75NLQIVwmAn9Jxbel1npaeHbKwXHD6uLKtz65f7TPORlRq2', 1, 'Admin', NULL, '2025-06-06 21:44:17', '2025-06-06 21:44:17'),
-(2, 75000002, 'Lara Croft', 'Female', '1992-02-14', 'no-photo.webp', '300000002', 'larac@mail.com', NULL, '$2y$12$pm4ru7oY7D8EI2HRAnMaNu3odkV/C8.AqGTk96NfLY3EcbrY46uoi', 1, 'Customer', NULL, '2025-06-06 21:44:18', NULL),
-(3, 76643087, 'Kaylie Keebler', 'Female', '2004-05-10', '7546882094.png', '+1-386-347-7790', 'aletha.wuckert@example.com', '2025-06-06 21:44:21', '$2y$12$z/.uwObTTR05OiiHGBsYpu57xuKxNfMGRHp0jpX3ScPEYGZdcnLg6', 1, 'Customer', '5P4kwJjryo', '2025-06-06 21:45:53', '2025-06-06 21:45:53'),
+(1, 75000001, 'John Wick', 'Male', '1964-09-12', 'jhon.png', '300000001', 'jonhw@gmail.com', NULL, '$2y$12$zd44nt75NLQIVwmAn9Jxbel1npaeHbKwXHD6uLKtz65f7TPORlRq2', 1, 'Admin', NULL, '2025-06-06 21:44:17', '2025-08-22 19:26:38'),
+(2, 75000002, 'Rick Sanchezzz', 'Male', '1992-02-14', '1755872344.png', '300000002', 'rick@gmail.com', NULL, '$2y$12$pm4ru7oY7D8EI2HRAnMaNu3odkV/C8.AqGTk96NfLY3EcbrY46uoi', 1, 'Customer', NULL, '2025-06-06 21:44:18', '2025-08-22 19:19:04'),
 (4, 77792399, 'Cynthia Schimmel', 'Female', '1986-03-15', '7588489702.png', '+1 (801) 356-0419', 'nikolas.grady@example.com', '2025-06-06 21:44:25', '$2y$12$z/.uwObTTR05OiiHGBsYpu57xuKxNfMGRHp0jpX3ScPEYGZdcnLg6', 1, 'Customer', 'Es3LPrafgx', '2025-06-06 21:45:53', '2025-06-06 21:45:53'),
 (5, 76764316, 'Natalia Klein', 'Female', '1993-05-08', '7588068632.png', '(478) 388-2022', 'qabbott@example.net', '2025-06-06 21:44:29', '$2y$12$z/.uwObTTR05OiiHGBsYpu57xuKxNfMGRHp0jpX3ScPEYGZdcnLg6', 1, 'Customer', 'rUmGCr0Dg6', '2025-06-06 21:45:53', '2025-06-06 21:45:53'),
 (6, 77017385, 'Erling Schmeler', 'Male', '2005-09-01', '7569471140.png', '(908) 879-7843', 'jewel44@example.com', '2025-06-06 21:44:33', '$2y$12$z/.uwObTTR05OiiHGBsYpu57xuKxNfMGRHp0jpX3ScPEYGZdcnLg6', 1, 'Customer', 'c9zgtrxUMq', '2025-06-06 21:45:53', '2025-06-06 21:45:53'),
