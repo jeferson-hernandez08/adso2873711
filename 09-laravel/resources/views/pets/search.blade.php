@@ -19,12 +19,25 @@
         <span class="badge badge-ghost badge-sm">{{ $pet->kind }}</span>
         </td>
         <td class="hidden md:table-cell">{{ $pet->breed }}</td>
-        <td class="hidden lg:table-cell">{{ $pet->age }} years</td>
+        <td class="hidden lg:table-cell">{{ $pet->age }} years old</td>
         <td>
-            <span class="badge {{ $pet->status == 'available' ? 'badge-success' : ($pet->status == 'adopted' ? 'badge-warning' : 'badge-info') }} badge-sm">
-                {{ $pet->status }}
-            </span>
+            @if ($pet->status == 'adopted')
+                <span class="px-3 py-1 font-semibold rounded-full bg-green-400 text-green-800">Adopted</span>
+            @else
+                <span class="px-3 py-1 font-semibold rounded-full bg-yellow-400 text-yellow-800">Available</span>
+            @endif
         </td>
+        {{-- <td class="text-center">
+             @if ($pet->status == 'adopted')
+                <div class="mt-1 w-8 h-8 rounded-full text-white bg-green-600 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="size-8" fill="#000000" viewBox="0 0 256 256"><path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path></svg>
+                </div>
+            @else
+                <div class="mt-1 w-8 h-8 rounded-full text-white bg-red-600 flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="size-8" fill="#000000" viewBox="0 0 256 256"><path d="M165.66,101.66,139.31,128l26.35,26.34a8,8,0,0,1-11.32,11.32L128,139.31l-26.34,26.35a8,8,0,0,1-11.32-11.32L116.69,128,90.34,101.66a8,8,0,0,1,11.32-11.32L128,116.69l26.34-26.35a8,8,0,0,1,11.32,11.32ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path></svg>
+                </div>
+            @endif
+        </td> --}}
         <th>
             <a href="{{ url('pets/'.$pet->id) }}" class="btn btn-ghost hover:bg-[transparent] btn-xs">
                 <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="#fff" viewBox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path></svg>

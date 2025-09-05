@@ -60,9 +60,7 @@ class PetController extends Controller
             $pet->breed       = $request->breed;
             $pet->location    = $request->location;
             $pet->description = $request->description;
-            $pet->active      = $request->active ?? 1;
-            $pet->status      = $request->status ?? 'available';
-
+            
             if($pet->save()) {
                 return redirect('pets')
                     ->with('message', 'The pet: '.$pet->name.' was successfully created!');
@@ -98,7 +96,8 @@ class PetController extends Controller
             'age'         => ['required', 'numeric'],
             'breed'       => ['required', 'string'],
             'location'    => ['required', 'string'],
-            'description' => ['nullable', 'string'],
+            'description' => ['required', 'string'],
+            'active'      => ['required'],
         ]);
 
         if($validation) {
@@ -121,7 +120,6 @@ class PetController extends Controller
             $pet->location    = $request->location;
             $pet->description = $request->description;
             $pet->active      = $request->active;
-            $pet->status      = $request->status;
 
             if($pet->save()) {
                 return redirect('pets')
@@ -162,6 +160,14 @@ class PetController extends Controller
     {
         return Excel::download(new PetsExport, 'allpets.xlsx');
     }
+
+    // Explicación Juan David
+    public function dd(Pet $pet)
+    {
+        return $pet->name;
+    }
+
+
 
     // public function import(Request $request)
     // {

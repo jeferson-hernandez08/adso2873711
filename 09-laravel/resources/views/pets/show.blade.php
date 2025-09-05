@@ -3,7 +3,7 @@
 
 @section('content')
     @include('layouts.navbar')
-    <main class="bg-[#154869] pt-20 bg-cover w-full min-h-[100dvh] flex flex-col justify-center items-center">
+    <main class="bg-amber-900 pt-20 bg-cover w-full min-h-[100dvh] flex flex-col justify-center items-center">
         <div class="bg-[#0006] md:w-10/12 w-full text-white p-10 rounded-lg flex flex-col justify-center items-center">
             <h1 class="text-2xl flex gap-2 items-center pb-2 border-b-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="size-12" fill="#fff" viewBox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path></svg>
@@ -41,7 +41,7 @@
             </div>
 
             {{-- Pet Details Card --}}
-            <div class="w-full max-w-2xl mt-8 bg-[#000000b3] rounded-xl p-6 shadow-lg">
+            <div class="w-full max-w-2xl mt-8 bg-[#0006] rounded-xl p-6 shadow-lg">
                 <div class="flex flex-col md:flex-row gap-8">
                     {{-- Photo Section --}}
                     <div class="flex-shrink-0 flex flex-col items-center">
@@ -67,64 +67,77 @@
 
                     {{-- Details Section --}}
                     <div class="flex-grow grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="bg-[#0006] p-4 rounded-lg">
+                        <div class="bg-[#0009] p-4 rounded-lg">
                             <h3 class="text-gray-400 text-sm font-semibold">Name</h3>
                             <p class="mt-1">{{ $pet->name }}</p>
                         </div>
                         
-                        <div class="bg-[#0006] p-4 rounded-lg">
+                        <div class="bg-[#0009] p-4 rounded-lg">
                             <h3 class="text-gray-400 text-sm font-semibold">Kind</h3>
                             <p class="mt-1">{{ $pet->kind }}</p>
                         </div>
                         
-                        <div class="bg-[#0006] p-4 rounded-lg">
+                        <div class="bg-[#0009] p-4 rounded-lg">
                             <h3 class="text-gray-400 text-sm font-semibold">Weight</h3>
                             <p class="mt-1">{{ $pet->weight }} kg</p>
                         </div>
                         
-                        <div class="bg-[#0006] p-4 rounded-lg">
+                        <div class="bg-[#0009] p-4 rounded-lg">
                             <h3 class="text-gray-400 text-sm font-semibold">Age</h3>
                             <p class="mt-1">{{ $pet->age }} years</p>
                         </div>
 
-                        <div class="bg-[#0006] p-4 rounded-lg">
+                        <div class="bg-[#0009] p-4 rounded-lg">
                             <h3 class="text-gray-400 text-sm font-semibold">Breed</h3>
                             <p class="mt-1">{{ $pet->breed }}</p>
                         </div>
 
-                        <div class="bg-[#0006] p-4 rounded-lg">
+                        <div class="bg-[#0009] p-4 rounded-lg">
                             <h3 class="text-gray-400 text-sm font-semibold">Location</h3>
                             <p class="mt-1">{{ $pet->location }}</p>
                         </div>
 
-                        <div class="bg-[#0006] p-4 rounded-lg md:col-span-2">
+                        <div class="bg-[#0009] p-4 rounded-lg md:col-span-2">
                             <h3 class="text-gray-400 text-sm font-semibold">Description</h3>
                             <p class="mt-1">{{ $pet->description ?: 'No description provided' }}</p>
                         </div>
 
-                        <div class="bg-[#0006] p-4 rounded-lg">
+                        <div class="bg-[#0009] p-4 rounded-lg">
                             <h3 class="text-gray-400 text-sm font-semibold">Status</h3>
-                            <p class="mt-1">
-                                <span class="badge {{ $pet->status == 'available' ? 'badge-success' : ($pet->status == 'adopted' ? 'badge-warning' : 'badge-info') }}">
-                                    {{ ucfirst($pet->status) }}
-                                </span>
-                            </p>
+                                 @if ($pet->status == 'adopted')
+                                    <div class="mt-1 w-28 h-8 font-semibold rounded-full bg-green-400 text-green-800 flex items-center justify-center">
+                                        Adopted
+                                    </div>
+                                @else
+                                    <div class="mt-1 w-28 h-8 font-semibold rounded-full bg-yellow-400 text-yellow-800 flex items-center justify-center">
+                                        Available
+                                    </div>
+                                @endif
+                                {{-- @if ($pet->status == 'adopted')
+                                    <div class="mt-1 w-8 h-8 rounded-full text-white bg-green-600 flex items-center justify-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="size-8" fill="#000000" viewBox="0 0 256 256"><path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path></svg>
+                                    </div>
+                                @else
+                                    <div class="mt-1 w-8 h-8 rounded-full text-white bg-red-600 flex">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="size-8" fill="#000000" viewBox="0 0 256 256"><path d="M165.66,101.66,139.31,128l26.35,26.34a8,8,0,0,1-11.32,11.32L128,139.31l-26.34,26.35a8,8,0,0,1-11.32-11.32L116.69,128,90.34,101.66a8,8,0,0,1,11.32-11.32L128,116.69l26.34-26.35a8,8,0,0,1,11.32,11.32ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path></svg>
+                                    </div>
+                                @endif --}}
                         </div>
 
-                        <div class="bg-[#0006] p-4 rounded-lg">
+                        <div class="bg-[#0009] p-4 rounded-lg">
                             <h3 class="text-gray-400 text-sm font-semibold">Active</h3>
-                            @if ($pet->active == 1)
-                                <div class="mt-1 w-8 h-8 rounded-full text-white bg-green-600 flex items-center justify-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-8" fill="#000000" viewBox="0 0 256 256"><path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path></svg>
-                                </div>
-                            @else
-                                <div class="mt-1 w-8 h-8 rounded-full text-white bg-red-600 flex">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-8" fill="#000000" viewBox="0 0 256 256"><path d="M165.66,101.66,139.31,128l26.35,26.34a8,8,0,0,1-11.32,11.32L128,139.31l-26.34,26.35a8,8,0,0,1-11.32-11.32L116.69,128,90.34,101.66a8,8,0,0,1,11.32-11.32L128,116.69l26.34-26.35a8,8,0,0,1,11.32,11.32ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path></svg>
-                                </div>
-                            @endif 
+                                @if ($pet->active == 1)
+                                    <div class="mt-1 w-8 h-8 rounded-full text-white bg-green-600 flex items-center justify-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="size-8" fill="#000000" viewBox="0 0 256 256"><path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path></svg>
+                                    </div>
+                                @else
+                                    <div class="mt-1 w-8 h-8 rounded-full text-white bg-red-600 flex">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="size-8" fill="#000000" viewBox="0 0 256 256"><path d="M165.66,101.66,139.31,128l26.35,26.34a8,8,0,0,1-11.32,11.32L128,139.31l-26.34,26.35a8,8,0,0,1-11.32-11.32L116.69,128,90.34,101.66a8,8,0,0,1,11.32-11.32L128,116.69l26.34-26.35a8,8,0,0,1,11.32,11.32ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path></svg>
+                                    </div>
+                                @endif 
                         </div>
 
-                        <div class="bg-[#0006] p-4 rounded-lg md:col-span-2">
+                        <div class="bg-[#0009] p-4 rounded-lg md:col-span-2">
                             <h3 class="text-gray-400 text-sm font-semibold">Created At</h3>
                             <p class="mt-1">{{ $pet->created_at->format('d/m/Y H:i') }}</p>
                         </div>

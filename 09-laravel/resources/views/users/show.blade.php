@@ -41,7 +41,7 @@
             </div>
 
             {{-- User Details Card --}}
-            <div class="w-full max-w-2xl mt-8 bg-[#000000b3] rounded-xl p-6 shadow-lg">
+            <div class="w-full max-w-2xl mt-8 bg-[#0006] rounded-xl p-6 shadow-lg">
                 <div class="flex flex-col md:flex-row gap-8">
                     {{-- Photo Section --}}
                     <div class="flex-shrink-0 flex flex-col items-center">

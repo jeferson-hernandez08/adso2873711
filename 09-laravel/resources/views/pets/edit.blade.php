@@ -3,7 +3,7 @@
 
 @section('content')
     @include('layouts.navbar')
-    <main class="bg-[#154869] pt-20 bg-cover w-full min-h-[100dvh] flex flex-col justify-center items-center">
+    <main class="bg-amber-900 pt-20 bg-cover w-full min-h-[100dvh] flex flex-col justify-center items-center">
         <div class="bg-[#0006] md:w-10/12 w-full text-white p-10 rounded-lg flex flex-col justify-center items-center">
             <h1 class="text-2xl flex gap-2 items-center pb-2 border-b-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="size-12" fill="#fff" viewBox="0 0 256 256"><path d="M227.31,73.37,182.63,28.68a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96a16,16,0,0,0,0-22.63ZM92.69,208H48V163.31l88-88L180.69,120ZM192,108.68,147.31,64l24-24L216,84.68Z"></path></svg>
@@ -56,10 +56,11 @@
                 </div>
                 <div>
                     <label class="mt-4" for="">Kind:</label>
-                    <select name="kind" class="w-full select bg-[#154869] border-white">
+                    <select name="kind" class="w-full select bg-amber-900 border-white">
                         <option value="">Select Kind...</option>
                         <option value="Dog" @if (old('kind', $pet->kind) == 'Dog' ) selected @endif>Dog</option>
                         <option value="Cat" @if (old('kind', $pet->kind) == 'Cat' ) selected @endif>Cat</option>
+                        <option value="Pig" @if (old('kind', $pet->kind) == 'Pig' ) selected @endif>Pig</option>
                         <option value="Bird" @if (old('kind', $pet->kind) == 'Bird' ) selected @endif>Bird</option>
                         <option value="Other" @if (old('kind', $pet->kind) == 'Other' ) selected @endif>Other</option>
                     </select>
@@ -85,16 +86,8 @@
                     <textarea name="description" placeholder="Friendly and playful pet" class="w-full textarea bg-[transparent] border-white">{{ old('description', $pet->description) }}</textarea>
                 </div>
                 <div>
-                    <label class="mt-4" for="">Status:</label>
-                    <select name="status" class="w-full select bg-[#154869] border-white">
-                        <option value="available" @if (old('status', $pet->status) == 'available' ) selected @endif>Available</option>
-                        <option value="adopted" @if (old('status', $pet->status) == 'adopted' ) selected @endif>Adopted</option>
-                        <option value="pending" @if (old('status', $pet->status) == 'pending' ) selected @endif>Pending</option>
-                    </select>
-                </div>
-                <div>
                     <label class="mt-4" for="">Active:</label>
-                    <select name="active" class="w-full select bg-[#154869] border-white">
+                    <select name="active" class="w-full select bg-amber-900 border-white">
                         <option value="">Select Status...</option>
                         <option value="0" @if (old('active', $pet->active) == 0 ) selected @endif>Inactive</option>
                         <option value="1" @if (old('active', $pet->active) == 1 ) selected @endif>Active</option>

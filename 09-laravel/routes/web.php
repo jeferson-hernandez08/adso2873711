@@ -80,6 +80,10 @@ Route::middleware('auth')->group(function () {
             'pets'      => PetController::class,
             // 'adoptions' => AdoptionController::class
         ]);
+
+        // Explicacion Juan David
+        //Route::get(('pets/{id}'), [PetController::class, 'dd'])->name('prueba'); // Se agregha
+
         // Search
         Route::post('search/users', [UserController::class, 'search']);
         Route::post('search/pets', [PetController::class, 'search']);      // Se agregha

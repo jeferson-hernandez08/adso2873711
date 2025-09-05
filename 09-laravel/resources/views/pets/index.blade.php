@@ -3,7 +3,7 @@
 
 @section('content')
     @include('layouts.navbar')
-    <main class="bg-[#154869] pt-20 bg-cover w-full min-h-[100dvh] flex flex-col justify-center items-center">
+    <main class="bg-amber-900 pt-20 bg-cover w-full min-h-[100dvh] flex flex-col justify-center items-center">
         <div class="bg-[#0006] md:w-10/12 w-full text-white p-10 rounded-lg flex flex-col justify-center items-center">
             <h1 class="text-2xl flex gap-2 items-center pb-2 border-b-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="size-12" fill="#fff" viewBox="0 0 256 256"><path d="M212,80a28,28,0,1,0,28,28A28,28,0,0,0,212,80Zm0,40a12,12,0,1,1,12-12A12,12,0,0,1,212,120ZM72,108a28,28,0,1,0-28,28A28,28,0,0,0,72,108ZM44,120a12,12,0,1,1,12-12A12,12,0,0,1,44,120ZM92,88A28,28,0,1,0,64,60,28,28,0,0,0,92,88Zm0-40A12,12,0,1,1,80,60,12,12,0,0,1,92,48Zm72,40a28,28,0,1,0-28-28A28,28,0,0,0,164,88Zm0-40a12,12,0,1,1-12,12A12,12,0,0,1,164,48Zm23.12,100.86a35.3,35.3,0,0,1-16.87-21.14,44,44,0,0,0-84.5,0A35.25,35.25,0,0,1,69,148.82,40,40,0,0,0,88,224a39.48,39.48,0,0,0,15.52-3.13,64.09,64.09,0,0,1,48.87,0,40,40,0,0,0,34.73-72ZM168,208a24,24,0,0,1-9.45-1.93,80.14,80.14,0,0,0-61.19,0,24,24,0,0,1-20.71-43.26,51.22,51.22,0,0,0,24.46-30.67,28,28,0,0,1,53.78,0,51.27,51.27,0,0,0,24.53,30.71A24,24,0,0,1,168,208Z"></path></svg>
@@ -22,14 +22,14 @@
                     <svg xmlns="http://www.w3.org/2000/svg" class="size-6" fill="currentColor" viewBox="0 0 256 256"><path d="M156,208a8,8,0,0,1-8,8H120a8,8,0,0,1-8-8V152a8,8,0,0,1,16,0v48h20A8,8,0,0,1,156,208ZM92.65,145.49a8,8,0,0,0-11.16,1.86L68,166.24,54.51,147.35a8,8,0,1,0-13,9.3L58.17,180,41.49,203.35a8,8,0,0,0,13,9.3L68,193.76l13.49,18.89a8,8,0,0,0,13-9.3L77.83,180l16.68-23.35A8,8,0,0,0,92.65,145.49Zm98.94,25.82c-4-1.16-8.14-2.35-10.45-3.84-1.25-.82-1.23-1-1.12-1.9a4.54,4.54,0,0,1,2-3.67c4.6-3.12,15.34-1.72,19.82-.56a8,8,0,0,0,4.07-15.48c-2.11-.55-21-5.22-32.83,2.76a20.58,20.58,0,0,0-8.95,14.95c-2,15.88,13.65,20.41,23,23.11,12.06,3.49,13.12,4.92,12.78,7.59-.31,2.41-1.26,3.33-2.15,3.93-4.6,3.06-15.16,1.55-19.54.35A8,8,0,0,0,173.93,214a60.63,60.63,0,0,0,15.19,2c5.82,0,12.3-1,17.49-4.46a20.81,20.81,0,0,0,9.18-15.23C218,179,201.48,174.17,191.59,171.31ZM40,112V40A16,16,0,0,1,56,24h96a8,8,0,0,1,5.66,2.34l56,56A8,8,0,0,1,216,88v24a8,8,0,1,1-16,0V96H152a8,8,0,0,1-8-8V40H56v72a8,8,0,0,1-16,0ZM160,80h28.68L160,51.31Z"></path></svg>
                     Export
                 </a>
-                <form action="{{ url('import/pets') }}" class="btn join-item" method="post" enctype="multipart/form-data">
+                {{-- <form action="{{ url('import/pets') }}" class="btn join-item" method="post" enctype="multipart/form-data">
                     @csrf
                     <input type="file" name="file" id="file" class="hidden" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
                     <div class="btn-import flex justify-center items-center gap-1">
                         <svg xmlns="http://www.w3.org/2000/svg" class="size-6" fill="currentColor" viewBox="0 0 256 256"><path d="M156,208a8,8,0,0,1-8,8H120a8,8,0,0,1-8-8V152a8,8,0,0,1,16,0v48h20A8,8,0,0,1,156,208ZM92.65,145.49a8,8,0,0,0-11.16,1.86L68,166.24,54.51,147.35a8,8,0,1,0-13,9.3L58.17,180,41.49,203.35a8,8,0,0,0,13,9.3L68,193.76l13.49,18.89a8,8,0,0,0,13-9.3L77.83,180l16.68-23.35A8,8,0,0,0,92.65,145.49Zm98.94,25.82c-4-1.16-8.14-2.35-10.45-3.84-1.25-.82-1.23-1-1.12-1.9a4.54,4.54,0,0,1,2-3.67c4.6-3.12,15.34-1.72,19.82-.56a8,8,0,0,0,4.07-15.48c-2.11-.55-21-5.22-32.83,2.76a20.58,20.58,0,0,0-8.95,14.95c-2,15.88,13.65,20.41,23,23.11,12.06,3.49,13.12,4.92,12.78,7.59-.31,2.41-1.26,3.33-2.15,3.93-4.6,3.06-15.16,1.55-19.54.35A8,8,0,0,0,173.93,214a60.63,60.63,0,0,0,15.19,2c5.82,0,12.3-1,17.49-4.46a20.81,20.81,0,0,0,9.18-15.23C218,179,201.48,174.17,191.59,171.31ZM40,112V40A16,16,0,0,1,56,24h96a8,8,0,0,1,5.66,2.34l56,56A8,8,0,0,1,216,88v24a8,8,0,1,1-16,0V96H152a8,8,0,0,1-8-8V40H56v72a8,8,0,0,1-16,0ZM160,80h28.68L160,51.31Z"></path></svg>
                         Import
                     </div>
-                </form>
+                </form> --}}
                 <input class="outline-0 rounded-tr-sm rounded-br-sm indent-2 bg-white/10" type="search" name="qsearch"  id="qsearch" placeholder="Search..." />
             </div>
             <div class="overflow-x-auto mt-8 rounded-box w-full">
@@ -58,8 +58,8 @@
                                 </div>
                                 </div>
                                 <div>
-                                <div class="font-bold">{{ $pet->name }}</div>
-                                <div class="text-sm opacity-50">{{ $pet->location }}</div>
+                                    <div class="font-bold">{{ $pet->name }}</div>
+                                    <div class="text-sm opacity-50">{{ $pet->location }}</div>
                                 </div>
                             </div>
                             </td>
@@ -67,12 +67,26 @@
                             <span class="badge badge-ghost badge-sm">{{ $pet->kind }}</span>
                             </td>
                             <td class="hidden md:table-cell">{{ $pet->breed }}</td>
-                            <td class="hidden lg:table-cell">{{ $pet->age }} years</td>
+                            <td class="hidden lg:table-cell">{{ $pet->age }} years old</td>
                             <td>
-                                <span class="badge {{ $pet->status == 'available' ? 'badge-success' : 'badge-warning' }} badge-sm">
-                                    {{ $pet->status }}
-                                </span>
+                                @if ($pet->status == 'adopted')
+                                    <span class="px-3 py-1 font-semibold rounded-full bg-green-400 text-green-800">Adopted</span>
+                                @else
+                                    <span class="px-3 py-1 font-semibold rounded-full bg-yellow-400 text-yellow-800">Available</span>
+                                @endif
                             </td>
+                            {{-- <td class="text-center">
+                                @if ($pet->status == 'adopted')
+                                    <div class="mt-1 w-8 h-8 rounded-full text-white bg-green-600 flex items-center justify-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="size-8" fill="#000000" viewBox="0 0 256 256"><path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path></svg>
+                                    </div>
+                                @else
+                                    <div class="mt-1 w-8 h-8 rounded-full text-white bg-red-600 flex">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="size-8" fill="#000000" viewBox="0 0 256 256"><path d="M165.66,101.66,139.31,128l26.35,26.34a8,8,0,0,1-11.32,11.32L128,139.31l-26.34,26.35a8,8,0,0,1-11.32-11.32L116.69,128,90.34,101.66a8,8,0,0,1,11.32-11.32L128,116.69l26.34-26.35a8,8,0,0,1,11.32,11.32ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path></svg>
+                                    </div>
+                                @endif
+                            </td> --}}
+
                             <th>
                                 <a href="{{ url('pets/'.$pet->id) }}" class="btn btn-ghost hover:bg-[transparent] btn-xs">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="#fff" viewBox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path></svg>
@@ -159,7 +173,7 @@
                     text: "{{ session('message') }}",
                     showConfirmButton: true,
                     confirmButtoncColor: "#154869",
-                    // timer: 2500
+                    timer: 2500
                 });
             @endif
         });

@@ -39,6 +39,7 @@
                 <th>Age</th>
                 <th>Breed</th>
                 <th>Location</th>
+                <th>Description</th>
                 <th>Status</th>
                 <th>Active</th>
                 <th>Photo</th>
@@ -54,8 +55,21 @@
                 <td>{{ $pet->age }} years</td>
                 <td>{{ $pet->breed }}</td>
                 <td>{{ $pet->location }}</td>
-                <td>{{ $pet->status }}</td>
-                <td>{{ $pet->active ? 'Yes' : 'No' }}</td>
+                <td>{{ $pet->description }}</td>
+                 <td>
+                    @if ($pet->active == 1)
+                       Yes
+                    @else
+                       No
+                    @endif 
+                </td>
+                <td>
+                    @if ($pet->status == 0)
+                       Available
+                    @else
+                       Adopted
+                    @endif 
+                </td>
                 <td>
                     <img src="{{ public_path().'/images/pets/'.$pet->image }}" width="50px">
                 </td>
