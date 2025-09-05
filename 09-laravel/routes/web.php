@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PetController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -15,26 +16,26 @@ Route::get('sayhello/{name}', function() {
     return "<h1> Hello ".request()->name." ❤️ </h1>";
 });
 
-Route::get('pets/all', function() {
-    $pets = App\Models\Pet::all();
-    //return var_dump($pets->toArray());
-    dd($pets->toArray()); // Dump & Die
-});
+// Route::get('pets/all', function() {
+//     $pets = App\Models\Pet::all();
+//     //return var_dump($pets->toArray());
+//     dd($pets->toArray()); // Dump & Die
+// });
 
-Route::get('pets/{id}', function() {
-    $pet = App\Models\Pet::find(request()->id);
-    dd($pet->toArray());
-});
+// Route::get('pets/{id}', function() {
+//     $pet = App\Models\Pet::find(request()->id);
+//     dd($pet->toArray());
+// });
 
-Route::get('petsview', function() {
-    $pets = App\Models\Pet::all();
-    return view('pets-view')->with('pets', $pets);
-});
+// Route::get('petsview', function() {
+//     $pets = App\Models\Pet::all();
+//     return view('pets-view')->with('pets', $pets);
+// });
 
-Route::get('petsview/{id}', function() {
-    $pet = App\Models\Pet::find(request()->id);
-    return view('pet-view')->with('pet', $pet);
-});
+// Route::get('petsview/{id}', function() {
+//     $pet = App\Models\Pet::find(request()->id);
+//     return view('pet-view')->with('pet', $pet);
+// });
 
 Route::get('challenge/users', function() {
     $users = User::limit(20)->get();
@@ -76,19 +77,23 @@ Route::middleware('auth')->group(function () {
     Route::group(['middleware' => 'admin'], function() {
         Route::resources([
             'users'     => UserController::class,
-            //'pets'      => PetController::class,
+            'pets'      => PetController::class,
             // 'adoptions' => AdoptionController::class
         ]);
         // Search
         Route::post('search/users', [UserController::class, 'search']);
-        //Route::post('search/pets', [UserController::class, 'pets']);
+        Route::post('search/pets', [PetController::class, 'search']);      // Se agregha
 
         // PDF 
         Route::get('export/users/pdf', [UserController::class, 'pdf']);
+        Route::get('export/pets/pdf', [PetController::class, 'pdf']);     // Se agregha
 
         // Excel
         Route::get('export/users/excel', [UserController::class, 'excel']);
+        Route::get('export/pets/excel', [PetController::class, 'excel']);    // Se agregha
+
         Route::post('import/users', [UserController::class, 'import']);
+        Route::post('import/pets', [PetController::class, 'import']);       // Se agregha
 
     });
 });

@@ -35,25 +35,25 @@ class PetController extends Controller
     public function store(Request $request)
     {
         $validation = $request->validate([
-            'name' => ['required', 'string'],
-            'photo' => ['required', 'image'],
-            'kind' => ['required'],
-            'weight' => ['required', 'numeric'],
-            'age' => ['required', 'numeric'],
-            'breed' => ['required', 'string'],
-            'location' => ['required', 'string'],
+            'name'        => ['required', 'string'],
+            'image'       => ['required', 'image'],
+            'kind'        => ['required'],
+            'weight'      => ['required', 'numeric'],
+            'age'         => ['required', 'numeric'],
+            'breed'       => ['required', 'string'],
+            'location'    => ['required', 'string'],
             'description' => ['nullable', 'string'],
         ]);
 
         if($validation) {
-            if($request->hasFile('photo')) {
-                $photo = time().'.'.$request->photo->extension();
-                $request->photo->move(public_path('images/pets'), $photo);
+            if($request->hasFile('image')) {
+                $image = time().'.'.$request->image->extension();
+                $request->image->move(public_path('images/pets'), $image);
             }
             
             $pet = new Pet();
             $pet->name        = $request->name;
-            $pet->photo       = $photo;
+            $pet->image       = $image;
             $pet->kind        = $request->kind;
             $pet->weight      = $request->weight;
             $pet->age         = $request->age;
@@ -92,36 +92,36 @@ class PetController extends Controller
     public function update(Request $request, Pet $pet)
     {
         $validation = $request->validate([
-            'name' => ['required', 'string'],
-            'kind' => ['required'],
-            'weight' => ['required', 'numeric'],
-            'age' => ['required', 'numeric'],
-            'breed' => ['required', 'string'],
-            'location' => ['required', 'string'],
+            'name'        => ['required', 'string'],
+            'kind'        => ['required'],
+            'weight'      => ['required', 'numeric'],
+            'age'         => ['required', 'numeric'],
+            'breed'       => ['required', 'string'],
+            'location'    => ['required', 'string'],
             'description' => ['nullable', 'string'],
         ]);
 
         if($validation) {
-            if($request->hasFile('photo')) {
-                $photo = time().'.'.$request->photo->extension();
-                $request->photo->move(public_path('images/pets'), $photo);
-                if($pet->photo != 'no-photo.webp') {
-                    unlink(public_path('images/pets/').$pet->photo);
+            if($request->hasFile('image')) {
+                $image = time().'.'.$request->image->extension();
+                $request->image->move(public_path('images/pets'), $image);
+                if($pet->image != 'no-pet.webp') {
+                    unlink(public_path('images/pets/').$pet->image);
                 }
             } else {
-                $photo = $pet->photo;
+                $image = $pet->image;
             }
 
-            $pet->name = $request->name;
-            $pet->photo = $photo;
-            $pet->kind = $request->kind;
-            $pet->weight = $request->weight;
-            $pet->age = $request->age;
-            $pet->breed = $request->breed;
-            $pet->location = $request->location;
+            $pet->name        = $request->name;
+            $pet->image       = $image;
+            $pet->kind        = $request->kind;
+            $pet->weight      = $request->weight;
+            $pet->age         = $request->age;
+            $pet->breed       = $request->breed;
+            $pet->location    = $request->location;
             $pet->description = $request->description;
-            $pet->active = $request->active;
-            $pet->status = $request->status;
+            $pet->active      = $request->active;
+            $pet->status      = $request->status;
 
             if($pet->save()) {
                 return redirect('pets')
@@ -135,8 +135,8 @@ class PetController extends Controller
      */
     public function destroy(Pet $pet)
     {
-        if($pet->photo != 'no-photo.webp') {
-            unlink(public_path('images/pets/').$pet->photo);
+        if($pet->image != 'no-pet.webp') {
+            unlink(public_path('images/pets/').$pet->image);
         }
 
         if($pet->delete()) {
@@ -158,10 +158,10 @@ class PetController extends Controller
         return $pdf->download('allpets.pdf');
     }
 
-    // public function excel()
-    // {
-    //     return Excel::download(new PetsExport, 'allpets.xlsx');
-    // }
+    public function excel()
+    {
+        return Excel::download(new PetsExport, 'allpets.xlsx');
+    }
 
     // public function import(Request $request)
     // {
