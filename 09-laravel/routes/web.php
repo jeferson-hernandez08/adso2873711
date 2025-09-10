@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PetController;
+use App\Http\Controllers\AdoptionController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -78,7 +79,7 @@ Route::middleware('auth')->group(function () {
         Route::resources([
             'users'     => UserController::class,
             'pets'      => PetController::class,
-            // 'adoptions' => AdoptionController::class
+            'adoptions' => AdoptionController::class
         ]);
 
         // Explicacion Juan David
@@ -87,14 +88,17 @@ Route::middleware('auth')->group(function () {
         // Search
         Route::post('search/users', [UserController::class, 'search']);
         Route::post('search/pets', [PetController::class, 'search']);      // Se agregha
+        Route::post('search/adoptions', [AdoptionController::class, 'search']);      // Se agregha
 
         // PDF 
         Route::get('export/users/pdf', [UserController::class, 'pdf']);
         Route::get('export/pets/pdf', [PetController::class, 'pdf']);     // Se agregha
+        Route::get('export/adoptions/pdf', [AdoptionController::class, 'pdf']);     // Se agregha
 
         // Excel
         Route::get('export/users/excel', [UserController::class, 'excel']);
         Route::get('export/pets/excel', [PetController::class, 'excel']);    // Se agregha
+        Route::get('export/adoptions/excel', [AdoptionController::class, 'excel']);    // Se agregha
 
         Route::post('import/users', [UserController::class, 'import']);
         Route::post('import/pets', [PetController::class, 'import']);       // Se agregha

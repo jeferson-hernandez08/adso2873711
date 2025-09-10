@@ -1,0 +1,242 @@
+@extends('layouts.app')
+@section('title', 'Show Adoption')
+
+@section('content')
+    @include('layouts.navbar')
+    <main class="bg-purple-900 pt-20 bg-cover w-full min-h-[100dvh] flex flex-col justify-center items-center">
+        <div class="bg-[#0006] md:w-10/12 w-full text-white p-10 rounded-lg flex flex-col justify-center items-center">
+            <h1 class="text-2xl flex gap-2 items-center pb-2 border-b-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="size-12" fill="#fff" viewBox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path></svg>
+                Show Adoption
+            </h1>
+
+            {{-- Breadcrumbs --}}
+            <div class="breadcrumbs text-sm mt-6">
+                <ul>
+                    <li>
+                        <a href="{{ url('dashboard') }}" class="flex items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="size-5" fill="#fff" viewBox="0 0 256 256">
+                                <path d="M104,40H56A16,16,0,0,0,40,56v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,104,40Zm0,64H56V56h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40Zm0,64H152V56h48v48Zm-96,32H56a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,104,136Zm0,64H56V152h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,200,136Zm0,64H152V152h48v48Z"></path>
+                            </svg>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('adoptions') }}" class="flex items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="size-5" fill="#fff" viewBox="0 0 256 256"><path d="M178,40c-20.65,0-38.73,8.88-50,23.89C116.73,48.88,98.65,40,78,40a62.07,62.07,0,0,0-62,62c0,70,103.79,126.66,108.21,129a8,8,0,0,0,7.58,0C136.21,228.66,240,172,240,102A62.07,62.07,0,0,0,178,40ZM128,214.8C109.74,204.16,32,155.69,32,102A46.06,46.06,0,0,1,78,56c19.45,0,35.78,10.36,42.6,27a8,8,0,0,0,14.8,0c6.82-16.67,23.15-27,42.6-27a46.06,46.06,0,0,1,46,46C224,155.61,146.24,204.15,128,214.8Z"></path></svg>
+                            Adoption Module
+                        </a>
+                    </li>
+                    <li>
+                        <span class="inline-flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="size-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                            </svg>
+                            Show Adoption
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <h4 class="mt-4">
+                <span class="underline font-bold">{{ $adopt->pet->name }}</span>
+                Was Adopted By
+                <span class="underline font-bold">{{ $adopt->user->fullname }}</span>
+                {{ $adopt->created_at->diffforhumans()}}
+            </h4>
+
+            {{-- User Details Card --}}
+            <div class="w-full max-w-2xl mt-8 bg-[#0006] rounded-xl p-6 shadow-lg">
+                <div class="flex flex-col md:flex-row gap-8">
+                    {{-- Photo Section --}}
+                    <div class="flex-shrink-0 flex flex-col items-center">
+                        <div class="mask mask-squircle w-48 h-48 bg-gray-700 flex items-center justify-center">
+                            @if($adopt->user->photo)
+                                <img src="{{ asset('images/'.$adopt->user->photo) }}" 
+                                     alt="User Photo" 
+                                     class="w-full h-full object-cover">
+                            @else
+                                <div class="text-6xl text-gray-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-32" fill="currentColor" viewBox="0 0 256 256">
+                                        <path d="M172,120a44,44,0,1,1-44-44A44,44,0,0,1,172,120Zm60,8A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88.09,88.09,0,0,0-91.47-87.93C77.43,41.89,39.87,81.12,40,128.25a87.65,87.65,0,0,0,22.24,58.16A79.71,79.71,0,0,1,84,165.1a4,4,0,0,1,4.83.32,59.83,59.83,0,0,0,78.28,0,4,4,0,0,1,4.83-.32,79.71,79.71,0,0,1,21.79,21.31A87.62,87.62,0,0,0,216,128Z"></path>
+                                    </svg>
+                                </div>
+                            @endif
+                        </div>
+                        <div class="mt-4 text-center">
+                            <h2 class="text-xl font-bold">{{ $adopt->user->fullname }}</h2>
+                            <p class="text-gray-300">{{ $adopt->user->email }}</p>
+                            <p class="text-gray-300">{{ $adopt->user->role }}</p>
+                        </div>
+                    </div>
+
+                    {{-- Details Section --}}
+                    <div class="flex-grow grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-[#0006] p-4 rounded-lg">
+                            <h3 class="text-gray-400 text-sm font-semibold">Document</h3>
+                            <p class="mt-1">{{ $adopt->user->document }}</p>
+                        </div>
+                        
+                        <div class="bg-[#0006] p-4 rounded-lg">
+                            <h3 class="text-gray-400 text-sm font-semibold">Gender</h3>
+                            <p class="mt-1">{{ $adopt->user->gender }}</p>
+                        </div>
+                        
+                        <div class="bg-[#0006] p-4 rounded-lg">
+                            <h3 class="text-gray-400 text-sm font-semibold">Birthdate</h3>
+                            <p class="mt-1">{{ \Carbon\Carbon::parse($adopt->user->birthdate)->format('d/m/Y') }}</p>
+                        </div>
+                        
+                        <div class="bg-[#0006] p-4 rounded-lg">
+                            <h3 class="text-gray-400 text-sm font-semibold">Phone</h3>
+                            <p class="mt-1">{{ $adopt->user->phone }}</p>
+                        </div>
+
+                        <div class="bg-[#0006] p-4 rounded-lg">
+                            <h3 class="text-gray-400 text-sm font-semibold">Email</h3>
+                            <p class="mt-1">{{ $adopt->user->email }}</p>
+                        </div>
+
+                        <div class="bg-[#0006] p-4 rounded-lg">
+                            <h3 class="text-gray-400 text-sm font-semibold">Role</h3>
+                            <p class="mt-1">{{ $adopt->user->role }}</p>
+                        </div>
+
+                        <div class="bg-[#0006] p-4 rounded-lg md:col-span-2">
+                            <h3 class="text-gray-400 text-sm font-semibold">Active:</h3>
+                                @if ($adopt->user->active == 1)
+                                    <div class="mt-1 w-8 h-8 rounded-full text-white bg-green-600 flex items-center justify-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="size-8" fill="#000000" viewBox="0 0 256 256"><path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path></svg>
+                                    </div>
+                                @else
+                                    <div class="mt-1 w-8 h-8 rounded-full text-white bg-red-600 flex">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="size-8" fill="#000000" viewBox="0 0 256 256"><path d="M165.66,101.66,139.31,128l26.35,26.34a8,8,0,0,1-11.32,11.32L128,139.31l-26.34,26.35a8,8,0,0,1-11.32-11.32L116.69,128,90.34,101.66a8,8,0,0,1,11.32-11.32L128,116.69l26.34-26.35a8,8,0,0,1,11.32,11.32ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path></svg>
+                                    </div>
+                                @endif 
+                        </div>
+
+                        <div class="bg-[#0006] p-4 rounded-lg md:col-span-2">
+                            <h3 class="text-gray-400 text-sm font-semibold">Created At</h3>
+                            <p class="mt-1">{{ $adopt->user->created_at->format('d/m/Y H:i') }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Pet Details Card --}}
+            <div class="w-full max-w-2xl mt-8 bg-[#0006] rounded-xl p-6 shadow-lg">
+                <div class="flex flex-col md:flex-row gap-8">
+                    {{-- Photo Section --}}
+                    <div class="flex-shrink-0 flex flex-col items-center">
+                        <div class="mask mask-squircle w-48 h-48 bg-gray-700 flex items-center justify-center">
+                            @if($adopt->pet->image)
+                                <img src="{{ asset('images/pets/'.$adopt->pet->image) }}" 
+                                     alt="Pet Photo" 
+                                     class="w-full h-full object-cover">
+                            @else
+                                <div class="text-6xl text-gray-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-32" fill="currentColor" viewBox="0 0 256 256">
+                                        <path d="M132,180a20,20,0,1,1-20-20A20,20,0,0,1,132,180ZM88,116a20,20,0,1,0-20,20A20,20,0,0,0,88,116Zm108,20a20,20,0,1,0-20-20A20,20,0,0,0,196,136Z"></path>
+                                    </svg>
+                                </div>
+                            @endif
+                        </div>
+                        <div class="mt-4 text-center">
+                            <h2 class="text-xl font-bold">{{ $adopt->pet->name }}</h2>
+                            <p class="text-gray-300">{{ $adopt->pet->breed }}</p>
+                            <p class="text-gray-300">{{ $adopt->pet->kind }}</p>
+                        </div>
+                    </div>
+
+                    {{-- Details Section --}}
+                    <div class="flex-grow grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-[#0009] p-4 rounded-lg">
+                            <h3 class="text-gray-400 text-sm font-semibold">Name</h3>
+                            <p class="mt-1">{{ $adopt->pet->name }}</p>
+                        </div>
+                        
+                        <div class="bg-[#0009] p-4 rounded-lg">
+                            <h3 class="text-gray-400 text-sm font-semibold">Kind</h3>
+                            <p class="mt-1">{{ $adopt->pet->kind }}</p>
+                        </div>
+                        
+                        <div class="bg-[#0009] p-4 rounded-lg">
+                            <h3 class="text-gray-400 text-sm font-semibold">Weight</h3>
+                            <p class="mt-1">{{ $adopt->pet->weight }} kg</p>
+                        </div>
+                        
+                        <div class="bg-[#0009] p-4 rounded-lg">
+                            <h3 class="text-gray-400 text-sm font-semibold">Age</h3>
+                            <p class="mt-1">{{ $adopt->pet->age }} years</p>
+                        </div>
+
+                        <div class="bg-[#0009] p-4 rounded-lg">
+                            <h3 class="text-gray-400 text-sm font-semibold">Breed</h3>
+                            <p class="mt-1">{{ $adopt->pet->breed }}</p>
+                        </div>
+
+                        <div class="bg-[#0009] p-4 rounded-lg">
+                            <h3 class="text-gray-400 text-sm font-semibold">Location</h3>
+                            <p class="mt-1">{{ $adopt->pet->location }}</p>
+                        </div>
+
+                        <div class="bg-[#0009] p-4 rounded-lg md:col-span-2">
+                            <h3 class="text-gray-400 text-sm font-semibold">Description</h3>
+                            <p class="mt-1">{{ $adopt->pet->description ?: 'No description provided' }}</p>
+                        </div>
+
+                        <div class="bg-[#0009] p-4 rounded-lg">
+                            <h3 class="text-gray-400 text-sm font-semibold">Status</h3>
+                                 @if ($adopt->pet->status == 'adopted')
+                                    <div class="mt-1 w-28 h-8 font-semibold rounded-full bg-green-400 text-green-800 flex items-center justify-center">
+                                        Adopted
+                                    </div>
+                                @else
+                                    <div class="mt-1 w-28 h-8 font-semibold rounded-full bg-yellow-400 text-yellow-800 flex items-center justify-center">
+                                        Available
+                                    </div>
+                                @endif
+                                {{-- @if ($pet->status == 'adopted')
+                                    <div class="mt-1 w-8 h-8 rounded-full text-white bg-green-600 flex items-center justify-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="size-8" fill="#000000" viewBox="0 0 256 256"><path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path></svg>
+                                    </div>
+                                @else
+                                    <div class="mt-1 w-8 h-8 rounded-full text-white bg-red-600 flex">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="size-8" fill="#000000" viewBox="0 0 256 256"><path d="M165.66,101.66,139.31,128l26.35,26.34a8,8,0,0,1-11.32,11.32L128,139.31l-26.34,26.35a8,8,0,0,1-11.32-11.32L116.69,128,90.34,101.66a8,8,0,0,1,11.32-11.32L128,116.69l26.34-26.35a8,8,0,0,1,11.32,11.32ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path></svg>
+                                    </div>
+                                @endif --}}
+                        </div>
+
+                        <div class="bg-[#0009] p-4 rounded-lg">
+                            <h3 class="text-gray-400 text-sm font-semibold">Active</h3>
+                                @if ($adopt->pet->active == 1)
+                                    <div class="mt-1 w-8 h-8 rounded-full text-white bg-green-600 flex items-center justify-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="size-8" fill="#000000" viewBox="0 0 256 256"><path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path></svg>
+                                    </div>
+                                @else
+                                    <div class="mt-1 w-8 h-8 rounded-full text-white bg-red-600 flex">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="size-8" fill="#000000" viewBox="0 0 256 256"><path d="M165.66,101.66,139.31,128l26.35,26.34a8,8,0,0,1-11.32,11.32L128,139.31l-26.34,26.35a8,8,0,0,1-11.32-11.32L116.69,128,90.34,101.66a8,8,0,0,1,11.32-11.32L128,116.69l26.34-26.35a8,8,0,0,1,11.32,11.32ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path></svg>
+                                    </div>
+                                @endif 
+                        </div>
+
+                        <div class="bg-[#0009] p-4 rounded-lg md:col-span-2">
+                            <h3 class="text-gray-400 text-sm font-semibold">Created At</h3>
+                            <p class="mt-1">{{ $adopt->pet->created_at->format('d/m/Y H:i') }}</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            {{-- Action Buttons --}}
+            <div class="mt-8 flex flex-wrap gap-4 justify-center">
+                <a href="{{ url('adoptions') }}" class="btn btn-outline flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="size-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    Back to Adoptions
+                </a>
+            </div>
+        </div>   
+    </main>
+@endsection
