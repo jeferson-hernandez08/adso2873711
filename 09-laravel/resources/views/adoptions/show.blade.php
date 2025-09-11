@@ -186,7 +186,7 @@
 
                         <div class="bg-[#0009] p-4 rounded-lg">
                             <h3 class="text-gray-400 text-sm font-semibold">Status</h3>
-                                 @if ($adopt->pet->status == 'adopted')
+                                 @if ($adopt->pet->status == 1)
                                     <div class="mt-1 w-28 h-8 font-semibold rounded-full bg-green-400 text-green-800 flex items-center justify-center">
                                         Adopted
                                     </div>

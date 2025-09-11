@@ -69,7 +69,7 @@
                             <td class="hidden md:table-cell">{{ $pet->breed }}</td>
                             <td class="hidden lg:table-cell">{{ $pet->age }} years old</td>
                             <td>
-                                @if ($pet->status == 'adopted')
+                                @if ($pet->status == 1)
                                     <span class="px-3 py-1 font-semibold rounded-full bg-green-400 text-green-800">Adopted</span>
                                 @else
                                     <span class="px-3 py-1 font-semibold rounded-full bg-yellow-400 text-yellow-800">Available</span>

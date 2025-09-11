@@ -167,8 +167,6 @@ class PetController extends Controller
         return $pet->name;
     }
 
-
-
     // public function import(Request $request)
     // {
     //     $file = $request->file('file');
