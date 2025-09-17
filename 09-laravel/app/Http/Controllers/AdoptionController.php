@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Adoption;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\AdoptionsExport;
+use App\Imports\PetImport;
 
 class AdoptionController extends Controller
 {
@@ -73,14 +78,14 @@ class AdoptionController extends Controller
 
     public function pdf()
     {
-        // $pets = Pet::all();
-        // $pdf = PDF::loadView('pets.pdf', compact('pets'));
-        // return $pdf->download('allpets.pdf');
+        $adoptions = Adoption::with(['user', 'pet'])->get();  
+        $pdf = PDF::loadView('adoptions.pdf', compact('adoptions'));
+        return $pdf->download('alladoptions.pdf');
     }
 
     public function excel()
     {
-        // return Excel::download(new PetsExport, 'allpets.xlsx');
+        return Excel::download(new AdoptionsExport, 'alladoptions.xlsx');
     }
 
 
