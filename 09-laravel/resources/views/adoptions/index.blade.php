@@ -20,32 +20,43 @@
                 </a>
                 <input class="outline-0 rounded-tr-sm rounded-br-sm indent-2 bg-white/10" type="search" name="qsearch"  id="qsearch" placeholder="Search..." />
             </div>
-                <div class="datalist flex flex-col justify-center items-center" >
-                    @foreach ($adopts as $adopt)
-                        <div class="avatar-group -space-x-6 mt-8 mb-2">
+            <div class="datalist flex flex-col justify-center items-center mt-8 w-full">
+                @foreach ($adopts as $adopt)
+                    <div class="bg-[#0006] rounded-lg p-6 mb-6 w-full max-w-2xl text-center ">
+                        
+                        <!-- Avatares User con Pet -->
+                        <div class="avatar-group -space-x-6 mb-4 flex justify-center">
                             <div class="avatar">
-                                <div class="w-28">
-                                <img src="{{ asset('images/'.$adopt->user->photo) }}" />
+                                <div class="w-28 rounded-full">
+                                    <img src="{{ asset('images/'.$adopt->user->photo) }}" />
                                 </div>
                             </div>
                             <div class="avatar">
-                                <div class="w-28">
-                                <img src="{{ asset('images/pets/'.$adopt->pet->image) }}" />
+                                <div class="w-28 rounded-full">
+                                    <img src="{{ asset('images/pets/'.$adopt->pet->image) }}" />
                                 </div>
                             </div>
                         </div>
-                        <h4>
-                            <span class="underline font-bold">{{ $adopt->pet->name }}</span>
-                            Was Adopted By 
-                            <span class="underline font-bold">{{ $adopt->user->fullname }}</span>
-                            {{ $adopt->created_at->diffforhumans()}}
-                        </h4>
-                        <a href="{{ url('adoptions/'.$adopt->id) }}" class="mt-2 btn btn-outline btn-default hover:text-purple-900">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="size-8" fill="currentColor" viewBox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path></svg>
-                        </a>
-                    @endforeach
-                </div>
-            
+
+                        <div class="text-center">
+                            <!-- Texto Adoptado -->
+                            <h4 class="text-lg font-semibold">
+                                <span class="underline font-bold">{{ $adopt->pet->name }}</span>
+                                Was Adopted By 
+                                <span class="underline font-bold">{{ $adopt->user->fullname }}</span>
+                            </h4>
+                            <p class="text-sm opacity-75 mt-2">{{ $adopt->created_at->diffForHumans() }}</p>
+
+                            <!-- Botón lupa -->
+                            <a href="{{ url('adoptions/'.$adopt->id) }}" class="mt-4 btn btn-outline btn-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="size-8" fill="currentColor" viewBox="0 0 256 256">
+                                    <path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
             <div class="mt-4">
                 {{ $adopts->links('layouts.paginator') }}
             </div>
@@ -57,20 +68,38 @@
     <script>
            $(document).ready(function() {
             // Search
+            function debounce(func, wait) {
+                let timeout
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout)
+                        func(...args)
+                    };
+                    clearTimeout(timeout)
+                    timeout = setTimeout(later, wait)
+                }
+            }
+            const search = debounce(function(query) {
+                
+                $token = $('input[name=_token]').val()
+                
+                $.post("search/adoptions", {'q': query, '_token': $token},
+                    function (data) {
+                        $('.datalist').html(data).hide().fadeIn(1000)
+                    }
+                )
+            }, 500)
             $('body').on('input', '#qsearch', function(event) {
                 event.preventDefault()
-                $query = $(this).val()
-                $token = $('input[name=_token]').val()
-                $('.datalist').empty()
-                $('.datalist').html(`<div class="w-full text-center py-12"><span class="loading loading-spinner loading-xl"></span></div>`)
+                const query = $(this).val()
                 
-                setTimeout(() => {
-                    $.get("{{ route('adoptions.search') }}", {'q': $query, '_token': $token},
-                        function (data) {
-                            $('.datalist').html($(data).find('.datalist').html()).hide().fadeIn('1000')
-                        }
-                    )
-                }, 1000);
+                $('.datalist').html(`<tr>
+                                        <td colspan="4" class="text-center py-18">
+                                            <span class="loading loading-spinner loading-xl"></span>
+                                        </td>
+                                    </tr>`)
+                
+                search(query)
             })
         });
 

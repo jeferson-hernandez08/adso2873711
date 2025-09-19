@@ -69,23 +69,10 @@ class AdoptionController extends Controller
         //
     }
 
-    public function search(Request $request)
-    {
-        $q = $request->q;
-        $adopts = Adoption::with(['user', 'pet'])
-            ->whereHas('user', function($query) use ($q) {
-                $query->where('fullname', 'LIKE', '%'.$q.'%')
-                    ->orWhere('email', 'LIKE', '%'.$q.'%')
-                    ->orWhere('document', 'LIKE', '%'.$q.'%');
-            })
-            ->orWhereHas('pet', function($query) use ($q) {
-                $query->where('name', 'LIKE', '%'.$q.'%')
-                    ->orWhere('kind', 'LIKE', '%'.$q.'%')
-                    ->orWhere('breed', 'LIKE', '%'.$q.'%');
-            })
-            ->paginate(20);
-
-        return view('adoptions.search', compact('adopts'));
+    public function search(Request $request){
+        // return 'Searching........'.$request->q;
+        $adoptions = Adoption::names($request->q)->paginate(20);
+        return view('adoptions.search')->with('adoptions',$adoptions);
     }
 
     public function pdf()

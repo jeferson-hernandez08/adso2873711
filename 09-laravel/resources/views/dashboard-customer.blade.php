@@ -22,7 +22,7 @@
                         <h2 class="card-title">Edit My Info</h2>
                         <p>Update your personal profile and account details.</p>
                         <div class="card-actions justify-end">
-                            <a href="{{ url('profile/edit') }}" class="btn text-white bg-sky-900">
+                            <a href="{{ url('customer/edit') }}" class="btn text-white bg-sky-900">
                                 Edit my info
                             </a>
                         </div>
@@ -36,11 +36,11 @@
                              src="{{ asset('images/bg-adoptions.webp') }}" alt="My Adoptions" />
                     </figure>
                     <div class="card-body">
-                        <h2 class="card-title">My Adoption</h2>
+                        <h2 class="card-title">My Adoptions</h2>
                         <p>See the pets you have adopted and their details.</p>
                         <div class="card-actions justify-end">
                             <a href="{{ url('my-adoptions') }}" class="btn text-white bg-purple-900">
-                                View my adoption
+                                View my adoptions
                             </a>
                         </div>
                     </div>

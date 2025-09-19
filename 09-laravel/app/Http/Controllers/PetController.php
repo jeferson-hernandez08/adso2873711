@@ -145,7 +145,7 @@ class PetController extends Controller
 
     public function search(Request $request)
     {
-        $pets = Pet::where('name', 'LIKE', '%'.$request->q.'%')->paginate(20);
+        $pets = Pet::names($request->q)->paginate(20);
         return view('pets.search')->with('pets', $pets);
     }
 

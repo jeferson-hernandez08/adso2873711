@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PetController;
 use App\Http\Controllers\AdoptionController;
+use App\Http\Controllers\CustomerController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -88,8 +89,8 @@ Route::middleware('auth')->group(function () {
         // Search
         Route::post('search/users', [UserController::class, 'search']);
         Route::post('search/pets', [PetController::class, 'search']);      // Se agregha
-        Route::get('search/adoptions', [AdoptionController::class, 'search'])->name('adoptions.search');
-        //Route::post('search/adoptions', [AdoptionController::class, 'search']);      // Se agregha
+        //Route::get('search/adoptions', [AdoptionController::class, 'search'])->name('adoptions.search');
+        Route::post('search/adoptions', [AdoptionController::class, 'search']);      // Se agregha
 
         // PDF 
         Route::get('export/users/pdf', [UserController::class, 'pdf']);
@@ -105,6 +106,11 @@ Route::middleware('auth')->group(function () {
         Route::post('import/pets', [PetController::class, 'import']);       // Se agregha
 
     });
+
+    //Routes for Costumer
+    Route::get('myinfo', [CustomerController::class, 'myInfo']);
+
+
 });
 
 require __DIR__.'/auth.php';

@@ -65,8 +65,6 @@ class User extends Authenticatable
             $users->where('fullname', 'LIKE', "%$q%")
                   ->orWhere('email', 'LIKE', "%$q%");
         }
-
     }
-
-    
+   
 }

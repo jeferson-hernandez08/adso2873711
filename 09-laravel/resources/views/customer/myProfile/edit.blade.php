@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Edit User')
+@section('title', 'Edit My Profile')
 
 @section('content')
     @include('layouts.navbar')

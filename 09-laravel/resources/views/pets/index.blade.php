@@ -126,23 +126,38 @@
             })
 
             // Search
+            function debounce(func, wait) {
+                let timeout
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout)
+                        func(...args)
+                    };
+                    clearTimeout(timeout)
+                    timeout = setTimeout(later, wait)
+                }
+            }
+            const search = debounce(function(query) {
+                
+                $token = $('input[name=_token]').val()
+                
+                $.post("search/pets", {'q': query, '_token': $token},
+                    function (data) {
+                        $('.datalist').html(data).hide().fadeIn(1000)
+                    }
+                )
+            }, 500)
             $('body').on('input', '#qsearch', function(event) {
                 event.preventDefault()
-                $query = $(this).val()
-                $token = $('input[name=_token]').val()
-                $('.datalist').empty()
+                const query = $(this).val()
+                
                 $('.datalist').html(`<tr>
-                                        <td colspan="6" class="text-center py-12">
+                                        <td colspan="6" class="text-center py-18">
                                             <span class="loading loading-spinner loading-xl"></span>
                                         </td>
                                     </tr>`)
-                setTimeout(() => {
-                    $.post("search/pets", {'q': $query, '_token': $token},
-                        function (data) {
-                            $('.datalist').html(data).hide().fadeIn('1000')
-                        }
-                    )
-                }, 2000);
+                
+                search(query)
             })
 
             // Delete
