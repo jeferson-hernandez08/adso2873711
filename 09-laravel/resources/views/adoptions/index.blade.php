@@ -49,29 +49,29 @@
             <div class="mt-4">
                 {{ $adopts->links('layouts.paginator') }}
             </div>
+        </div>
     </main>
 @endsection
 
 @section('js')
     <script>
-        $(document).ready(function() {
-
+           $(document).ready(function() {
             // Search
             $('body').on('input', '#qsearch', function(event) {
                 event.preventDefault()
                 $query = $(this).val()
                 $token = $('input[name=_token]').val()
                 $('.datalist').empty()
-                $('.datalist').html(`<span class="loading loading-spinner loading-xl my-20"></span>`)
+                $('.datalist').html(`<div class="w-full text-center py-12"><span class="loading loading-spinner loading-xl"></span></div>`)
+                
                 setTimeout(() => {
-                    $.post("search/adoptions", {'q': $query, '_token': $token},
+                    $.get("{{ route('adoptions.search') }}", {'q': $query, '_token': $token},
                         function (data) {
-                            $('.datalist').html(data).hide().fadeIn('1000')
+                            $('.datalist').html($(data).find('.datalist').html()).hide().fadeIn('1000')
                         }
                     )
-                }, 2000);
+                }, 1000);
             })
-
         });
 
     </script>

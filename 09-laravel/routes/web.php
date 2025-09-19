@@ -88,7 +88,8 @@ Route::middleware('auth')->group(function () {
         // Search
         Route::post('search/users', [UserController::class, 'search']);
         Route::post('search/pets', [PetController::class, 'search']);      // Se agregha
-        Route::post('search/adoptions', [AdoptionController::class, 'search']);      // Se agregha
+        Route::get('search/adoptions', [AdoptionController::class, 'search'])->name('adoptions.search');
+        //Route::post('search/adoptions', [AdoptionController::class, 'search']);      // Se agregha
 
         // PDF 
         Route::get('export/users/pdf', [UserController::class, 'pdf']);

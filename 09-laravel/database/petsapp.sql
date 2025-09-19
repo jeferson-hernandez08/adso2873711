@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-09-2025 a las 14:43:49
+-- Tiempo de generación: 19-09-2025 a las 03:46:02
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -40,7 +40,8 @@ CREATE TABLE `adoptions` (
 --
 
 INSERT INTO `adoptions` (`id`, `user_id`, `pet_id`, `created_at`, `updated_at`) VALUES
-(1, 2, 2, '2025-06-06 21:44:18', '2025-06-06 21:44:18');
+(1, 2, 2, '2025-06-06 21:44:18', '2025-06-06 21:44:18'),
+(2, 40, 1, '2025-09-10 17:52:22', '2025-09-10 17:52:22');
 
 -- --------------------------------------------------------
 
@@ -53,6 +54,14 @@ CREATE TABLE `cache` (
   `value` mediumtext NOT NULL,
   `expiration` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `cache`
+--
+
+INSERT INTO `cache` (`key`, `value`, `expiration`) VALUES
+('laravel_cache_jefer.hernandez1@gmail.com|127.0.0.1', 'i:1;', 1756907109),
+('laravel_cache_jefer.hernandez1@gmail.com|127.0.0.1:timer', 'i:1756907109;', 1756907109);
 
 -- --------------------------------------------------------
 
@@ -179,9 +188,9 @@ CREATE TABLE `pets` (
 --
 
 INSERT INTO `pets` (`id`, `name`, `image`, `kind`, `weight`, `age`, `breed`, `location`, `description`, `active`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Stuart', 'no-pet.webp', 'Dog', 2.5, '8', 'Pincher', 'Manizales, Colombia', 'Its a good boy', 1, 0, '2025-06-06 21:44:18', '2025-06-06 21:44:18'),
-(2, 'Killer', 'no-pet.webp', 'Dog', 8.5, '3', 'Germany Shepherd', 'Berlin, Germany', 'Its a good boy', 1, 1, '2025-06-06 21:44:18', '2025-06-06 21:44:18'),
-(3, 'Michi', 'no-pet.webp', 'Cat', 1.5, '7', 'Persa', 'Abu, Dhuabi', 'Only chickend food.', 1, 0, '2025-06-06 21:44:18', '2025-06-06 21:44:18'),
+(1, 'Stuart', '1757078382.jpg', 'Dog', 2.5, '8', 'Pincher', 'Manizales, Colombia', 'Its a good boy', 1, 1, '2025-06-06 21:44:18', '2025-09-05 21:07:59'),
+(2, 'Killer', '1757086312.jpg', 'Dog', 8.5, '3', 'Germany Shepherd', 'Berlin, Germany', 'Its a good boy', 1, 1, '2025-06-06 21:44:18', '2025-09-05 20:31:52'),
+(3, 'Michi', '1757086536.jpg', 'Cat', 1.5, '7', 'Persa', 'Abu, Dhuabi', 'Only chickend food.', 1, 0, '2025-06-06 21:44:18', '2025-09-05 21:41:17'),
 (4, 'Chanchi', 'no-pet.webp', 'Pig', 15.8, '5', 'Mini', 'Tokio, Japan', 'All Kind of food.', 1, 0, '2025-06-06 21:44:18', '2025-06-06 21:44:18'),
 (5, 'Cody357', 'no-pet.webp', 'Dog', 73, '9', 'DarkOrchid', 'North Marlen', 'Iste maiores perferendis et maiores doloremque ratione ut dolorum architecto delectus.', 1, 0, '2025-06-06 21:45:53', '2025-06-06 21:45:53'),
 (6, 'Annie291', 'no-pet.webp', 'Pig', 36, '6', 'LightSkyBlue', 'Tromptown', 'Dolorem atque velit odit voluptas similique sed magnam doloribus alias a amet.', 1, 0, '2025-06-06 21:45:53', '2025-06-06 21:45:53'),
@@ -232,7 +241,8 @@ INSERT INTO `pets` (`id`, `name`, `image`, `kind`, `weight`, `age`, `breed`, `lo
 (51, 'Daisy432', 'no-pet.webp', 'Dog', 55, '9', 'LightYellow', 'Port Vivaside', 'Culpa veritatis voluptas aut asperiores eius perspiciatis qui quia qui delectus voluptates ullam.', 1, 0, '2025-06-06 21:45:53', '2025-06-06 21:45:53'),
 (52, 'Tucker170', 'no-pet.webp', 'Dog', 55, '5', 'MediumAquaMarine', 'Lianashire', 'Molestiae ipsam quam aut sit et molestiae mollitia repellat.', 1, 0, '2025-06-06 21:45:53', '2025-06-06 21:45:53'),
 (53, 'Oliver966', 'no-pet.webp', 'Mouse', 7, '9', 'MediumVioletRed', 'Smithammouth', 'Facilis dolor odio consectetur officiis deserunt nostrum ut dolor.', 1, 0, '2025-06-06 21:45:53', '2025-06-06 21:45:53'),
-(54, 'Ruby877', 'no-pet.webp', 'Mouse', 33, '9', 'Tomato', 'North Daisyburgh', 'Aut laborum et debitis dolores et saepe eos.', 1, 0, '2025-06-06 21:45:53', '2025-06-06 21:45:53');
+(54, 'Ruby877', 'no-pet.webp', 'Mouse', 33, '9', 'Tomato', 'North Daisyburgh', 'Aut laborum et debitis dolores et saepe eos.', 1, 0, '2025-06-06 21:45:53', '2025-06-06 21:45:53'),
+(57, 'Mambo', '1757085983.jpg', 'Dog', 4.2, '6', 'Pincher', 'Manizales, Colombia', 'Muy amistoso pero nervioso', 1, 0, '2025-09-05 20:26:23', '2025-09-05 20:26:23');
 
 -- --------------------------------------------------------
 
@@ -254,7 +264,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('5hsetU6qHxkdwsIEq7jjXaioNn33s3Kt3j55klWB', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoic3VRTXRPcHNmT0RUb3JPY0owMk1ydTJDWlQyT1ZWN2pvU3hKRG5ubCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC91c2VycyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1756486035);
+('2jgkx685vdRmZIrLSFBQOFCCxXRc9SZ9fSuAfamk', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiTXFuUUw3N2FvdHU1MHZXSEI1ZmpvRG1vVVd4MFdQdlA1ZUh3Q3I4ZiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9leHBvcnQvYWRvcHRpb25zL2V4Y2VsIjt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1758123628),
+('M6mjSpxE76swxwRkCzHwM0KwXlI0lZS690G0K2xQ', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiTFl2eVE1QmRBYW51b1Bxc1JhOFRFV0dvUEZLdXlDUk8zb3NrN25rcyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9wZXRzIjt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1758245114);
 
 -- --------------------------------------------------------
 
@@ -408,7 +419,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `adoptions`
 --
 ALTER TABLE `adoptions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `failed_jobs`
@@ -432,7 +443,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `pets`
 --
 ALTER TABLE `pets`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
